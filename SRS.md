@@ -129,347 +129,304 @@ The context diagram (Figure 1.3.1) outlines COMSYS at the centre of all informat
 4. Admins handle system settings, user management, audit logs, and notifications.
 5. External Systems (CMS, SMS Gateway, Calendar API) enable COMSYS to distribute and synchronize institutional data efficiently.
 
-![COMSYS System Context Diagram](contextdiagram.png)
+![COMSYS System Context Diagram](Screenshot/contextdiagram.png)
 
+### 1.3.2 Memory Constraints
 
-
-
-
-
-
- 
-
-Figure 1.3.1 Context Diagram for COMSYS
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1.3.2	Memory Constraints
 This section outlines the specific memory requirements and constraints for the university communication and service portal (COMSYS) to ensure stable and reliable operation.
 
-Memory Type	Constraint	Constraint Detail
-Primary Memory (RAM)	Minimum Required RAM	8 GB minimum required to support essential services including user authentication, academic data retrieval, and messaging.
-	Optimal RAM 	16 GB recommended for optimal performance during peak loads, such as semester registration or mass notification events.
-	Maximum Memory Usage	System processes should not exceed 70% of available RAM under normal operation to prevent slowdowns and ensure responsiveness.
-Secondary Memory (Storage)	Minimum Disk Space	200 GB required to store user profiles, academic performance data, and system configurations.
-	Data archiving	Student and staff records older than five years should be archived automatically to maintain at least 40 GB of free disk space at all times.
-	Backup and Recovery	At least 20% of total disk space must be reserved for periodic backup snapshots and recovery procedures in case of system failure or data corruption.
+| Memory Type | Constraint | Constraint Detail |
+| ----------- | ----------- | ------------------ |
+| **Primary Memory (RAM)** | Minimum Required RAM | 8 GB minimum required to support essential services including user authentication, academic data retrieval, and messaging. |
+| | Optimal RAM | 16 GB recommended for optimal performance during peak loads, such as semester registration or mass notification events. |
+| | Maximum Memory Usage | System processes should not exceed 70% of available RAM under normal operation to prevent slowdowns and ensure responsiveness. |
+| **Secondary Memory (Storage)** | Minimum Disk Space | 200 GB required to store user profiles, academic performance data, and system configurations. |
+| | Data archiving | Student and staff records older than five years should be archived automatically to maintain at least 40 GB of free disk space at all times. |
+| | Backup and Recovery | At least 20% of total disk space must be reserved for periodic backup snapshots and recovery procedures in case of system failure or data corruption. |
 
-By adhering to these memory constraints, COMSYS will remain robust, responsive, and capable of supporting the university’s critical communication and service functions.
+By adhering to these memory constraints, COMSYS will remain robust, responsive, and capable of supporting the university’s critical communication and service functions.  
+  
+### 1.3.3 Product Functions
 
-
-
-
-
-
-
-
-
-
-
-
-1.3.3	Product Functions
 The University Portal System (COMSYS) provides the following major functions:
 
-Feature Category	Major Functions
-Student Information Management	Centralized dashboard for academic records, schedules, and financial information
-	Course enrolment
-	Grade and attendance tracking
-	Financial status monitoring
-Multi-Channel Communication System
-	Integrated notification delivery across email, SMS, and portal
-	Customizable notification preferences and quiet hours
-	Real-time chat functionality
-	Announcement management with read receipt tracking
-	Searchable communication history
-Parent Engagement Platform
-	Dedicated parent portal with controlled access to student information
-	Compliance-based information sharing
-	Communication channels with university administrators
-Academic Resource Distribution	
-	Centralized learning material repository
-	Unified link generation for academic resources
-	Data import/export capabilities
-External Calendar System Integration	Synchronization with external calendar services
-Multi-language support	Support for multiple languages across the portal interface
+| Feature Category | Major Functions |
+| ----------------- | --------------- |
+| **Student Information Management** | Centralized dashboard for academic records, schedules, and financial information |
+|  | Course enrolment |
+|  | Grade and attendance tracking |
+|  | Financial status monitoring |
+| **Multi-Channel Communication System** | Integrated notification delivery across email, SMS, and portal |
+|  | Customizable notification preferences and quiet hours |
+|  | Real-time chat functionality |
+|  | Announcement management with read receipt tracking |
+|  | Searchable communication history |
+| **Parent Engagement Platform** | Dedicated parent portal with controlled access to student information |
+|  | Compliance-based information sharing |
+|  | Communication channels with university administrators |
+| **Academic Resource Distribution** | Centralized learning material repository |
+|  | Unified link generation for academic resources |
+|  | Data import/export capabilities |
+| **External Calendar System Integration** | Synchronization with external calendar services |
+| **Multi-language support** | Support for multiple languages across the portal interface |
 
-Table 1.3.3 Major Functions
+<p align="center"><em>Table 1.3.3 Major Functions</em></p>  
 
+### 1.3.4 User Characteristics
 
+**Students** are expected to have basic computer literacy and familiarity with common web applications and mobile interfaces. No specialized technical knowledge is required beyond the ability to navigate websites and use basic mobile applications.
 
+**Parents** may have varying levels of technical proficiency, with only basic computer literacy required. They are expected to access the system less frequently (weekly or monthly) and may prefer simplified interfaces. Some parents may have language preferences other than English.
 
+**Lecturers** are expected to possess moderate technical proficiency and familiarity with basic educational technology tools. While they should be comfortable with routine computer operations, extensive technical expertise is not required. They will need to manage course materials and student communications regularly, accessing the system daily during academic periods. lecturers are expected to be undergo training to use the new system.
 
+**Administrative staff** are expected to have moderate to advanced computer skills and will be trained in using administrative functions. They will be regular users requiring proficiency in managing student records, processing requests, and handling bulk operations. They should be comfortable with complex system features and multi-step processes.
 
+### 1.3.5 Limitations
 
- 
-1.3.4	User Characteristics
-Students are expected to have basic computer literacy and familiarity with common web applications and mobile interfaces. No specialized technical knowledge is required beyond the ability to navigate websites and use basic mobile applications. 
-Parents may have varying levels of technical proficiency, with only basic computer literacy required. They are expected to access the system less frequently (weekly or monthly) and may prefer simplified interfaces. Some parents may have language preferences other than English.
-Lecturers are expected to possess moderate technical proficiency and familiarity with basic educational technology tools. While they should be comfortable with routine computer operations, extensive technical expertise is not required. They will need to manage course materials and student communications regularly, accessing the system daily during academic periods. lecturers are expected to be undergo training to use the new system.
-Administrative staff are expected to have moderate to advanced computer skills and will be trained in using administrative functions. They will be regular users requiring proficiency in managing student records, processing requests, and handling bulk operations. They should be comfortable with complex system features and multi-step processes.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1.3.5	Limitations
 The University Portal System (COMSYS) is subject to the following limitations and constraints:
 
-Regulatory Requirements and Policies
-1.	Must comply with GDPR and FERPA data protection regulations, which may restrict access, storage, and sharing of personal and academic data.
-2.	Legal and privacy regulations may limit the extent of data visibility and communication features, particularly for parental access to student information.
+#### Regulatory Requirements and Policies
 
-Technical Limitations
-1.	Real-time data synchronization depends on network reliability and the availability of integrated external services (e.g., SMS gateways, calendar APIs, campus management systems).
-2.	System performance and user experience may be degraded during peak periods or if hardware resource constraints (RAM, storage, etc.) are not met.
-3.	The platform will require regular routine maintenance and timely updates to address security vulnerabilities, technological advancements, and feature enhancements.
-4.	Feature rollout—including new modules and multilingual support—may be phased and prioritized based on stakeholder feedback, funding, and resource availability.
-5.	Integration with legacy or third-party institutional systems may be limited by incompatible data formats, outdated APIs, or insufficient documentation.
+1. Must comply with GDPR and FERPA data protection regulations, which may restrict access, storage, and sharing of personal and academic data.
+2. Legal and privacy regulations may limit the extent of data visibility and communication features, particularly for parental access to student information.
 
-Operational Limitations
-1.	User support and system administration resources may be limited, potentially leading to delays in resolving technical issues or implementing requested enhancements.
-2.	System scalability and performance may be constrained by the underlying infrastructure, especially if user growth exceeds projected estimates.
-3.	User training and onboarding resources may be limited, affecting the adoption rate and effective use of the portal.
+#### Technical Limitations
+
+1. Real-time data synchronization depends on network reliability and the availability of integrated external services (e.g., SMS gateways, calendar APIs, campus management systems).
+2. System performance and user experience may be degraded during peak periods or if hardware resource constraints (RAM, storage, etc.) are not met.
+3. The platform will require regular routine maintenance and timely updates to address security vulnerabilities, technological advancements, and feature enhancements.
+4. Feature rollout—including new modules and multilingual support—may be phased and prioritized based on stakeholder feedback, funding, and resource availability.
+5. Integration with legacy or third-party institutional systems may be limited by incompatible data formats, outdated APIs, or insufficient documentation.
+
+#### Operational Limitations
+
+1. User support and system administration resources may be limited, potentially leading to delays in resolving technical issues or implementing requested enhancements.
+2. System scalability and performance may be constrained by the underlying infrastructure, especially if user growth exceeds projected estimates.
+3. User training and onboarding resources may be limited, affecting the adoption rate and effective use of the portal.
 
 These limitations should be considered during the planning, implementation, and operation of COMSYS to ensure realistic expectations and ongoing compliance with institutional and regulatory requirements.
 
+### 1.4 Definitions
 
+1. **Academic Record:** A collection of data representing a student’s academic performance, including grades, attendance, enrolment status, and completed courses.
+2. **Administrator (Admin):** A university staff member with privileges to manage users, system settings, data, and oversee operations within COMSYS.
+3. **Campus Management System (CMS):** The institution’s core administrative information system responsible for managing student, course, and billing data.
+4. **Consent Management:** A process or feature ensuring that access to sensitive data (e.g., parent access to student records) is granted only with explicit user authorization, in compliance with privacy regulations. This consent can only be changed by having the student physically mail in a letter.
+5. **Critical Notification:** A message flagged as essential or urgent (e.g., exam changes, fee deadlines) requiring prompt delivery and user attention.
+6. **Dashboard:** The main user interface screen that aggregates and presents key information and actions relevant to the user's role.
+7. **Data Synchronization:** The process of ensuring that information is current and consistent across all integrated systems and interfaces.
+8. **End User:** Any individual who interacts with COMSYS, including students, parents, lecturers, and administrators.
+9. **Notification:** Any automated or manual message sent to users through email, SMS, or portal channels to convey updates, alerts, or reminders.
+10. **Parental Access:** Controlled access granted to parents or guardians for viewing their child’s academic and billing information, subject to consent and privacy policies.
+11. **Portal:** The web-based entry point to COMSYS, providing access to academic, administrative, and communication services.
+12. **Role-Based Access Control (RBAC):** A security mechanism restricting system access based on the user’s assigned role within the institution.
+13. **Single Sign-On (SSO):** An authentication method allowing users to access COMSYS and related university systems with a single set of credentials.
+14. **User:** Any individual authorized to interact with COMSYS, including students, parents, lecturers, and administrators.
+15. **User Interface (UI):** The set of screens, forms, navigation, and controls through which users interact with COMSYS.
+16. **Real Time:** System action occurs and is reflected to the user within 5 seconds of the triggering event, unless otherwise specified for specific features.
+17. **Urgent:** Requires user attention or action within 1 hour to avoid negative consequences; see also "Critical."
+18. **Consistently:** The required action or state must occur in at least 99% of cases, measured monthly, with no unexplained exceptions.
+19. **Proper Termination (Logout):*** All session tokens (local and SSO), cookies, and active logins are invalidated, and the user is redirected to the login page.
+20. **How is a system determined to be complex:** A system is considered complex if it contains features, workflows, or terminology that are not immediately intuitive to first-time users, require multiple steps to complete, or frequently result in user questions or errors.
+21. **Communication channel:** The three communication channels are SMS, email and in-portal channels.
 
+## 2 References
 
-1.4	Definitions
-1.	Academic Record: A collection of data representing a student’s academic performance, including grades, attendance, enrolment status, and completed courses.
-2.	Administrator (Admin): A university staff member with privileges to manage users, system settings, data, and oversee operations within COMSYS.
-3.	Campus Management System (CMS): The institution’s core administrative information system responsible for managing student, course, and billing data.
-4.	Consent Management: A process or feature ensuring that access to sensitive data (e.g., parent access to student records) is granted only with explicit user authorization, in compliance with privacy regulations. This consent can only be changed by having the student physically mail in a letter.
-5.	Critical Notification: A message flagged as essential or urgent (e.g., exam changes, fee deadlines) requiring prompt delivery and user attention.
-6.	Dashboard: The main user interface screen that aggregates and presents key information and actions relevant to the user's role.
-7.	Data Synchronization: The process of ensuring that information is current and consistent across all integrated systems and interfaces.
-8.	End User: Any individual who interacts with COMSYS, including students, parents, lecturers, and administrators.
-9.	Notification: Any automated or manual message sent to users through email, SMS, or portal channels to convey updates, alerts, or reminders.
-10.	Parental Access: Controlled access granted to parents or guardians for viewing their child’s academic and billing information, subject to consent and privacy policies.
-11.	Portal: The web-based entry point to COMSYS, providing access to academic, administrative, and communication services.
-12.	Role-Based Access Control (RBAC): A security mechanism restricting system access based on the user’s assigned role within the institution.
-13.	Single Sign-On (SSO): An authentication method allowing users to access COMSYS and related university systems with a single set of credentials.
-14.	User: Any individual authorized to interact with COMSYS, including students, parents, lecturers, and administrators.
-15.	User Interface (UI): The set of screens, forms, navigation, and controls through which users interact with COMSYS.
-16.	Real Time: System action occurs and is reflected to the user within 5 seconds of the triggering event, unless otherwise specified for specific features.
-17.	Urgent: Requires user attention or action within 1 hour to avoid negative consequences; see also "Critical."	
-18.	Consistently: The required action or state must occur in at least 99% of cases, measured monthly, with no unexplained exceptions.
-19.	Proper Termination (Logout): All session tokens (local and SSO), cookies, and active logins are invalidated, and the user is redirected to the login page.
-20.	How is a system determined to be complex: A system is considered complex if it contains features, workflows, or terminology that are not immediately intuitive to first-time users, require multiple steps to complete, or frequently result in user questions or errors.
-21.	Communication channel: The three communication channels are SMS, email and in-portal channels
+International Organization for Standardization. (2018). *ISO/IEC/IEEE 29148:2018: Systems and software engineering—Life cycle processes—Requirements engineering.* https://www.iso.org/standard/72089.html
 
+Pohl, K. (2010). *Requirements engineering: Fundamentals, principles, and techniques (1st ed.).* Springer. http://www.requirements-book.com/
 
+PCI DSS Guide. (n.d.). *PCI DSS Session Timeout Requirements.* Retrieved May 25, 2025, from https://pcidssguide.com/pci-dss-session-timeout-requirements/
 
+International Organization for Standardization. (2015). *ISO 9000:2015 Quality management systems—Fundamentals and vocabulary (4th ed.).* https://www.iso.org/standard/45481.html
 
+AltexSoft. (n.d.). *Software Requirements Specifications: Best Practices and SRS.* https://www.altexsoft.com/blog/software-requirements-specification/
 
+Internet Engineering Task Force (IETF). (2009). *Internet calendaring and scheduling core object specification (iCalendar) (RFC 5545).* https://datatracker.ietf.org/doc/html/rfc5545
 
+## 3 Requirements
 
+### 3.1 Functions
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-2	References
-International Organization for Standardization. (2018). ISO/IEC/IEEE 29148:2018: Systems and software engineering—Life cycle processes—Requirements engineering. https://www.iso.org/standard/72089.html
-Pohl, K. (2010). Requirements engineering: Fundamentals, principles, and techniques (1st ed.). Springer. http://www.requirements-book.com/
-PCI DSS Guide. (n.d.). PCI DSS Session Timeout Requirements. Retrieved May 25, 2025, from https://pcidssguide.com/pci-dss-session-timeout-requirements/
-International Organization for Standardization. (2015). ISO 9000:2015 Quality management systems—Fundamentals and vocabulary (4th ed.). https://www.iso.org/standard/45481.html
-AltexSoft. (n.d.). Software Requirements Specifications: Best Practices and SRS. from https://www.altexsoft.com/blog/software-requirements-specification/
-Internet Engineering Task Force (IETF). (2009). Internet calendaring and scheduling core object specification (iCalendar) (RFC 5545). https://datatracker.ietf.org/doc/html/rfc5545
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3	Requirements
-3.1	Functions
 The following table (Table 3.1) contains the list of features to be implemented in COMSYS, separated by its accessible role.
 
-Feature ID	Feature	Actor
-F001	Login	Student, Parent, Lecturer, Admin
-F002	Logout	Student, Parent, Lecturer, Admin
-F003	Change Language Preference	Student, Parent 
-F004	Customize Interface	 Student
-F005	Customize Session Time-Out	 Student
-F006	View Notification	Student, Parent 
-F007	View Tooltip	Student, Parent 
-F008	Access Help Documentation	Student, Parent 
-F009	Send Notification	Lecturer, Admin 
-F010	Access Calendar	Student, Lecturer
-F011	Use Live Chat	Student, Parent, Lecturer, Admin
-F012	View Attendance Record	Student
-F013	View Academic Record	Student
-F014	View Class Schedule	Student
-F015	View Exam Timetable	Student
-F016	View Billing Information	Student
-F017	Enrol in Course	Student
-F018	Search Past Announcement	Student
-F019	Customize Notification Preference	Student
-F020	Set 'Quiet Hours'	Student
-F021	View Child's Information	Parent
-F022	View University Contact Directory	Parent
-F023	Schedule Meeting with University	Parent
-F024	Manage Academic Resource	Lecturer
-F025	View Announcement Read Status	Lecturer
-F026	Update Student Academic Data	Lecturer
-F027	Manage Communication Template	Admin
-F028	Manage University Contact Directory	Admin
-F029	View System Audit Logs	Admin
-F030	Configure Parent Access	Admin
-F031	Authenticate User	University Portal 
-F032	Send SMS Notification	 SMS Gateway
-F033	Sync with External Calendar 	Calendar API 
+| Feature ID | Feature | Actor |
+| ----------- | ------- | ------ |
+| F001 | Login | Student, Parent, Lecturer, Admin |
+| F002 | Logout | Student, Parent, Lecturer, Admin |
+| F003 | Change Language Preference | Student, Parent |
+| F004 | Customize Interface | Student |
+| F005 | Customize Session Time-Out | Student |
+| F006 | View Notification | Student, Parent |
+| F007 | View Tooltip | Student, Parent |
+| F008 | Access Help Documentation | Student, Parent |
+| F009 | Send Notification | Lecturer, Admin |
+| F010 | Access Calendar | Student, Lecturer |
+| F011 | Use Live Chat | Student, Parent, Lecturer, Admin |
+| F012 | View Attendance Record | Student |
+| F013 | View Academic Record | Student |
+| F014 | View Class Schedule | Student |
+| F015 | View Exam Timetable | Student |
+| F016 | View Billing Information | Student |
+| F017 | Enrol in Course | Student |
+| F018 | Search Past Announcement | Student |
+| F019 | Customize Notification Preference | Student |
+| F020 | Set 'Quiet Hours' | Student |
+| F021 | View Child's Information | Parent |
+| F022 | View University Contact Directory | Parent |
+| F023 | Schedule Meeting with University | Parent |
+| F024 | Manage Academic Resource | Lecturer |
+| F025 | View Announcement Read Status | Lecturer |
+| F026 | Update Student Academic Data | Lecturer |
+| F027 | Manage Communication Template | Admin |
+| F028 | Manage University Contact Directory | Admin |
+| F029 | View System Audit Logs | Admin |
+| F030 | Configure Parent Access | Admin |
+| F031 | Authenticate User | University Portal |
+| F032 | Send SMS Notification | SMS Gateway |
+| F033 | Sync with External Calendar | Calendar API |
 
-Table 3.1 COMSYS Features
+<p align="center"><em>Table 3.1 COMSYS Features</em></p>
 
 Figure 3.1 represents the use case diagram for COMSYS, followed by its overall requirements.
- 
 
-Figure 3.1: Use Case Diagram for COMSYS
+![COMSYS System Use Case Diagram](Screenshot/usecase.png) 
 
+<p align="center"><em>Figure 3.1: Use Case Diagram for COMSYS</em></p>
 
+### Requirement Identifier Format:
 
+Requirement IDs follow the format: **REQ_TXXYY**, where:
 
+- **T:** Type (F = Functional, I = Interface, U = Usability, P = Performance)
+- **XX:** Feature number (00 = Overall requirement)
+- **YY:** Sequential requirement number within the feature
 
-
-
-
-
-
-Requirement Identifier Format:
-Requirement IDs follow the format: REQ_TXXYY, where:
-•	T: Type (F = Functional, I = Interface, U = Usability, P = Performance)
-•	XX: Feature number (00 = Overall requirement)
-•	YY: Sequential requirement number within the feature
-
-Example:
+Example:  
 REQ_F0602 — Functional requirement, feature 06, second requirement.
 
 The following are the overall requirements for COMSYS:
 
-Requirement ID	REQ_F0001	Version	1.0
-Description	The system shall update read status of announcements in real time.
-Author	Nickleirsch
+| Requirement ID | REQ_F0001 |
+| -------------- | --------- |
+| **Version** | 1.0 |
+| **Description** | The system shall update read status of announcements in real time. |
+| **Author** | Nickleirsch |
 
-Requirement ID	REQ_F0002	Version	1.0
-Description	The system shall implement features and controls necessary to comply with applicable data privacy and protection regulations, including but not limited to GDPR and FERPA.
-Author	Nickleirsch
+---
 
-Requirement ID	REQ_F0003	Version	1.0
-Description	The system shall implement encryptions for all sensitive data in transit and at rest.
-Author	Nickleirsch
+| Requirement ID | REQ_F0002 |
+| -------------- | --------- |
+| **Version** | 1.0 |
+| **Description** | The system shall implement features and controls necessary to comply with applicable data privacy and protection regulations, including but not limited to GDPR and FERPA. |
+| **Author** | Nickleirsch |
 
-Requirement ID	REQ_F0004	Version	1.0
-Description	The system shall only permit notifications to parents regarding attendance or emergencies in compliance with privacy policies.
-Author	Nickleirsch
+---
 
-Requirement ID	REQ_F0005	Version	1.0
-Description	The system should send automated email digests of attendance status on a bi-weekly basis.
-Author	Nickleirsch
+| Requirement ID | REQ_F0003 |
+| -------------- | --------- |
+| **Version** | 1.0 |
+| **Description** | The system shall implement encryptions for all sensitive data in transit and at rest. |
+| **Author** | Nickleirsch |
 
-Requirement ID	REQ_F0006	Version	1.0
-Description	The synchronization mechanism shall include academic records, financial transactions, attendance logs, and communication messages.
-Author	Nickleirsch
+---
 
+| Requirement ID | REQ_F0004 |
+| -------------- | --------- |
+| **Version** | 1.0 |
+| **Description** | The system shall only permit notifications to parents regarding attendance or emergencies in compliance with privacy policies. |
+| **Author** | Nickleirsch |
 
+---
 
+| Requirement ID | REQ_F0005 |
+| -------------- | --------- |
+| **Version** | 1.0 |
+| **Description** | The system should send automated email digests of attendance status on a bi-weekly basis. |
+| **Author** | Nickleirsch |
 
-Requirement ID	REQ_F0007	Version	1.0
-Description	The system shall verify file type and size before accepting uploads and display a clear error if requirements are not met.
-Author	Nickleirsch
+---
 
-Requirement ID	REQ_F0008	Version	1.0
-Description	The system shall ensure that no user receives duplicate notifications for the same event across any communication channel.
-Author	Nickleirsch
+| Requirement ID | REQ_F0006 |
+| -------------- | --------- |
+| **Version** | 1.0 |
+| **Description** | The synchronization mechanism shall include academic records, financial transactions, attendance logs, and communication messages. |
+| **Author** | Nickleirsch |
 
-Requirement ID	REQ_F0009	Version	1.0
-Description	Access to information and features shall be based on user roles (student, parent, lecturer, admin).
-Author	Nickleirsch
+---
 
-Requirement ID	REQ_F0010	Version	1.0
-Description	The system shall ensure that data changes are consistently reflected across all user-facing interfaces, including the web portal and mobile application.
-Author	Nickleirsch
+| Requirement ID | REQ_F0007 |
+| -------------- | --------- |
+| **Version** | 1.0 |
+| **Description** | The system shall verify file type and size before accepting uploads and display a clear error if requirements are not met. |
+| Author | Nickleirsch |
 
+---
 
+| Requirement ID | REQ_F0008 |
+| -------------- | --------- |
+| **Version** | 1.0 |
+| **Description** | The system shall ensure that no user receives duplicate notifications for the same event across any communication channel. |
+| **Author** | Nickleirsch |
 
- 
-3.1.1	F001 Login 
+---
+
+| Requirement ID | REQ_F0009 |
+| -------------- | --------- |
+| **Version** | 1.0 |
+| **Description** | Access to information and features shall be based on user roles (student, parent, lecturer, admin). |
+| **Author** | Nickleirsch |
+
+---
+
+| Requirement ID | REQ_F0010 |
+| -------------- | --------- |
+| **Version** | 1.0 |
+| **Description** | The system shall ensure that data changes are consistently reflected across all user-facing interfaces, including the web portal and mobile application. |
+| **Author** | Nickleirsch |  
+
+### 3.1.1 F001 Login
+
 The functional requirement(s) for F001 Login:
 
-Requirement ID	REQ_F0101	Version	1.0
-Description	The system shall redirect users to role-specific dashboards after successful authentication
-Author	Hesham
+| **Field** | **Content** |
+|-----------|-------------|
+| **Use Case ID** | UC001 |
+| **Version** | 1.0 |
+| **Use Case** | F001 Login |
+| **Purpose** | To authenticate users and provide secure access to the system based on their role. |
+| **Actor** | Student, Parent, Lecturer, Admin |
+| **Trigger** | User attempts to access the system. |
+| **Precondition** | User has an active account in the system. |
+| **Postcondition** | 1. User is successfully authenticated.<br>2. User is granted access based. |
+| **Scenario Name: Main Flow** | **Step** | **Action** |
+| | 1 | User navigates to login page |
+| | 2 | User enters credentials |
+| | 3 | System validates credentials and role |
+| | 4 | System authenticates the user |
+| | 5 | System redirects user to their role-specific dashboard |
+| **Alternate Flow – Wrong credentials are entered** | **Step** | **Action** |
+| | 3.1 | User enters wrong credentials |
+| | 3.2 | System displays error message due to wrong credentials entered |
+| | 3.3 | System prompts user for re-entry |
+| **Rules** | **No.** | **Rule Description** |
+| | 1 | System must implement single sign on [REQ_F3101] |
+| | 2 | System must comply with global privacy/security regulation [REQ_F0002] |
+| | 3 | System must validate student-parent consent to provide consented functionality [REQ_F3001] |
+| **Notes** | ‘User’ in this use case refers to Student, Parent, Lecturer and Admin |
+| **Author** | Hesham |
 
-Table 3.1.1 below illustrates the use case for the login functionality (UC001), detailing the process as defined by Requirement REQ_F0101, followed by an activity diagram which represents the process flow.
 
-Use Case ID	UC001	Version	1.0
-Use Case	F001 Login
-Purpose	To authenticate users and provide secure access to the system based on their role
-Actor	Student, Parent, Lecturer, Admin
-Trigger	User attempts to access the system
-Precondition	User has an active account in the system
-Postcondition	1.	User is successfully authenticated. 
-2.	User is granted access based. 
-Scenario Name	Step	Action
-Main Flow	1	User navigates to login page
-	2	User enters credentials
-	3	System validates credentials and role 
-	4	System authenticates the user
-	5	System redirects user to their role-specific dashboard
-Alternate Flow – Wrong credentials are entered	3.1	User enters wrong credentials
-	3.2	System displays error message due to wrong credentials entered 
-	3.3	System prompts user for re-entry
-Rules	1.	System must implement single sign on [REQ_F3101]
-2.	System must comply with global privacy/security regulation [REQ_F0002]
-3.	System must validate student-parent consent to provide consented functionality [REQ_F3001]
-Notes	‘User’ in this use case refers to Student, Parent, Lecturer and Admin
-Author	Hesham 
 
-Table 3.1.1: Use Case UC001 Login
- 
-Figure 3.1.1: Activity Diagram for Use Case UC001 Login
+<p align="center"><em>Table 3.1.1: Use Case UC001 Login</em></p>
+
+---
+
+![COMSYS System User Activity Diagram](Screenshot/activity_user_login.png)
+
+<p align="center"><strong>Figure 3.1.1: Activity Diagram for Use Case UC001 Login</strong></p>
+
  
 3.1.2	F002 Logout 
 The functional requirement(s) for F002 Logout:
