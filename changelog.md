@@ -1,15 +1,15 @@
 # Changelog
 
-## [Date: 2025-06-19]
+## [Date: 2025-06-17]
 
 **Description of change:**  
-Added feature to display search results with filters and suggestions.
+Created initial project-part-2 branch and setup file structure for Software Requirements Engineering Part 2.
 
 **Author:**  
 Teoh Xuan Xuan
 
 **Reason:**  
-To improve user experience by allowing users to easily find products based on search keywords and filters.
+To start Part 2 development and keep changes separate from Part 1.
 
 ---
 
