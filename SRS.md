@@ -1,121 +1,141 @@
-Software Requirements Specification (SRS)
-for
-COMSYS
-University Communication and Services Portal
+# Software Requirements Specification (SRS) for COMSYS University Communication and Services Portal
 
+---
 
+### Section: TT4L  
+### Group: 4
 
+| Name | Student ID |
+| ---- | ----------- |
+| Hesham Nader DeyaaEdeen Eisa | 1221101049 |
+| Nickleirsch Jaya Raj | 1231303114 |
+| Danesh Veran A/L Balasubramaniam | 1211109158 |
+| Lim Xin Yee | 1211109469 |
 
+---
 
+### OneDrive Link Containing Proof of Execution:  
+**SRE Items**
 
+[Click here to access the OneDrive folder](INSERT_ONEDRIVE_LINK_HERE)
 
-Section: TT4L
-Group: 4
-NAME	STUDENT ID
-HESHAM NADER DEYAAEDEEN EISA	1221101049
-NICKLEIRSCH JAYA RAJ	1231303114
-DANESH VERAN A/L BALASUBRAMANIAM	1211109158
-LIM XIN YEE	1211109469
-One drive link containing proof of execution: SRE Items  
-Table of Contents
+---
 
-1	Introduction	3
-1.1	Purpose	3
-1.2	Scope	3
-1.3	Product Overview	4
-1.3.1	Product Perspective	4
-1.3.2	Memory Constraints	6
-1.3.3	Product Functions	7
-1.3.4	User Characteristics	8
-1.3.5	Limitations	9
-1.4	Definitions	10
-2	References	12
-3	Requirements	13
-3.1	Functions	13
-3.1.1	F001 Login	17
-3.1.2	F002 Logout	19
-3.1.3	F003 Change Language Preference	21
-3.1.4	F004 Customize Interface	23
-3.1.5	F005 Customize Session Time-Out	25
-3.1.6	F006 View Notification	27
-3.1.7	F007 View Tooltip	29
-3.1.8	F008 Access Help Documentation	31
-3.1.9	F009 Send Notification	33
-3.1.10	F010 Access Calendar	36
-3.1.11	F011 Use Live Chat	38
-3.1.12	F012 View Attendance Record	40
-3.1.13	F013 View Academic Record	42
-3.1.14	F014 View Class Schedule	44
-3.1.15	F015 View Exam Timetable	46
-3.1.16	F016 View Billing Information	48
-3.1.17	F017 Enrol in Course	50
-3.1.18	F018 Search Past Announcement	52
-3.1.19	F019 Customize Notification Preference	54
-3.1.20	F020 Set ‘Quiet Hours’	56
-3.1.21	F021 View Child's Information	58
-3.1.22	F022 View University Contact Directory	61
-3.1.23	F023 Schedule Meeting with University Staff	63
-3.1.24	F024 Manage Academic Resource	65
-3.1.25	F025 View Announcement Read Status	67
-3.1.26	F026 Update Student Academic Data	69
-3.1.27	F027 Manage Communication Template	71
-3.1.28	F028 Manage University Contact Directory	73
-3.1.29	F029 View System Audit Log	75
-3.1.30	F030 Configure Parent Access	77
-3.1.31	F031 Authenticate User	79
-3.1.32	F032 Send SMS Notification	81
-3.1.33	F033 Sync with External Calendar	83
-3.2	Performance Requirements	85
-3.3	Usability Requirements	86
-3.4	Interface Requirements	87
-3.4.1	System Interfaces	88
-3.4.2	User interfaces	89
-3.4.3	Software interfaces	91
-3.4.4	Communication interfaces	93
-3.5	Logical Database Requirements	94
-3.6	Design Constraints	97
-3.7	Software System Attributes	98
-3.8	Supporting Information	101
-4	Verification	104
-4.1	Verification Approach	104
-4.2	Verification Criteria	106
-5	Appendices	107
-5.1	Assumptions and Dependencies	107
-5.2	Acronyms and Abbreviations	109
-5.3	Glossary	110
+# Table of Contents
 
-1	 Introduction
-1.1	Purpose
-The purpose of the University Communication and Services Portal, COMSYS is to provide a centralized, user-friendly platform that facilitates transparent and timely communication between students, lecturers, administrators, and parents. The portal addresses current gaps in academic and administrative information access by integrating with the university’s Campus Management System for real-time retrieval of essential student data such as academic performance, attendance records, and billing information. Additionally, the system aims to enhance the effectiveness of critical communications through seamless integration with an SMS Gateway, ensuring urgent updates and important notifications are promptly delivered to students and parents. Ultimately, the portal is designed to improve engagement, streamline access to university services, and foster a more connected campus community.
+## 1. Introduction
+- 1.1 Purpose
+- 1.2 Scope
+- 1.3 Product Overview
+  - 1.3.1 Product Perspective
+  - 1.3.2 Memory Constraints
+  - 1.3.3 Product Functions
+  - 1.3.4 User Characteristics
+  - 1.3.5 Limitations
+- 1.4 Definitions
 
-1.2	Scope
-COMSYS is designed to address the fragmentation of current academic and communication platforms used within the university. The system will consolidate grade management, scheduling, billing, announcements, notifications, parental access, and other academic services into a single, secure, and user-friendly portal. The portal will serve as the primary interface for students, parents, lecturers, and administrators to interact with university information and each other, offering customizable user experiences and integrating with existing university systems (e.g., calendars, SMS gateways, Single Sign-On). COMSYS will facilitate timely and relevant communication, automate routine notifications, and provide secure role-based access to information and services for its diverse set of users.
+## 2. References
 
+## 3. Requirements
+- 3.1 Functions
+  - 3.1.1 F001 Login
+  - 3.1.2 F002 Logout
+  - 3.1.3 F003 Change Language Preference
+  - 3.1.4 F004 Customize Interface
+  - 3.1.5 F005 Customize Session Time-Out
+  - 3.1.6 F006 View Notification
+  - 3.1.7 F007 View Tooltip
+  - 3.1.8 F008 Access Help Documentation
+  - 3.1.9 F009 Send Notification
+  - 3.1.10 F010 Access Calendar
+  - 3.1.11 F011 Use Live Chat
+  - 3.1.12 F012 View Attendance Record
+  - 3.1.13 F013 View Academic Record
+  - 3.1.14 F014 View Class Schedule
+  - 3.1.15 F015 View Exam Timetable
+  - 3.1.16 F016 View Billing Information
+  - 3.1.17 F017 Enrol in Course
+  - 3.1.18 F018 Search Past Announcement
+  - 3.1.19 F019 Customize Notification Preference
+  - 3.1.20 F020 Set ‘Quiet Hours’
+  - 3.1.21 F021 View Child's Information
+  - 3.1.22 F022 View University Contact Directory
+  - 3.1.23 F023 Schedule Meeting with University Staff
+  - 3.1.24 F024 Manage Academic Resource
+  - 3.1.25 F025 View Announcement Read Status
+  - 3.1.26 F026 Update Student Academic Data
+  - 3.1.27 F027 Manage Communication Template
+  - 3.1.28 F028 Manage University Contact Directory
+  - 3.1.29 F029 View System Audit Log
+  - 3.1.30 F030 Configure Parent Access
+  - 3.1.31 F031 Authenticate User
+  - 3.1.32 F032 Send SMS Notification
+  - 3.1.33 F033 Sync with External Calendar
+- 3.2 Performance Requirements
+- 3.3 Usability Requirements
+- 3.4 Interface Requirements
+  - 3.4.1 System Interfaces
+  - 3.4.2 User Interfaces
+  - 3.4.3 Software Interfaces
+  - 3.4.4 Communication Interfaces
+- 3.5 Logical Database Requirements
+- 3.6 Design Constraints
+- 3.7 Software System Attributes
+- 3.8 Supporting Information
 
+## 4. Verification
+- 4.1 Verification Approach
+- 4.2 Verification Criteria
 
+## 5. Appendices
+- 5.1 Assumptions and Dependencies
+- 5.2 Acronyms and Abbreviations
+- 5.3 Glossary
+  
 
+    
+# 1. Introduction
 
+## 1.1 Purpose
 
+The purpose of the University Communication and Services Portal, **COMSYS**, is to provide a centralized, user-friendly platform that facilitates transparent and timely communication between students, lecturers, administrators, and parents. The portal addresses current gaps in academic and administrative information access by integrating with the university’s Campus Management System for real-time retrieval of essential student data such as academic performance, attendance records, and billing information. Additionally, the system aims to enhance the effectiveness of critical communications through seamless integration with an SMS Gateway, ensuring urgent updates and important notifications are promptly delivered to students and parents. Ultimately, the portal is designed to improve engagement, streamline access to university services, and foster a more connected campus community.
 
+## 1.2 Scope
 
-1.3	Product Overview
-1.3.1	Product Perspective
+**COMSYS** is designed to address the fragmentation of current academic and communication platforms used within the university. The system will consolidate grade management, scheduling, billing, announcements, notifications, parental access, and other academic services into a single, secure, and user-friendly portal. The portal will serve as the primary interface for students, parents, lecturers, and administrators to interact with university information and each other, offering customizable user experiences and integrating with existing university systems (e.g., calendars, SMS gateways, Single Sign-On). COMSYS will facilitate timely and relevant communication, automate routine notifications, and provide secure role-based access to information and services for its diverse set of users.
+
+## 1.3 Product Overview
+
+### 1.3.1 Product Perspective
+
 COMSYS operates as a core integration point within the university’s digital ecosystem. It connects and coordinates the flow of information between students, parents, lecturers, admins, and several external systems. Rather than being a stand-alone product, COMSYS is a crucial element within a larger ecosystem of institutional services.
 
-Related Entities and Their Interactions
-1.	Campus Management System (CMS):
+#### Related Entities and Their Interactions
+
+1. **Campus Management System (CMS):**  
 COMSYS exchanges academic information, course updates, grades, user details, and billing data with the CMS. This ensures that students, lecturers, and admins have access to updated and synchronized information.
-2.	SMS Gateway:
+
+2. **SMS Gateway:**  
 COMSYS interfaces with an SMS gateway to send real-time notifications and alerts to users, enabling critical communication outside the portal.
-3.	Calendar API:
+
+3. **Calendar API:**  
 The portal pushes calendar information (such as timetables and events) to this API, so users can synchronize with their personal or institutional calendars.
 
 The context diagram (Figure 1.3.1) outlines COMSYS at the centre of all information exchange:
-1.	Students can access enrolment info, academic records, schedules, billing, notifications, and chat services.
-2.	Parents receive student attendance, academic, and billing info, along with notifications and chat.
-3.	Lecturers interact via chat, update grades, access student profiles and timetables, and provide course materials.
-4.	Admins handle system settings, user management, audit logs, and notifications.
-5.	External Systems (CMS, SMS Gateway, Calendar API) enable COMSYS to distribute and synchronize institutional data efficiently.
+
+1. Students can access enrolment info, academic records, schedules, billing, notifications, and chat services.
+2. Parents receive student attendance, academic, and billing info, along with notifications and chat.
+3. Lecturers interact via chat, update grades, access student profiles and timetables, and provide course materials.
+4. Admins handle system settings, user management, audit logs, and notifications.
+5. External Systems (CMS, SMS Gateway, Calendar API) enable COMSYS to distribute and synchronize institutional data efficiently.
+
+![COMSYS System Context Diagram](contextdiagram.png)
+
+
+
+
+
+
 
  
 
