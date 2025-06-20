@@ -26,14 +26,16 @@ To provide a visual representation of the system architecture and improve the cl
 
 ---
 
-## [Date: 2025-06-17]
+## [Date: 2025-06-19]
 
 **Description of change:**  
-Created initial project-part-2 branch and setup file structure for Software Requirements Engineering Part 2.
+Created the markdown format for SRS.
 
 **Author:**  
 Teoh Xuan Xuan
 
 **Reason:**  
-To start Part 2 development and keep changes separate from Part 1.
+To convert the Software Requirements Specification (SRS) into a standardized markdown format for easier editing, version control, and readability.
+
+--
 
