@@ -16,13 +16,13 @@ To improve user experience by allowing users to easily find products based on se
 ## [Date: 2025-06-18]
 
 **Description of change:**  
-Fixed issue with search bar navigation to correct search results page.
+Add diagram screenshot on previous SRS file.
 
 **Author:**  
 Teoh Xuan Xuan
 
 **Reason:**  
-Previously the search bar URL routing was incorrect due to missing endpoint definition.
+To provide a visual representation of the system architecture and improve the clarity of the Software Requirements Specification (SRS) document.
 
 ---
 
