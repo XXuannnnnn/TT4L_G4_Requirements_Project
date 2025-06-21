@@ -517,8 +517,6 @@ The functional requirement(s) for F002 Logout:
 
 Table 3.1.2 illustrates the use case for the logout functionality (UC002), detailing the process as defined by Requirement REQ_F0201, followed by an activity diagram which represents the process flow.
 
----
-
 <table border="1" cellspacing="0" cellpadding="5">
   <tr>
     <td><b>Use Case ID</b></td>
@@ -4115,9 +4113,9 @@ The software will be verified against the following criteria:
 2. Parental access and notifications must comply with privacy and consent requirements.
 3. The system shall log and audit all critical actions for traceability.
 
----
-
 **Successful verification will be achieved when the system consistently meets or exceeds these criteria during QA and user acceptance testing.**
+
+---
 
 # 5. Appendices
 
@@ -4159,82 +4157,75 @@ ii. IT support staff will be available for troubleshooting and incident response
 i. All third-party libraries and frameworks used will remain actively maintained and compatible with the system’s technical stack.  
 ii. Licensing for any third-party services or components will remain valid and up to date.
 
+## 5.2 Acronyms and Abbreviations
 
+1. **API (Application Programming Interface):** Set of protocols and tools for building and integrating application software.  
+2. **CMS (Campus Management System):** The university’s core administrative data system.  
+3. **COMSYS (Communication and Services Portal):** The centralized web platform described in this SRS.  
+4. **FERPA (Family Educational Rights and Privacy Act):** U.S. law governing the privacy of student education records.  
+5. **GDPR (General Data Protection Regulation):** European Union regulation on data protection and privacy.  
+6. **HTML (Hypertext Markup Language):** Standard language for documents designed to be displayed in a web browser.  
+7. **HTTP/HTTPS (Hypertext Transfer Protocol [Secure]):** Protocols for transferring data over the web (secure variant uses encryption).  
+8. **iCalendar (.ics) (Internet Calendaring and Scheduling Core):** File format standard for exchanging calendar information.  
+9. **JSON (JavaScript Object Notation):** Lightweight data-interchange format.  
+10. **OS (Operating System):** System software that manages hardware and software resources.  
+11. **RBAC (Role-Based Access Control):** Security paradigm based on user roles.  
+12. **REST (Representational State Transfer):** Architectural style for designing networked applications.  
+13. **SRS (Software Requirements Specification):** This document, detailing system requirements and constraints.  
+14. **SSO (Single Sign-On):** A unified authentication process for multiple applications.  
+15. **SMS (Short Message Service):** Text messaging service component of most telephone, internet, and mobile device systems.  
+16. **SMTP (Simple Mail Transfer Protocol):** Protocol for sending email messages.  
+17. **UI (User Interface):** The point of interaction between the user and the system.  
+18. **WCAG (Web Content Accessibility Guidelines):** International standard for web accessibility.  
+19. **XML (Extensible Markup Language):** Markup language for encoding documents in a format that is both human-readable and machine-readable.
 
+### 5.3 Glossary
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-5.2	Acronyms and Abbreviations
-1.	API (Application Programming Interface): Set of protocols and tools for building and integrating application software.
-2.	CMS (Campus Management System): The university’s core administrative data system.
-3.	COMSYS (Communication and Services Portal): The centralized web platform described in this SRS.
-4.	FERPA (Family Educational Rights and Privacy Act): U.S. law governing the privacy of student education records.
-5.	GDPR (General Data Protection Regulation): European Union regulation on data protection and privacy.
-6.	HTML (Hypertext Markup Language): Standard language for documents designed to be displayed in a web browser.
-7.	HTTP/HTTPS (Hypertext Transfer Protocol [Secure]): Protocols for transferring data over the web (secure variant uses encryption).
-8.	iCalendar (.ics) (Internet Calendaring and Scheduling Core): File format standard for exchanging calendar information.
-9.	JSON (JavaScript Object Notation): Lightweight data-interchange format.
-10.	OS (Operating System): System software that manages hardware and software resources.
-11.	RBAC (Role-Based Access Control): Security paradigm based on user roles.
-12.	REST (Representational State Transfer): Architectural style for designing networked applications.
-13.	SRS (Software Requirements Specification): This document, detailing system requirements and constraints.
-14.	SSO (Single Sign-On): A unified authentication process for multiple applications.
-15.	SMS (Short Message Service): Text messaging service component of most telephone, internet, and mobile device systems.
-16.	SMTP (Simple Mail Transfer Protocol): Protocol for sending email messages.
-17.	UI (User Interface): The point of interaction between the user and the system.
-18.	WCAG (Web Content Accessibility Guidelines): International standard for web accessibility.
-19.	XML (Extensible Markup Language): Markup language for encoding documents in a format that is both human-readable and machine-readable.
-
-
-
-5.3	Glossary 
 This glossary provides in-depth explanations of domain-specific terms and their significance within the context of COMSYS.
-1.	Academic Calendar:
+
+1. **Academic Calendar:**  
 A schedule maintained by the university that includes term dates, exam periods, holidays, and other significant academic events. COMSYS uses this for syncing and managing deadlines and reminders across user roles.
-2.	Audit Log:
+
+2. **Audit Log:**  
 A tamper-evident record of all actions and events within the system, including logins, data changes, and administrative operations. Used for security, compliance, and troubleshooting.
-3.	Calendar API:
+
+3. **Calendar API:**  
 A set of RESTful endpoints in COMSYS that allows integration and synchronization with external calendar applications (e.g., Google Calendar, Apple Calendar). Supports importing/exporting events in standardized formats like iCalendar (.ics).
-4.	Chat Service:
+
+4. **Chat Service:**  
 A real-time messaging functionality within COMSYS that enables direct communication between students, lecturers, parents, and administrators.
-5.	Data Caching:
+
+5. **Data Caching:**  
 Temporary storage of frequently accessed or recently fetched data to improve system speed and reduce repeated queries to external systems.
-6.	Encryption (TLS/SSL):
+
+6. **Encryption (TLS/SSL):**  
 Security protocols that ensure data transmitted between users and the portal is protected from interception and unauthorized access.
-7.	External System:
+
+7. **External System:**  
 Any system outside of COMSYS to which it connects for data or service integration (e.g., CMS, SMS Gateway, external calendar service).
-8.	Multilingual Support:
+
+8. **Multilingual Support:**  
 The capability of COMSYS to present its user interface and notifications in multiple languages, facilitating accessibility and user preference.
-9.	Notification Channel:
+
+9. **Notification Channel:**  
 The medium through which notifications are delivered to users, such as email, SMS, or portal-based in-app alerts.
-10.	Parent Portal:
+
+10. **Parent Portal:**  
 A dedicated interface within COMSYS that allows authorized parents or guardians to view student-related information and receive notifications, subject to consent and privacy policies.
-11.	Performance Requirement:
+
+11. **Performance Requirement:**  
 A quantifiable target for system responsiveness, throughput, reliability, or other operational metrics (e.g., page load time, notification delivery speed).
-12.	Portal Integration:
+
+12. **Portal Integration:**  
 The process and capability of COMSYS to connect with and exchange data with other university platforms, ensuring a seamless user experience.
-13.	Role:
+
+13. **Role:**  
 A specific category assigned to a COMSYS user (student, parent, lecturer, admin) determining their permissions, accessible features, and data visibility.
-14.	Session Timeout:
+
+14. **Session Timeout:**  
 The period of inactivity after which a user is automatically logged out to maintain security.
-15.	WebSocket:
+
+15. **WebSocket:**  
 A communication protocol used in COMSYS for real-time features like live chat and instant notifications, enabling bidirectional, low-latency data exchange.
 
-
-
-
-
-// hi xuan xuan
+/hi
