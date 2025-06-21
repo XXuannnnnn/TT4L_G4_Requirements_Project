@@ -2992,46 +2992,37 @@ The functional requirement(s) for F026 Update Student Academic Data:
 
 Table 3.1.26 illustrates the use case for the update student academic data functionality (UC026), detailing the process as defined by Requirement REQ_F2601 followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC026 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F026 Update Student Academic Data |
-| **Purpose** | Allow lecturers to import or export student academic data for analysis or backup. |
-| **Actor** | Lecturer |
-| **Trigger** | Lecturer selects import or export option. |
-| **Precondition** | Lecturer is logged in |
-| **Postcondition** | Lecturer can see which recipients have read or have not read the announcement. |
-| **Author** | Nickleirsch |
+<table border="1" cellspacing="0" cellpadding="5">
+<tr><td><b>Use Case ID</b></td><td>UC026</td></tr>
+<tr><td><b>Version</b></td><td>1.0</td></tr>
+<tr><td><b>Use Case</b></td><td>F026 Update Student Academic Data</td></tr>
+<tr><td><b>Purpose</b></td><td>Allow lecturers to import or export student academic data for analysis or backup.</td></tr>
+<tr><td><b>Actor</b></td><td>Lecturer</td></tr>
+<tr><td><b>Trigger</b></td><td>Lecturer selects import or export option.</td></tr>
+<tr><td><b>Precondition</b></td><td>Lecturer is logged in.</td></tr>
+<tr><td><b>Postcondition</b></td><td>Lecturer can see which recipients have read or have not read the announcement.</td></tr>
 
-#### Main Flow
+<tr><td colspan="2"><b>Main Flow</b></td></tr>
+<tr><td><b>Step</b></td><td><b>Action</b></td></tr>
+<tr><td>1</td><td>Lecturer accesses “Academic Data” section.</td></tr>
+<tr><td>2</td><td>Lecturer chooses to import.</td></tr>
+<tr><td>3</td><td>Lecturer selects file for upload.</td></tr>
+<tr><td>4</td><td>System validates file format and content.</td></tr>
+<tr><td>5</td><td>System applies changes and displays confirmation prompt.</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 1 | Lecturer accesses “Academic Data” section. |
-| 2 | Lecturer chooses to import. |
-| 3 | Lecturer selects file for upload. |
-| 4 | System validates file format and content. |
-| 5 | System applies changes and displays confirmation prompt. |
+<tr><td colspan="2"><b>Alternate Flow – Export Data</b></td></tr>
+<tr><td>2.1.1</td><td>Lecturer chooses to export.</td></tr>
+<tr><td>2.1.2</td><td>The system retrieves the file in selected format and provides download link.</td></tr>
 
-#### Alternative Flow – Export Data
+<tr><td colspan="2"><b>Alternate Flow – Invalid File Format</b></td></tr>
+<tr><td>4.1</td><td>The lecturer has uploaded an invalid file.</td></tr>
+<tr><td>4.2</td><td>The lecturer is prompted to retry.</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 2.1.1 | Lecturer chooses to export. |
-| 2.1.2 | The system retrieves the file in selected format and provides download link. |
+<tr><td colspan="2"><b>Rules</b></td></tr>
+<tr><td colspan="2">The system shall verify the file type before accepting uploads [REQ_F0007]</td></tr>
 
-#### Alternative Flow – Invalid File Format
-
-| **Step** | **Action** |
-|----------|------------|
-| 4.1 | The lecturer has uploaded an invalid file. |
-| 4.2 | The lecturer is prompted to retry. |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|---------|-----------------------|
-| 1 | The system shall verify the file type before accepting uploads [REQ_F0007]. |
+<tr><td><b>Author</b></td><td>Nickleirsch</td></tr>
+</table>
 
 <p align="center"><em>Table 3.1.26: Use Case UC026 Update Student Academic Data</em></p>
 
@@ -3053,51 +3044,41 @@ The functional requirement(s) for F027 Manage Communication Template:
 
 Table 3.1.27 illustrates the use case for the manage communication templates functionality (UC027), detailing the process as defined by Requirement REQ_F2701 followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC027 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F027 Manage Communication Template |
-| **Purpose** | Allow administrators to create, modify, view, and delete reusable communication templates for SMS, email, and portal notifications. |
-| **Actor** | Admin |
-| **Trigger** | Admin navigates to communication template management section. |
-| **Precondition** | Admin is logged in. |
-| **Postcondition** | Communication template is created, updated, or deleted. Changes are logged. |
-| **Author** | Danesh Veran |
+<table border="1" cellspacing="0" cellpadding="5">
+<tr><td><b>Use Case ID</b></td><td>UC027</td></tr>
+<tr><td><b>Version</b></td><td>1.0</td></tr>
+<tr><td><b>Use Case</b></td><td>F027 Manage Communication Template</td></tr>
+<tr><td><b>Purpose</b></td><td>Allow administrators to create, modify, view, and delete reusable communication templates for SMS, email, and portal notifications.</td></tr>
+<tr><td><b>Actor</b></td><td>Admin</td></tr>
+<tr><td><b>Trigger</b></td><td>Admin navigates to communication template management section.</td></tr>
+<tr><td><b>Precondition</b></td><td>Admin is logged in.</td></tr>
+<tr><td><b>Postcondition</b></td><td>Communication template is created, updated, or deleted. Changes are logged.</td></tr>
 
-#### Main Flow
+<tr><td colspan="2"><b>Main Flow</b></td></tr>
+<tr><td><b>Step</b></td><td><b>Action</b></td></tr>
+<tr><td>1</td><td>Admin navigates to communication template management section.</td></tr>
+<tr><td>2</td><td>System displays existing templates and options (Create, Edit, Delete).</td></tr>
+<tr><td>3</td><td>Admin selects create new template.</td></tr>
+<tr><td>4</td><td>System presents a form for template details (Name, Type [SMS/Email/Portal], Subject [if applicable], Body content with placeholders).</td></tr>
+<tr><td>5</td><td>Admin enters template details and content.</td></tr>
+<tr><td>6</td><td>Admin saves the template.</td></tr>
+<tr><td>7</td><td>System validates and stores the new template, making it available for use.</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 1 | Admin navigates to communication template management section. |
-| 2 | System displays existing templates and options (Create, Edit, Delete). |
-| 3 | Admin selects create new template. |
-| 4 | System presents a form for template details (Name, Type [SMS/Email/Portal], Subject [if applicable], Body content with placeholders). |
-| 5 | Admin enters template details and content. |
-| 6 | Admin saves the template. |
-| 7 | System validates and stores the new template, making it available for use. |
+<tr><td colspan="2"><b>Alternate Flow – Modify Template</b></td></tr>
+<tr><td>2.1</td><td>Admin selects an existing template and chooses to edit.</td></tr>
+<tr><td>2.2</td><td>System loads the template details for modification.</td></tr>
+<tr><td>2.3</td><td>Admin modifies the template content or details and saves.</td></tr>
 
-#### Alternative Flow – Modify Template
+<tr><td colspan="2"><b>Alternate Flow – Delete Template</b></td></tr>
+<tr><td>2.1</td><td>Admin selects an existing template and chooses to delete.</td></tr>
+<tr><td>2.2</td><td>System prompts for confirmation.</td></tr>
+<tr><td>2.3</td><td>Admin confirms. System removes the template.</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 2.1 | Admin selects an existing template and chooses to edit. |
-| 2.2 | System loads the template details for modification. |
-| 2.3 | Admin modifies the template content or details and saves. |
+<tr><td colspan="2"><b>Rules</b></td></tr>
+<tr><td colspan="2">1. The system shall allow creation, customization, and management of communication templates for admins. [REQ_F2701]<br>2. Templates can be categorized or tagged by administrators for better organization and retrieval. [REQ_F2701]</td></tr>
 
-#### Alternative Flow – Delete Template
-
-| **Step** | **Action** |
-|----------|------------|
-| 2.1 | Admin selects an existing template and chooses to delete. |
-| 2.2 | System prompts for confirmation. |
-| 2.3 | Admin confirms. System removes the template. |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|---------|-----------------------|
-| 1 | The system shall allow creation, customization, and management of communication templates for admins. [REQ_F2701] |
-| 2 | Templates can be categorized or tagged by administrators for better organization and retrieval. [REQ_F2701] |
+<tr><td><b>Author</b></td><td>Danesh Veran</td></tr>
+</table>
 
 <p align="center"><em>Table 3.1.27: Use Case UC027 Manage Communication Template</em></p>
 
@@ -3119,52 +3100,45 @@ The functional requirement(s) for F028 Manage University Contact Directory:
 
 Table 3.1.28 illustrates the use case for the manage university contact directory functionality (UC028), detailing the process as defined by Requirement REQ_F2201 followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC028 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F028 Manage University Contact Directory |
-| **Purpose** | Allow administrators to create, update, and manage entries in the university-wide contact directory accessible to relevant stakeholders. |
-| **Actor** | Admin |
-| **Trigger** | Admin navigates to contact directory section. |
-| **Precondition** | Admin is logged in. |
-| **Postcondition** | Contact directory is updated with new information. |
-| **Author** | Danesh Veran |
+<table border="1" cellspacing="0" cellpadding="5">
+<tr><td><b>Use Case ID</b></td><td>UC028</td></tr>
+<tr><td><b>Version</b></td><td>1.0</td></tr>
+<tr><td><b>Use Case</b></td><td>F028 Manage University Contact Directory</td></tr>
+<tr><td><b>Purpose</b></td><td>Allow administrators to create, update, and manage entries in the university-wide contact directory accessible to relevant stakeholders.</td></tr>
+<tr><td><b>Actor</b></td><td>Admin</td></tr>
+<tr><td><b>Trigger</b></td><td>Admin navigates to contact directory section.</td></tr>
+<tr><td><b>Precondition</b></td><td>Admin is logged in.</td></tr>
+<tr><td><b>Postcondition</b></td><td>Contact directory is updated with new information.</td></tr>
 
-#### Main Flow
+<tr><td colspan="2"><b>Main Flow</b></td></tr>
+<tr><td><b>Step</b></td><td><b>Action</b></td></tr>
+<tr><td>1</td><td>Admin navigates to “Contact Directory Management”.</td></tr>
+<tr><td>2</td><td>System displays existing directory structure and entries with options (Add, Edit, Delete).</td></tr>
+<tr><td>3</td><td>Admin selects add a new entry.</td></tr>
+<tr><td>4</td><td>System presents a form for contact details (Name, Department, Role, Email, Phone, Office Hours, communication channels available).</td></tr>
+<tr><td>5</td><td>Admin enters the required information.</td></tr>
+<tr><td>6</td><td>Admin saves the new entry.</td></tr>
+<tr><td>7</td><td>System validates and adds the entry to the directory.</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 1 | Admin navigates to “Contact Directory Management”. |
-| 2 | System displays existing directory structure and entries with options (Add, Edit, Delete). |
-| 3 | Admin selects add a new entry. |
-| 4 | System presents a form for contact details (Name, Department, Role, Email, Phone, Office Hours, communication channels available). |
-| 5 | Admin enters the required information. |
-| 6 | Admin saves the new entry. |
-| 7 | System validates and adds the entry to the directory. |
+<tr><td colspan="2"><b>Alternate Flow – Modify Entry</b></td></tr>
+<tr><td>3.1</td><td>Admin selects an existing entry and chooses to edit.</td></tr>
+<tr><td>3.2</td><td>System loads the entry details for modification.</td></tr>
+<tr><td>3.3</td><td>Admin modifies the details and saves.</td></tr>
 
-#### Alternative Flow – Modify Entry
+<tr><td colspan="2"><b>Alternate Flow – Delete Entry</b></td></tr>
+<tr><td>4.1</td><td>Admin selects an entry and chooses to delete.</td></tr>
+<tr><td>4.2</td><td>System prompts for confirmation.</td></tr>
+<tr><td>4.3</td><td>Admin confirms. System removes the entry.</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 3.1 | Admin selects an existing entry and chooses to edit. |
-| 3.2 | System loads the entry details for modification. |
-| 3.3 | Admin modifies the details and saves. |
+<tr><td colspan="2"><b>Rules</b></td></tr>
+<tr><td colspan="2">
+1. Filters (department, role) must be configurable for the directory display [REQ_F2201].<br>
+2. Contact information must use descriptive names [REQ_I0003].<br>
+3. The system shall enable communication between parents and authorized university staff through chat, or a secure contact form embedded within the directory interface, where applicable. [REQ_F2201]
+</td></tr>
 
-#### Alternative Flow – Delete Entry
-
-| **Step** | **Action** |
-|----------|------------|
-| 4.1 | Admin selects an entry and chooses to delete. |
-| 4.2 | System prompts for confirmation. |
-| 4.3 | Admin confirms. System removes the entry. |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|---------|-----------------------|
-| 1 | Filters (department, role) must be configurable for the directory display. [REQ_F2201] |
-| 2 | Contact information must use descriptive names. [REQ_I0003] |
-| 3 | The system shall enable communication between parents and authorized university staff through chat, or a secure contact form embedded within the directory interface, where applicable. [REQ_F2201] |
+<tr><td><b>Author</b></td><td>Danesh Veran</td></tr>
+</table>
 
 <p align="center"><em>Table 3.1.28: Use Case UC028 Manage University Contact Directory</em></p>
 
@@ -3192,40 +3166,36 @@ The functional requirement(s) for F029 View System Audit Log:
 
 Table 3.1.29 illustrates the use case for the view system audit log functionality (UC029), detailing the process as defined by Requirement REQ_F2901 followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC029 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F029 View System Audit Log |
-| **Purpose** | Allow administrators to review system activity logs for security, troubleshooting, and compliance purposes. |
-| **Actor** | Admin |
-| **Trigger** | Admin navigates to audit logs section. |
-| **Precondition** | Admin is logged in. |
-| **Postcondition** | Admin has viewed relevant audit log entries. |
-| **Author** | Danesh Veran |
+<table border="1" cellspacing="0" cellpadding="5">
+<tr><td><b>Use Case ID</b></td><td>UC029</td></tr>
+<tr><td><b>Version</b></td><td>1.0</td></tr>
+<tr><td><b>Use Case</b></td><td>F029 View System Audit Log</td></tr>
+<tr><td><b>Purpose</b></td><td>Allow administrators to review system activity logs for security, troubleshooting, and compliance purposes.</td></tr>
+<tr><td><b>Actor</b></td><td>Admin</td></tr>
+<tr><td><b>Trigger</b></td><td>Admin navigates to audit logs section.</td></tr>
+<tr><td><b>Precondition</b></td><td>Admin is logged in.</td></tr>
+<tr><td><b>Postcondition</b></td><td>Admin has viewed relevant audit log entries.</td></tr>
 
-#### Main Flow
+<tr><td colspan="2"><b>Main Flow</b></td></tr>
+<tr><td><b>Step</b></td><td><b>Action</b></td></tr>
+<tr><td>1</td><td>Admin navigates to audit log section.</td></tr>
+<tr><td>2</td><td>System displays options to filter logs.</td></tr>
+<tr><td>3</td><td>Admin enters query.</td></tr>
+<tr><td>4</td><td>System retrieves and displays matching audit log entries (e.g., timestamp, user, action, details).</td></tr>
+<tr><td>5</td><td>Admin reviews the log entries.</td></tr>
+<tr><td>6 (Optional)</td><td>Admin exports selected log entries.</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 1 | Admin navigates to audit log section. |
-| 2 | System displays options to filter logs. |
-| 3 | Admin enters query. |
-| 4 | System retrieves and displays matching audit log entries (e.g., timestamp, user, action, details). |
-| 5 | Admin reviews the log entries. |
-| 6 | (Optional) Admin exports selected log entries. |
+<tr><td colspan="2"><b>Alternate Flow – No Matching Logs</b></td></tr>
+<tr><td>4.1</td><td>If no logs match the filter criteria, system displays "No matching entries found."</td></tr>
 
-#### Alternative Flow – No Matching Logs
+<tr><td colspan="2"><b>Rules</b></td></tr>
+<tr><td colspan="2">
+1. Access to audit logs must be restricted to authorized administrative personnel [REQ_F0009].<br>
+2. Sensitive information within logs must be appropriately masked or access controlled [REQ_F0003].
+</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 4.1 | If no logs match the filter criteria, system displays "No matching entries found." |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|---------|-----------------------|
-| 1 | Access to audit logs must be restricted to authorized administrative personnel. [REQ_F0009] |
-| 2 | Sensitive information within logs must be appropriately masked or access controlled. [REQ_F0003] |
+<tr><td><b>Author</b></td><td>Danesh Veran</td></tr>
+</table>
 
 <p align="center"><em>Table 3.1.29: Use Case UC029 View System Audit Log</em></p>
 
@@ -3247,35 +3217,32 @@ The functional requirement(s) for F030 Configure Parent Access:
 
 Table 3.1.30 illustrates the use case for the configure parent access functionality (UC030), detailing the process as defined by Requirement REQ_F3001 followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC030 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F030 Configure Parent Access |
-| **Purpose** | Allow administrators to manage university-level settings for parental access to student information, including default consent mechanisms and information visibility rules. |
-| **Actor** | Admin |
-| **Trigger** | Admin navigates to parental access section. |
-| **Precondition** | Admin is logged in. |
-| **Postcondition** | 1. System-wide settings for parent access and student consent are updated.<br>2. Changes are logged. |
+<table border="1" cellspacing="0" cellpadding="5">
+<tr><td><b>Use Case ID</b></td><td>UC030</td></tr>
+<tr><td><b>Version</b></td><td>1.0</td></tr>
+<tr><td><b>Use Case</b></td><td>F030 Configure Parent Access</td></tr>
+<tr><td><b>Purpose</b></td><td>Allow administrators to manage university-level settings for parental access to student information, including default consent mechanisms and information visibility rules.</td></tr>
+<tr><td><b>Actor</b></td><td>Admin</td></tr>
+<tr><td><b>Trigger</b></td><td>Admin navigates to parental access section.</td></tr>
+<tr><td><b>Precondition</b></td><td>Admin is logged in.</td></tr>
+<tr><td><b>Postcondition</b></td><td>1. System-wide settings for parent access and student consent are updated.<br>2. Changes are logged.</td></tr>
 
-#### Main Flow
+<tr><td colspan="2"><b>Main Flow</b></td></tr>
+<tr><td><b>Step</b></td><td><b>Action</b></td></tr>
+<tr><td>1</td><td>Admin navigates to parental access section.</td></tr>
+<tr><td>2</td><td>System displays current configurations for parental access.</td></tr>
+<tr><td>3</td><td>Admin modifies parental access to view child’s information.</td></tr>
+<tr><td>4</td><td>Admin saves the configuration changes.</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 1 | Admin navigates to parental access section. |
-| 2 | System displays current configurations for parental access. |
-| 3 | Admin modifies parental access to view child’s information. |
-| 4 | Admin saves the configuration changes. |
+<tr><td colspan="2"><b>Rules</b></td></tr>
+<tr><td colspan="2">
+1. All configurations must comply with university privacy policies and explicit student consent requirements [REQ_F0002].<br>
+2. The system shall provide a dedicated portal for parents to access their child’s grades, attendance, and financial information, subject to consent [REQ_F3001, REQ_F2101].
+</td></tr>
 
-#### Rules
-
-| **No.** | **Rule Description** |
-|---------|-----------------------|
-| 1 | All configurations must comply with university privacy policies and explicit student consent requirements. [REQ_F0002] |
-| 2 | The system shall provide a dedicated portal for parents to access their child’s grades, attendance, and financial information, subject to consent. [REQ_F3001, REQ_F2101] |
-
-| **Notes** | The student’s consent must be a physical letter that is sent in by the student personally. |
-|-----|------------------------------------------------------------|
-| **Author** | Danesh Veran |
+<tr><td><b>Notes</b></td><td>The student’s consent must be a physical letter that is sent in by the student personally.</td></tr>
+<tr><td><b>Author</b></td><td>Danesh Veran</td></tr>
+</table>
 
 <p align="center"><em>Table 3.1.30: Use Case UC030 Configure Parent Access</em></p>
 
@@ -3297,44 +3264,40 @@ The functional requirement(s) for F031 Authenticate User:
 
 Table 3.1.31 illustrates the use case for the authenticate user functionality (UC031), detailing the process as defined by Requirement REQ_F3101 followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC031 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F031 Authenticate User |
-| **Purpose** | To ensure that only authorized users can securely access the university portal and its associated services by verifying their credentials through a centralized authentication mechanism. |
-| **Actor** | Campus Management System |
-| **Trigger** | User credentials are received by the authentication service. |
-| **Precondition** | The Campus Management System is up and running. |
-| **Postcondition** | 1. The user is granted access to the portal with permissions appropriate to their role.<br>2. A secure session is initiated with session timeout policies applied. |
-| **Author** | Lim Xin Yee |
+<table border="1" cellspacing="0" cellpadding="5">
+<tr><td><b>Use Case ID</b></td><td>UC031</td></tr>
+<tr><td><b>Version</b></td><td>1.0</td></tr>
+<tr><td><b>Use Case</b></td><td>F031 Authenticate User</td></tr>
+<tr><td><b>Purpose</b></td><td>To ensure that only authorized users can securely access the university portal and its associated services by verifying their credentials through a centralized authentication mechanism.</td></tr>
+<tr><td><b>Actor</b></td><td>Campus Management System</td></tr>
+<tr><td><b>Trigger</b></td><td>User credentials are received by the authentication service.</td></tr>
+<tr><td><b>Precondition</b></td><td>The Campus Management System is up and running.</td></tr>
+<tr><td><b>Postcondition</b></td><td>1. The user is granted access to the portal with permissions appropriate to their role.<br>2. A secure session is initiated with session timeout policies applied.</td></tr>
 
-#### Main Flow
+<tr><td colspan="2"><b>Main Flow</b></td></tr>
+<tr><td><b>Step</b></td><td><b>Action</b></td></tr>
+<tr><td>1</td><td>System receives authentication credentials from the interface.</td></tr>
+<tr><td>2</td><td>System transmits encrypted credentials for validation.</td></tr>
+<tr><td>3</td><td>System receives valid credential response.</td></tr>
+<tr><td>4</td><td>System creates encrypted session token.</td></tr>
+<tr><td>5</td><td>System returns session token with access permissions.</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 1 | System receives authentication credentials from the interface. |
-| 2 | System transmits encrypted credentials for validation. |
-| 3 | System receives valid credential response. |
-| 4 | System creates encrypted session token. |
-| 5 | System returns session token with access permissions. |
+<tr><td colspan="2"><b>Alternate Flow – Invalid Credentials</b></td></tr>
+<tr><td>3.1</td><td>System receives invalid credential response.</td></tr>
+<tr><td>3.2</td><td>The user is prompted to try again.</td></tr>
+<tr><td>3.3</td><td>Redirect to login.</td></tr>
 
-#### Alternative Flow – Invalid Credentials
+<tr><td colspan="2"><b>Rules</b></td></tr>
+<tr><td colspan="2">
+1. Role-based access control must be enforced upon authentication. [REQ_F0009]<br>
+2. Authentication must use university SSO system. [REQ_F3101]<br>
+3. Authentication process must comply with FERPA, GDPR, and university privacy policies. [REQ_F0002]<br>
+4. All credentials and session data must be encrypted in transit and at rest. [REQ_F0003]<br>
+5. Logging of authentication events [REQ_F2901].
+</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 3.1 | System receives invalid credential response. |
-| 3.2 | The user is prompted to try again. |
-| 3.3 | Redirect to login. |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|---------|-----------------------|
-| 1 | Role-based access control must be enforced upon authentication. [REQ_F0009] |
-| 2 | Authentication must use university SSO system. [REQ_F3101] |
-| 3 | Authentication process must comply with FERPA, GDPR, and university privacy policies. [REQ_F0002] |
-| 4 | All credentials and session data must be encrypted in transit and at rest. [REQ_F0003] |
-| 5 | Logging of authentication events [REQ_F2901] |
+<tr><td><b>Author</b></td><td>Lim Xin Yee</td></tr>
+</table>
 
 <p align="center"><em>Table 3.1.31: Use Case UC031 Authenticate User</em></p>
 
@@ -3362,41 +3325,37 @@ The functional requirement(s) for F032 Send SMS Notification:
 
 Table 3.1.32 illustrates the use case for the send SMS notification functionality (UC032), detailing the process as defined by Requirement REQ_F3201 and REQ_F3202 followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC032 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F032 Send SMS Notification |
-| **Purpose** | Deliver urgent or scheduled SMS notifications to users as directed by the university system. |
-| **Actor** | SMS Gateway |
-| **Trigger** | SMS Gateway receives a request from the university portal to send an SMS notification. |
-| **Precondition** | 1. University portal has validated the message, recipient(s), and preferences.<br>2. SMS Gateway is operational and authenticated. |
-| **Postcondition** | 1. SMS is delivered to intended recipients, with delivery status communicated back to the university portal. |
-| **Author** | Nickleirsch |
+<table border="1" cellspacing="0" cellpadding="5">
+<tr><td><b>Use Case ID</b></td><td>UC032</td></tr>
+<tr><td><b>Version</b></td><td>1.0</td></tr>
+<tr><td><b>Use Case</b></td><td>F032 Send SMS Notification</td></tr>
+<tr><td><b>Purpose</b></td><td>Deliver urgent or scheduled SMS notifications to users as directed by the university system.</td></tr>
+<tr><td><b>Actor</b></td><td>SMS Gateway</td></tr>
+<tr><td><b>Trigger</b></td><td>SMS Gateway receives a request from the university portal to send an SMS notification.</td></tr>
+<tr><td><b>Precondition</b></td><td>1. University portal has validated the message, recipient(s), and preferences.<br>2. SMS Gateway is operational and authenticated.</td></tr>
+<tr><td><b>Postcondition</b></td><td>1. SMS is delivered to intended recipients, with delivery status communicated back to the university portal.</td></tr>
 
-#### Main Flow
+<tr><td colspan="2"><b>Main Flow</b></td></tr>
+<tr><td><b>Step</b></td><td><b>Action</b></td></tr>
+<tr><td>1</td><td>SMS Gateway receives a notification payload (recipient, message, metadata).</td></tr>
+<tr><td>2</td><td>SMS Gateway validates payload integrity.</td></tr>
+<tr><td>3</td><td>SMS Gateway attempts delivery to the recipient(s).</td></tr>
+<tr><td>4</td><td>SMS Gateway receives delivery status from carrier.</td></tr>
+<tr><td>5</td><td>SMS Gateway logs the status and notifies the university portal.</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 1 | SMS Gateway receives a notification payload (recipient, message, metadata). |
-| 2 | SMS Gateway validates payload integrity. |
-| 3 | SMS Gateway attempts delivery to the recipient(s). |
-| 4 | SMS Gateway receives delivery status from carrier. |
-| 5 | SMS Gateway logs the status and notifies the university portal. |
+<tr><td colspan="2"><b>Alternate Flow – Delivery Fails</b></td></tr>
+<tr><td>3.1</td><td>SMS Gateway logs the failure and notifies the portal.</td></tr>
 
-#### Alternative Flow – Delivery Fails
+<tr><td colspan="2"><b>Rules</b></td></tr>
+<tr><td colspan="2">
+1. Urgent/critical alerts must be delivered within 1 minute [REQ_P0004]<br>
+2. SMS Gateway must respect recipient opt-in/out [REQ_F1903]<br>
+3. All SMS content must comply with privacy and consent regulations [REQ_F0002, REQ_F3001]<br>
+4. Templates and scheduling must be supported [REQ_F0902, REQ_F0904, REQ_F2701]
+</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 3.1 | SMS Gateway logs the failure and notifies the portal. |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|---------|-----------------------|
-| 1 | Urgent/critical alerts must be delivered within 1 minute. [REQ_P0004] |
-| 2 | SMS Gateway must respect recipient opt-in/out. [REQ_F1903] |
-| 3 | All SMS content must comply with privacy and consent regulations. [REQ_F0002, REQ_F3001] |
-| 4 | Templates and scheduling must be supported. [REQ_F0902, REQ_F0904, REQ_F2701] |
+<tr><td><b>Author</b></td><td>Nickleirsch</td></tr>
+</table>
 
 <p align="center"><em>Table 3.1.32: Use Case UC032 Send SMS Notification</em></p>
 
@@ -3418,41 +3377,37 @@ The functional requirement(s) for F033 Sync with External Calendar:
 
 Table 3.1.33 illustrates the use case for the sync with external calendar functionality (UC033), detailing the process as defined by Requirement REQ_F3301 followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC033 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F033 Sync with External Calendar |
-| **Purpose** | Enable synchronization of academic schedules and events between the university system and external calendar applications (e.g., Google Calendar, Apple Calendar). |
-| **Actor** | Calendar API |
-| **Trigger** | The user selects "Sync Calendar" in their calendar settings. |
-| **Precondition** | 1. Calendar API is authenticated with external calendar provider.<br>2. The user has a valid account with an external calendar provider. |
-| **Postcondition** | 1. Academic schedules and events are synchronized with the selected external calendar application.<br>2. Any subsequent changes in the university calendar are updated in the user's external calendar. |
-| **Author** | Nickleirsch |
+<table border="1" cellspacing="0" cellpadding="5">
+<tr><td><b>Use Case ID</b></td><td>UC033</td></tr>
+<tr><td><b>Version</b></td><td>1.0</td></tr>
+<tr><td><b>Use Case</b></td><td>F033 Sync with External Calendar</td></tr>
+<tr><td><b>Purpose</b></td><td>Enable synchronization of academic schedules and events between the university system and external calendar applications (e.g., Google Calendar, Apple Calendar).</td></tr>
+<tr><td><b>Actor</b></td><td>Calendar API</td></tr>
+<tr><td><b>Trigger</b></td><td>The user selects "Sync Calendar" in their calendar settings.</td></tr>
+<tr><td><b>Precondition</b></td><td>1. Calendar API is authenticated with external calendar provider.<br>2. The user has a valid account with an external calendar provider.</td></tr>
+<tr><td><b>Postcondition</b></td><td>1. Academic schedules and events are synchronized with the selected external calendar application.<br>2. Any subsequent changes in the university calendar are updated in the user's external calendar.</td></tr>
 
-#### Main Flow
+<tr><td colspan="2"><b>Main Flow</b></td></tr>
+<tr><td><b>Step</b></td><td><b>Action</b></td></tr>
+<tr><td>1</td><td>Calendar API receives a sync trigger.</td></tr>
+<tr><td>2</td><td>Calendar API requests updated academic events (.ics file).</td></tr>
+<tr><td>3</td><td>The system transmits the user's academic schedule and events to the calendar API.</td></tr>
+<tr><td>4</td><td>Calendar API updates events in the external calendar.</td></tr>
+<tr><td>5</td><td>The system confirms the successful sync.</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 1 | Calendar API receives a sync trigger. |
-| 2 | Calendar API requests updated academic events (.ics file). |
-| 3 | The system transmits the user's academic schedule and events to the calendar API. |
-| 4 | Calendar API updates events in the external calendar. |
-| 5 | The system confirms the successful sync. |
+<tr><td colspan="2"><b>Alternate Flow – Synchronization Fails</b></td></tr>
+<tr><td>4.1.1</td><td>The synchronization fails due to network or API errors.</td></tr>
+<tr><td>4.1.2</td><td>The system logs the error for later retrial.</td></tr>
 
-#### Alternative Flow – Synchronization Fails
+<tr><td colspan="2"><b>Rules</b></td></tr>
+<tr><td colspan="2">
+1. Sync must occur within 2 minutes of any calendar change. [REQ_P0005]<br>
+2. The system must support integration with at least Google Calendar and Apple Calendar. [REQ_F3301]<br>
+3. Sync failures and actions are logged [REQ_F2901, REQ_F2902]
+</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 4.1.1 | The synchronization fails due to network or API errors. |
-| 4.1.2 | The system logs the error for later retrial. |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|---------|-----------------------|
-| 1 | Sync must occur within 2 minutes of any calendar change. [REQ_P0005] |
-| 2 | The system must support integration with at least Google Calendar and Apple Calendar. [REQ_F3301] |
-| 3 | Sync failures and actions are logged. [REQ_F2901, REQ_F2902] |
+<tr><td><b>Author</b></td><td>Nickleirsch</td></tr>
+</table>
 
 <p align="center"><em>Table 3.1.33: Use Case UC033 Sync with External Calendar</em></p>
 
