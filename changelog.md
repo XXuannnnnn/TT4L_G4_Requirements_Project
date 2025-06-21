@@ -6,7 +6,7 @@
 Created initial project-part-2 branch and setup file structure for Software Requirements Engineering Part 2.
 
 **Author:**  
-Teoh Xuan Xuan
+Yang Jia En
 
 **Reason:**  
 To start Part 2 development and keep changes separate from Part 1.
@@ -39,3 +39,15 @@ To convert the Software Requirements Specification (SRS) into a standardized mar
 
 --
 
+## [Date: 2025-06-20]
+
+**Description of change:**  
+Created the validation and deftect report
+
+**Author:**  
+Yang Jia En
+
+**Reason:**  
+To document system validation results and record identified defects for tracking and resolution during testing.
+
+--
