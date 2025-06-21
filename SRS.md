@@ -400,45 +400,102 @@ The following are the overall requirements for COMSYS:
 
 Table 3.1.1 below illustrates the use case for the login functionality (UC001), detailing the process as defined by Requirement REQ_F0101, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC001 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F001 Login |
-| **Purpose** | To authenticate users and provide secure access to the system based on their role. |
-| **Actor** | Student, Parent, Lecturer, Admin |
-| **Trigger** | User attempts to access the system. |
-| **Precondition** | User has an active account in the system. |
-| **Postcondition** | 1. User is successfully authenticated.<br>2. User is granted access based. |  
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC001</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F001 Login</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To authenticate users and provide secure access to the system based on their role.</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Student, Parent, Lecturer, Admin</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>User attempts to access the system.</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>User has an active account in the system.</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>1. User is successfully authenticated.<br>2. User is granted access based.</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr>
+    <td>Step 1</td>
+    <td>User navigates to login page</td>
+  </tr>
+  <tr>
+    <td>Step 2</td>
+    <td>User enters credentials</td>
+  </tr>
+  <tr>
+    <td>Step 3</td>
+    <td>System validates credentials and role</td>
+  </tr>
+  <tr>
+    <td>Step 4</td>
+    <td>System authenticates the user</td>
+  </tr>
+  <tr>
+    <td>Step 5</td>
+    <td>System redirects user to their role-specific dashboard</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Alternate Flow – Wrong credentials are entered</b></td>
+  </tr>
+  <tr>
+    <td>Step 3.1</td>
+    <td>User enters wrong credentials</td>
+  </tr>
+  <tr>
+    <td>Step 3.2</td>
+    <td>System displays error message due to wrong credentials entered</td>
+  </tr>
+  <tr>
+    <td>Step 3.3</td>
+    <td>System prompts user for re-entry</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr>
+    <td>Rule 1</td>
+    <td>System must implement single sign on [REQ_F3101]</td>
+  </tr>
+  <tr>
+    <td>Rule 2</td>
+    <td>System must comply with global privacy/security regulation [REQ_F0002]</td>
+  </tr>
+  <tr>
+    <td>Rule 3</td>
+    <td>System must validate student-parent consent to provide consented functionality [REQ_F3001]</td>
+  </tr>
+  <tr>
+    <td><b>Notes</b></td>
+    <td>‘User’ in this use case refers to Student, Parent, Lecturer and Admin</td>
+  </tr>
+  <tr>
+    <td><b>Author</b></td>
+    <td>Hesham</td>
+  </tr>
+</table>
 
-#### Main Flow
-
-| **Step** | **Action** |
-|----------|------------|
-| 1 | User navigates to login page |
-| 2 | User enters credentials |
-| 3 | System validates credentials and role |
-| 4 | System authenticates the user |
-| 5 | System redirects user to their role-specific dashboard |
-
-#### Alternate Flow – Wrong credentials are entered
-
-| **Step** | **Action** |
-|----------|------------|
-| 3.1 | User enters wrong credentials |
-| 3.2 | System displays error message due to wrong credentials entered |
-| 3.3 | System prompts user for re-entry |  
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|----------|----------------------|
-| 1 | System must implement single sign on [REQ_F3101] |
-| 2 | System must comply with global privacy/security regulation [REQ_F0002] |
-| 3 | System must validate student-parent consent to provide consented functionality [REQ_F3001] |  
-
-| **Notes** | ‘User’ in this use case refers to Student, Parent, Lecturer and Admin |
-|-----------|-------------------------------------------------------------|
-| **Author** | Hesham |
 
 <p align="center"><em>Table 3.1.1: Use Case UC001 Login</em></p>
 
@@ -462,42 +519,89 @@ Table 3.1.2 illustrates the use case for the logout functionality (UC002), detai
 
 ---
 
-| **Use Case ID**   | UC002 |
-| ------------------ | ------- |
-| **Version**       | 1.0 |
-| **Use Case**      | F002 Logout |
-| **Purpose**       | To securely terminate user sessions |
-| **Actor**         | Student, Parent, Lecturer, Admin |
-| **Trigger**       | 1. User initiates logout action<br>2. System detects session timeout |
-| **Precondition**  | User is logged in |
-| **Postcondition** | 1. User session is terminated<br>2. User is directed to login page<br>3. SSO session is terminated |
-
-#### Main Flow
-
-| **Step** | **Action** |
-|----------|------------|
-| 1 | User clicks the logout button |
-| 2 | System terminates active session |
-| 3 | User gets redirected to the login page |
-
-#### Alternate Flow – If Session Timeout Occurs
-
-| **Step** | **Action** |
-|----------|------------|
-| 1.1.1 | System shows a timeout warning |
-| 1.1.2 | User can extend session within 30 seconds |
-| 1.1.3 | If no response proceeds with main step 1 |
-| 1.1.4 | Else system extends session |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|----------|----------------------|
-| 1 | Session timeout duration must follow user setting (for student only) [REQ_F0501] |
-
-| **Notes** | ‘User’ in this use case refers to Student, Parent, Lecturer and Admin |
-|-----------|-------------------------------------------------------------|
-| **Author** | Hesham |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC002</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F002 Logout</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To securely terminate user sessions</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Student, Parent, Lecturer, Admin</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>1. User initiates logout action<br>2. System detects session timeout</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>User is logged in</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>1. User session is terminated<br>2. User is directed to login page<br>3. SSO session is terminated</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr>
+    <td>Step 1</td>
+    <td>User clicks the logout button</td>
+  </tr>
+  <tr>
+    <td>Step 2</td>
+    <td>System terminates active session</td>
+  </tr>
+  <tr>
+    <td>Step 3</td>
+    <td>User gets redirected to the login page</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Alternate Flow – If Session Timeout Occurs</b></td>
+  </tr>
+  <tr>
+    <td>Step 1.1.1</td>
+    <td>System shows a timeout warning</td>
+  </tr>
+  <tr>
+    <td>Step 1.1.2</td>
+    <td>User can extend session within 30 seconds</td>
+  </tr>
+  <tr>
+    <td>Step 1.1.3</td>
+    <td>If no response proceeds with main step 1</td>
+  </tr>
+  <tr>
+    <td>Step 1.1.4</td>
+    <td>Else system extends session</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr>
+    <td>Rule 1</td>
+    <td>Session timeout duration must follow user setting (for student only) [REQ_F0501]</td>
+  </tr>
+  <tr>
+    <td><b>Notes</b></td>
+    <td>‘User’ in this use case refers to Student, Parent, Lecturer and Admin</td>
+  </tr>
+  <tr>
+    <td><b>Author</b></td>
+    <td>Hesham</td>
+  </tr>
+</table>
 
 <p align="center"><em>Table 3.1.2: Use Case UC002 Logout</em></p>
 
@@ -525,42 +629,89 @@ The functional requirement(s) for F003 Change Language Preferences:
 
 Table 3.1.3 illustrates the use case for the changing language preference functionality (UC003), detailing the process as defined by Requirement REQ_F0301 and REQ_F0302, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC003 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F003 Change Language Preference |
-| **Purpose** | To allow users to customize their interface language preference |
-| **Actor** | Student and Parent |
-| **Trigger** | User initiates language change from dashboard settings |
-| **Precondition** | User is logged in |
-| **Postcondition** | 1. User’s language preference is updated<br>2. Interface language is changed |
-
-#### Main Flow
-
-| **Step** | **Action** |
-|----------|------------|
-| 1 | User navigates to language section in settings |
-| 2 | System displays available language options |
-| 3 | User selects desired language |
-| 4 | System prompts for confirmation |
-| 5 | System saves user’s language preferences and updates UI |
-
-#### Alternate Flow – Cancel Language Selection
-
-| **Step** | **Action** |
-|----------|------------|
-| 4.1 | User cancels when prompted for confirmation |
-| 4.2 | Return to Main Flow step 2 |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|----------|----------------------|
-| 1 | Language preference must persist across sessions [REQ_F0302] |
-
-| **Notes** | ‘User’ in this use case refers to Student and Parent |
-|-----------|-------------------------------------------------------------|
-| **Author** | Hesham |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC003</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F003 Change Language Preference</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To allow users to customize their interface language preference</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Student and Parent</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>User initiates language change from dashboard settings</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>User is logged in</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>1. User’s language preference is updated<br>2. Interface language is changed</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr>
+    <td>Step 1</td>
+    <td>User navigates to language section in settings</td>
+  </tr>
+  <tr>
+    <td>Step 2</td>
+    <td>System displays available language options</td>
+  </tr>
+  <tr>
+    <td>Step 3</td>
+    <td>User selects desired language</td>
+  </tr>
+  <tr>
+    <td>Step 4</td>
+    <td>System prompts for confirmation</td>
+  </tr>
+  <tr>
+    <td>Step 5</td>
+    <td>System saves user’s language preferences and updates UI</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Alternate Flow – Cancel Language Selection</b></td>
+  </tr>
+  <tr>
+    <td>Step 4.1</td>
+    <td>User cancels when prompted for confirmation</td>
+  </tr>
+  <tr>
+    <td>Step 4.2</td>
+    <td>Return to Main Flow step 2</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr>
+    <td>Rule 1</td>
+    <td>Language preference must persist across sessions [REQ_F0302]</td>
+  </tr>
+  <tr>
+    <td><b>Notes</b></td>
+    <td>‘User’ in this use case refers to Student and Parent</td>
+  </tr>
+  <tr>
+    <td><b>Author</b></td>
+    <td>Hesham</td>
+  </tr>
+</table>
 
 <p align="center"><em>Table 3.1.3: Use Case UC003 Change Language Preference</em></p>
 
@@ -588,46 +739,106 @@ The functional requirement(s) for F004 Customize Interface:
 
 Table 3.1.4 illustrates the use case for the customizing interface functionality (UC004), detailing the process as defined by Requirement REQ_F0401 and REQ_F0402, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC004 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F004 Customize Interface |
-| **Purpose** | To allow students and parents to personalize their portal interface through theme preferences and widget arrangement |
-| **Actor** | Student |
-| **Trigger** | Student accesses interface customization settings |
-| **Precondition** | Student is logged in |
-| **Postcondition** | 1. Student interface preferences are changed<br>2. Dashboard displays customized layout and theme<br>3. Settings persist across sessions<br>4. Widgets maintain functionality in new positions |
-
-#### Main Flow
-
-| **Step** | **Action** |
-|----------|------------|
-| 1 | Student accesses interface settings |
-| 2 | System displays customization options:<br>a) Theme selection (light/dark)<br>b) Widget arrangement interface |
-| 3 | Student selects desired theme |
-| 4 | System previews changes in real-time |
-| 5 | Student saves customization preferences |
-| 6 | System applies and persists changes |
-
-#### Alternate Flow – Widget Customization
-
-| **Step** | **Action** |
-|----------|------------|
-| 2.1 | Student selects widget arrangement |
-| 2.2 | Student rearranges widgets to preferred position |
-| 2.3 | Return to main step 4 |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|----------|----------------------|
-| 1 | Dashboard layout must maintain responsive design [REQ_I0002] |
-| 2 | Widget positions must respect screen size constraints [REQ_I0002] |
-| 3 | Help documentation and tooltips must be available for customization options [REQ_F0701, REQ_F0801] |
-
-| **Notes** | ‘User’ in this use case refers to Student |
-|-----------|-----------------------------------------|
-| **Author** | Hesham |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC004</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F004 Customize Interface</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To allow students and parents to personalize their portal interface through theme preferences and widget arrangement</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Student</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>Student accesses interface customization settings</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>Student is logged in</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>
+      1. Student interface preferences are changed<br>
+      2. Dashboard displays customized layout and theme<br>
+      3. Settings persist across sessions<br>
+      4. Widgets maintain functionality in new positions
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr>
+    <td>Step 1</td>
+    <td>Student accesses interface settings</td>
+  </tr>
+  <tr>
+    <td>Step 2</td>
+    <td>System displays customization options:<br>a) Theme selection (light/dark)<br>b) Widget arrangement interface</td>
+  </tr>
+  <tr>
+    <td>Step 3</td>
+    <td>Student selects desired theme</td>
+  </tr>
+  <tr>
+    <td>Step 4</td>
+    <td>System previews changes in real-time</td>
+  </tr>
+  <tr>
+    <td>Step 5</td>
+    <td>Student saves customization preferences</td>
+  </tr>
+  <tr>
+    <td>Step 6</td>
+    <td>System applies and persists changes</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Alternate Flow – Widget Customization</b></td>
+  </tr>
+  <tr>
+    <td>Step 2.1</td>
+    <td>Student selects widget arrangement</td>
+  </tr>
+  <tr>
+    <td>Step 2.2</td>
+    <td>Student rearranges widgets to preferred position</td>
+  </tr>
+  <tr>
+    <td>Step 2.3</td>
+    <td>Return to main step 4</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr>
+    <td>Rule 1</td>
+    <td>Dashboard layout must maintain responsive design [REQ_I0002]</td>
+  </tr>
+  <tr>
+    <td>Rule 2</td>
+    <td>Widget positions must respect screen size constraints [REQ_I0002]</td>
+  </tr>
+  <tr>
+    <td>Rule 3</td>
+    <td>Help documentation and tooltips must be available for customization options [REQ_F0701, REQ_F0801]</td>
+  </tr>
+  <tr>
+    <td><b>Author</b></td>
+    <td>Hesham</td>
+  </tr>
+</table>
 
 <p align="center"><em>Table 3.1.4: Use Case UC004 Customize Interface</em></p>
 
@@ -655,38 +866,89 @@ The functional requirement(s) for F005 Customize Session Time-Out:
 
 Table 3.1.5 illustrates the use case for the customizing session time-out functionality (UC005), detailing the process as defined by Requirement REQ_F0501 and REQ_F0502, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC005 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F005 Customize Session Time-Out |
-| **Purpose** | To allow users to personalize their session timeout duration within system-defined security boundaries |
-| **Actor** | Student |
-| **Trigger** | User accesses session timeout settings in their profile security settings |
-| **Precondition** | User is logged in |
-| **Postcondition** | 1. New session timeout duration is saved<br>2. Updated timeout is applied to current and future sessions |
-
-#### Main Flow
-
-| **Step** | **Action** |
-|----------|------------|
-| 1 | User navigates to security settings |
-| 2 | System displays current timeout settings |
-| 3 | System shows allowed timeout range |
-| 4 | User selects new timeout duration |
-| 5 | System validates selection |
-| 6 | System saves new timeout preference |
-| 7 | System applies for current and future sessions |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|----------|----------------------|
-| 1 | Minimum and maximum timeout duration must align with security policy [REQ_F0502] |
-| 2 | Help documentation and tooltips must explain timeout implications [REQ_F0701, REQ_F0801] |
-
-| **Notes** | ‘User’ in this use case refers to Student |
-|-----------|-----------------------------------------|
-| **Author** | Hesham |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC005</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F005 Customize Session Time-Out</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To allow users to personalize their session timeout duration within system-defined security boundaries</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Student</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>User accesses session timeout settings in their profile security settings</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>User is logged in</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>
+      1. New session timeout duration is saved<br>
+      2. Updated timeout is applied to current and future sessions
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr>
+    <td>Step 1</td>
+    <td>User navigates to security settings</td>
+  </tr>
+  <tr>
+    <td>Step 2</td>
+    <td>System displays current timeout settings</td>
+  </tr>
+  <tr>
+    <td>Step 3</td>
+    <td>System shows allowed timeout range</td>
+  </tr>
+  <tr>
+    <td>Step 4</td>
+    <td>User selects new timeout duration</td>
+  </tr>
+  <tr>
+    <td>Step 5</td>
+    <td>System validates selection</td>
+  </tr>
+  <tr>
+    <td>Step 6</td>
+    <td>System saves new timeout preference</td>
+  </tr>
+  <tr>
+    <td>Step 7</td>
+    <td>System applies for current and future sessions</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr>
+    <td>Rule 1</td>
+    <td>Minimum and maximum timeout duration must align with security policy [REQ_F0502]</td>
+  </tr>
+  <tr>
+    <td>Rule 2</td>
+    <td>Help documentation and tooltips must explain timeout implications [REQ_F0701, REQ_F0801]</td>
+  </tr>
+  <tr>
+    <td><b>Author</b></td>
+    <td>Hesham</td>
+  </tr>
+</table>
 
 <p align="center"><em>Table 3.1.5: Use Case UC005 Customize Session Time-Out</em></p>
 
@@ -708,44 +970,104 @@ The functional requirement(s) for F006 View Notification:
 
 Table 3.1.6 illustrates the use case for the view notification functionality (UC006), detailing the process as defined by Requirement REQ_F0601, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC006 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F006 View Notification |
-| **Purpose** | To allow students and parents to access their received notifications across different channels |
-| **Actor** | Student, Parent |
-| **Trigger** | 1. New notification is received<br>2. User clicks on a notification alert |
-| **Precondition** | User is logged in |
-| **Postcondition** | 1. Notification(s) are displayed to user<br>2. Notification read status is updated<br>3. Notification(s) are marked as viewed |
-
-#### Main Flow
-
-| **Step** | **Action** |
-|----------|------------|
-| 1 | User navigates to notifications section |
-| 2 | System retrieves notifications based on user role and preferences |
-| 3 | System displays notification(s) |
-| 4 | User views notification content |
-| 5 | System updates the notification’s read status |
-
-#### Alternative Flow – If No Notifications Exist
-
-| **Step** | **Action** |
-|----------|------------|
-| 2.1 | System displays “No notifications” message |
-| 2.2 | System redirects to user’s dashboard |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|----------|----------------------|
-| 1 | Parents can only view notifications they have consent to access [REQ_F3001] |
-| 2 | System must respect quiet hours settings if enabled [REQ_F2001] |
-| 3 | The system must ensure that there are no duplicate notifications sent for the same event [REQ_F0008] |
-
-| **Notes** | ‘User’ in this use case refers to Student and Parent. |
-|-----------|-----------------------------------------|
-| **Author** | Hesham |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC006</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F006 View Notification</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To allow students and parents to access their received notifications across different channels</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Student, Parent</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>
+      1. New notification is received<br>
+      2. User clicks on a notification alert
+    </td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>User is logged in</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>
+      1. Notification(s) are displayed to user<br>
+      2. Notification read status is updated<br>
+      3. Notification(s) are marked as viewed
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr>
+    <td>Step 1</td>
+    <td>User navigates to notifications section</td>
+  </tr>
+  <tr>
+    <td>Step 2</td>
+    <td>System retrieves notifications based on user role and preferences</td>
+  </tr>
+  <tr>
+    <td>Step 3</td>
+    <td>System displays notification(s)</td>
+  </tr>
+  <tr>
+    <td>Step 4</td>
+    <td>User views notification content</td>
+  </tr>
+  <tr>
+    <td>Step 5</td>
+    <td>System updates the notification’s read status</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Alternative Flow – If No Notifications Exist</b></td>
+  </tr>
+  <tr>
+    <td>Step 2.1</td>
+    <td>System displays “No notifications” message</td>
+  </tr>
+  <tr>
+    <td>Step 2.2</td>
+    <td>System redirects to user’s dashboard</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr>
+    <td>Rule 1</td>
+    <td>Parents can only view notifications they have consent to access [REQ_F3001]</td>
+  </tr>
+  <tr>
+    <td>Rule 2</td>
+    <td>System must respect quiet hours settings if enabled [REQ_F2001]</td>
+  </tr>
+  <tr>
+    <td>Rule 3</td>
+    <td>The system must ensure that there are no duplicate notifications sent for the same event [REQ_F0008]</td>
+  </tr>
+  <tr>
+    <td><b>Notes</b></td>
+    <td>‘User’ in this use case refers to Student and Parent.<br>This use case pertains exclusively to the viewing of in-portal notifications within COMSYS. Notifications sent via SMS and email are delivered externally and are not viewable within the COMSYS system.</td>
+  </tr>
+  <tr>
+    <td><b>Author</b></td>
+    <td>Nickleirsch</td>
+  </tr>
+</table>
 
 <p align="center"><em>Table 3.1.6: Use Case UC006 View Notification</em></p>
 
@@ -767,34 +1089,80 @@ The functional requirement(s) for F007 View Tooltip:
 
 Table 3.1.7 illustrates the use case for the view tooltip functionality (UC007), detailing the process as defined by Requirement REQ_F0701, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC007 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F007 View Tooltip |
-| **Purpose** | To provide students and parents with immediate, contextual help through tooltips for interface elements and features |
-| **Actor** | Student, Parent |
-| **Trigger** | User clicks on tooltip indicator |
-| **Precondition** | 1. User is logged in <br> 2. User is accessing a feature with tooltip support |
-| **Postcondition** | 1. Tooltip is displayed <br> 2. User receives immediate contextual help |
-
-#### Main Flow
-
-| **Step** | **Action** |
-|----------|------------|
-| 1 | User clicks on an element with tooltip |
-| 2 | System detects tooltip trigger |
-| 3 | System displays relevant contextual help |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|----------|----------------------|
-| 1 | Tooltips must be responsive across devices [REQ_I0002] |
-| 2 | Tooltips must support multiple languages [REQ_F0301, REQ_F0302] |
-
-| **Notes** | ‘User’ in this use case refers to Student and Parent. |
-|-----------|-----------------------------------------|
-| **Author** | Hesham |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC007</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F007 View Tooltip</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To provide students and parents with immediate, contextual help through tooltips for interface elements and features</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Student, Parent</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>User clicks on tooltip indicator</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>
+      1. User is logged in<br>
+      2. User is accessing a feature with tooltip support
+    </td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>
+      1. Tooltip is displayed<br>
+      2. User receives immediate contextual help
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr>
+    <td>Step 1</td>
+    <td>User clicks on an element with tooltip</td>
+  </tr>
+  <tr>
+    <td>Step 2</td>
+    <td>System detects tooltip trigger</td>
+  </tr>
+  <tr>
+    <td>Step 3</td>
+    <td>System displays relevant contextual help</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr>
+    <td>Rule 1</td>
+    <td>Tooltips must be responsive across devices [REQ_I0002]</td>
+  </tr>
+  <tr>
+    <td>Rule 2</td>
+    <td>Tooltips must support multiple languages [REQ_F0301, REQ_F0302]</td>
+  </tr>
+  <tr>
+    <td><b>Notes</b></td>
+    <td>‘User’ in this use case refers to Student and Parent.</td>
+  </tr>
+  <tr>
+    <td><b>Author</b></td>
+    <td>Hesham</td>
+  </tr>
+</table>
 
 <p align="center"><em>Table 3.1.7: Use Case UC007 View Tooltip</em></p>
 
@@ -816,43 +1184,94 @@ The functional requirement(s) for F008 Access Help Documentation:
 
 Table 3.1.8 illustrates the use case for the access help documentation functionality (UC008), detailing the process as defined by Requirement REQ_F0801, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC008 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F008 Access Help Documentation |
-| **Purpose** | To provide students and parents with comprehensive help documentation and user manuals for system features. |
-| **Actor** | Student, Parent |
-| **Trigger** | User navigates to the documentation page. |
-| **Precondition** | User is logged in. |
-| **Postcondition** | Help documentation is displayed. |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC008</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F008 Access Help Documentation</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To provide students and parents with comprehensive help documentation and user manuals for system features</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Student, Parent</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>User navigates to the documentation page</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>User is logged in</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>Help documentation is displayed</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr>
+    <td>Step 1</td>
+    <td>User navigates to help documentation section</td>
+  </tr>
+  <tr>
+    <td>Step 2</td>
+    <td>System displays help categories and search</td>
+  </tr>
+  <tr>
+    <td>Step 3</td>
+    <td>User selects topic</td>
+  </tr>
+  <tr>
+    <td>Step 4</td>
+    <td>System displays relevant documentation</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Alternate Flow – Search for Help</b></td>
+  </tr>
+  <tr>
+    <td>Step 2.1</td>
+    <td>User searches for help category</td>
+  </tr>
+  <tr>
+    <td>Step 2.2</td>
+    <td>System displays help documentation with filtered category</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr>
+    <td>Rule 1</td>
+    <td>Documentation must maintain consistent formatting and be easy to navigate through [REQ_I0001]</td>
+  </tr>
+  <tr>
+    <td>Rule 2</td>
+    <td>Documentation must support multiple languages [REQ_F0301, REQ_F0302]</td>
+  </tr>
+  <tr>
+    <td>Rule 3</td>
+    <td>System must provide comprehensive guides for complex features [REQ_F0801]</td>
+  </tr>
+  <tr>
+    <td><b>Notes</b></td>
+    <td>‘User’ in this use case refers to Student and Parent.</td>
+  </tr>
+  <tr>
+    <td><b>Author</b></td>
+    <td>Hesham</td>
+  </tr>
+</table>
 
-#### Main Flow
-
-| **Step** | **Action** |
-|----------|------------|
-| 1 | User navigates to help documentation section |
-| 2 | System displays help categories and search |
-| 3 | User selects topic |
-| 4 | System displays relevant documentation |
-
-#### Alternate Flow – Search for Help
-
-| **Step** | **Action** |
-|----------|------------|
-| 2.1 | User searches for help category |
-| 2.2 | System displays help documentation with filtered category |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|----------|----------------------|
-| 1 | Documentation must maintain consistent formatting and be easy to navigate through [REQ_I0001] |
-| 2 | Documentation must support multiple languages [REQ_F0301, REQ_F0302] |
-| 3 | System must provide comprehensive guides for complex features [REQ_F0801] |
-
-| **Notes** | ‘User’ in this use case refers to Student and Parent. |
-|-----------|----------------------------------------------------------|
-| **Author** | Hesham |
 
 <p align="center"><em>Table 3.1.8: Use Case UC008 Access Help Documentation</em></p>
 
@@ -892,59 +1311,146 @@ The functional requirement(s) for F009 Send Notification:
 
 Table 3.1.9 illustrates the use case for the send notification functionality (UC009), detailing the process as defined by Requirement REQ_F0901, REQ_F0902, REQ_F0903 and REQ_F0904, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC009 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F009 Send Notification |
-| **Purpose** | Allow lecturers and admins to send notifications to students or groups. |
-| **Actor** | Lecturer and Admin |
-| **Trigger** | User navigates to send notification page from dashboard. |
-| **Precondition** | User is logged in. |
-| **Postcondition** | User has sent or scheduled a notification. |
-
-#### Main Flow
-
-| **Step** | **Action** |
-|----------|------------|
-| 1 | User navigates to the notification section |
-| 2 | User selects to compose a new notification |
-| 3 | User selects recipients (individuals or groups) |
-| 4 | User chooses notification channel(s) (email, SMS, portal) |
-| 5 | User enters subject and message content |
-| 6 | User confirms and chooses to send the notification immediately |
-| 7 | System sends the notification |
-| 8 | System displays a confirmation prompt |
-
-#### Alternate Flow – Schedule Notification
-
-| **Step** | **Action** |
-|----------|------------|
-| 6.1 | User chooses to schedule the notification |
-| 6.2 | User chooses a future date and time |
-| 6.3 | System queues the notification for delivery at the specified time |
-| 6.4 | Return to Main Flow step 8 |
-
-#### Alternate Flow – Use Notification Template
-
-| **Step** | **Action** |
-|----------|------------|
-| 5.1 | User chooses to use a template instead |
-| 5.2 | System displays list of available templates |
-| 5.3 | System loads the notification template |
-| 5.4 | User customizes content as needed |
-| 5.5 | Return to Main Flow step 6 |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|----------|----------------------|
-| 1 | Notification respects user preferences and legal consent [REQ_F1903, REQ_F3001] |
-| 2 | System prevents duplicate notifications [REQ_F0008] |
-| 3 | Critical alerts must be delivered within a minute of their creation [REQ_P0004] |
-
-| **Notes** | ‘User’ for this use case refers to Lecturer and Admin.<br>Notifications will be delivered through three channels: in-portal, SMS, and email.<br>1. In-portal notifications can be viewed directly within the COMSYS system, as detailed in F006: View Notification.<br>2. SMS and email notifications are delivered externally to the user’s registered phone number and email address.<br>3. The SMS notification system is implemented via an integrated SMS gateway, as detailed in F032: Send SMS Notification. |
-|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Author** | Nickleirsch |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC009</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F009 Send Notification</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>Allow lecturers and admins to send notifications to students or groups.</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Lecturer and Admin</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>User navigates to send notification page from dashboard</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>User is logged in</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>User has sent or scheduled a notification</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr>
+    <td>Step 1</td>
+    <td>User navigates to the notification section</td>
+  </tr>
+  <tr>
+    <td>Step 2</td>
+    <td>User selects to compose a new notification</td>
+  </tr>
+  <tr>
+    <td>Step 3</td>
+    <td>User selects recipients (individuals or groups)</td>
+  </tr>
+  <tr>
+    <td>Step 4</td>
+    <td>User chooses notification channel(s) (email, SMS, portal)</td>
+  </tr>
+  <tr>
+    <td>Step 5</td>
+    <td>User enters subject and message content</td>
+  </tr>
+  <tr>
+    <td>Step 6</td>
+    <td>User confirms and chooses to send the notification immediately</td>
+  </tr>
+  <tr>
+    <td>Step 7</td>
+    <td>System sends the notification</td>
+  </tr>
+  <tr>
+    <td>Step 8</td>
+    <td>System displays a confirmation prompt</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Alternate Flow – Schedule Notification</b></td>
+  </tr>
+  <tr>
+    <td>Step 6.1</td>
+    <td>User chooses to schedule the notification</td>
+  </tr>
+  <tr>
+    <td>Step 6.2</td>
+    <td>User chooses a future date and time</td>
+  </tr>
+  <tr>
+    <td>Step 6.3</td>
+    <td>System queues the notification for delivery at the specified time</td>
+  </tr>
+  <tr>
+    <td>Step 6.4</td>
+    <td>Return to Main Flow step 8</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Alternate Flow – Use Notification Template</b></td>
+  </tr>
+  <tr>
+    <td>Step 5.1</td>
+    <td>User chooses to use a template instead</td>
+  </tr>
+  <tr>
+    <td>Step 5.2</td>
+    <td>System displays list of available templates</td>
+  </tr>
+  <tr>
+    <td>Step 5.3</td>
+    <td>System loads the notification template</td>
+  </tr>
+  <tr>
+    <td>Step 5.4</td>
+    <td>User customizes content as needed</td>
+  </tr>
+  <tr>
+    <td>Step 5.5</td>
+    <td>Return to Main Flow step 6</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr>
+    <td>Rule 1</td>
+    <td>Notification respects user preferences and legal consent [REQ_F1903, REQ_F3001]</td>
+  </tr>
+  <tr>
+    <td>Rule 2</td>
+    <td>System prevents duplicate notifications [REQ_F0008]</td>
+  </tr>
+  <tr>
+    <td>Rule 3</td>
+    <td>Critical alerts must be delivered within a minute of their creation [REQ_P0004]</td>
+  </tr>
+  <tr>
+    <td><b>Notes</b></td>
+    <td>
+      ‘User’ for this use case refers to Lecturer and Admin.<br>
+      Notifications will be delivered through three channels: in-portal, SMS, and email.<br>
+      1. In-portal notifications can be viewed directly within the COMSYS system, as detailed in F006: View Notification.<br>
+      2. SMS and email notifications are delivered externally to the user’s registered phone number and email address.<br>
+      3. The SMS notification system is implemented via an integrated SMS gateway, as detailed in F032: Send SMS Notification.
+    </td>
+  </tr>
+  <tr>
+    <td><b>Author</b></td>
+    <td>Nickleirsch</td>
+  </tr>
+</table>
 
 <p align="center"><em>Table 3.1.9: Use Case UC009 Send Notification</em></p>
 
@@ -966,49 +1472,117 @@ The functional requirement(s) for F010 Access Calendar:
 
 Table 3.1.10 illustrates the use case for the access calendar functionality (UC010), detailing the process as defined by Requirement REQ_F1001, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC010 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F010 Access Calendar |
-| **Purpose** | Allow students and lecturers to access their academic calendar, view schedules, upcoming events, deadlines, and other relevant information through the university portal. |
-| **Actor** | Student and Lecturer |
-| **Trigger** | User navigates to the calendar section. |
-| **Precondition** | User is logged in |
-| **Postcondition** | 1. The user sees their personalized academic calendar with relevant events, schedules, and deadlines.<br>2. The user can interact with the calendar |
-
-#### Main Flow
-
-| **Step** | **Action** |
-|----------|------------|
-| 1 | User navigates to the calendar section. |
-| 2 | The system retrieves events, schedules, and deadlines relevant to the user. |
-| 3 | The system displays the calendar |
-| 4 | User views the calendar |
-
-#### Alternate Flow – Add event
-
-| **Step** | **Action** |
-|----------|------------|
-| 3.1 | User chooses to add an event to the calendar |
-| 3.2 | User chooses a date and time |
-| 3.3 | User inputs event type and description |
-| 3.4 | System saves the event |
-| 3.5 | Return to main flow step 4 |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|----------|----------------------|
-| 1 | Calendar must synchronize with external calendars if enabled [REQ_F3301] |
-| 2 | Users can set personal reminders and manage events [REQ_F1002] |
-| 3 | Interface must be responsive to screen size [REQ_I0002] |
-| 4 | All calendar data shown must comply with privacy and data security requirements [REQ_F0002] |
-| 5 | Data must be updated within 2 minutes of changes (synchronization) [REQ_P0005] |
-| 6 | Event names must be descriptive, not just codes [REQ_I0003] |
-
-| **Notes** | ‘User’ for this use case refers to Student and Lecturer.<br>The calendar is not the same as the class schedule of a student, for a detailed view of their courses with their instructor, class times and location, students must view their class schedule as detailed in F014 View Class Schedule. |
-|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Author** | Nickleirsch |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC010</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F010 Access Calendar</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>Allow students and lecturers to access their academic calendar, view schedules, upcoming events, deadlines, and other relevant information through the university portal.</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Student and Lecturer</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>User navigates to the calendar section.</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>User is logged in</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>1. The user sees their personalized academic calendar with relevant events, schedules, and deadlines.<br>2. The user can interact with the calendar</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr>
+    <td>Step 1</td>
+    <td>User navigates to the calendar section.</td>
+  </tr>
+  <tr>
+    <td>Step 2</td>
+    <td>The system retrieves events, schedules, and deadlines relevant to the user.</td>
+  </tr>
+  <tr>
+    <td>Step 3</td>
+    <td>The system displays the calendar</td>
+  </tr>
+  <tr>
+    <td>Step 4</td>
+    <td>User views the calendar</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Alternate Flow – Add event</b></td>
+  </tr>
+  <tr>
+    <td>Step 3.1</td>
+    <td>User chooses to add an event to the calendar</td>
+  </tr>
+  <tr>
+    <td>Step 3.2</td>
+    <td>User chooses a date and time</td>
+  </tr>
+  <tr>
+    <td>Step 3.3</td>
+    <td>User inputs event type and description</td>
+  </tr>
+  <tr>
+    <td>Step 3.4</td>
+    <td>System saves the event</td>
+  </tr>
+  <tr>
+    <td>Step 3.5</td>
+    <td>Return to main flow step 4</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr>
+    <td>Rule 1</td>
+    <td>Calendar must synchronize with external calendars if enabled [REQ_F3301]</td>
+  </tr>
+  <tr>
+    <td>Rule 2</td>
+    <td>Users can set personal reminders and manage events [REQ_F1002]</td>
+  </tr>
+  <tr>
+    <td>Rule 3</td>
+    <td>Interface must be responsive to screen size [REQ_I0002]</td>
+  </tr>
+  <tr>
+    <td>Rule 4</td>
+    <td>All calendar data shown must comply with privacy and data security requirements [REQ_F0002]</td>
+  </tr>
+  <tr>
+    <td>Rule 5</td>
+    <td>Data must be updated within 2 minutes of changes (synchronization) [REQ_P0005]</td>
+  </tr>
+  <tr>
+    <td>Rule 6</td>
+    <td>Event names must be descriptive, not just codes [REQ_I0003]</td>
+  </tr>
+  <tr>
+    <td><b>Notes</b></td>
+    <td>‘User’ for this use case refers to Student and Lecturer.<br>The calendar is not the same as the class schedule of a student, for a detailed view of their courses with their instructor, class times and location, students must view their class schedule as detailed in F014 View Class Schedule.</td>
+  </tr>
+  <tr>
+    <td><b>Author</b></td>
+    <td>Nickleirsch</td>
+  </tr>
+</table>
 
 <p align="center"><em>Table 3.1.10: Use Case UC010 Access Calendar</em></p>
 
@@ -1030,42 +1604,97 @@ The functional requirement(s) for F011 Use Live Chat:
 
 Table 3.1.11 illustrates the use case for the use live chat functionality (UC011), detailing the process as defined by Requirement REQ_F1101, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC011 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F011 Use Live Chat |
-| **Purpose** | To allow students, parents, lecturers, admins to communicate and exchange messages in real time through a built-in live chat feature. |
-| **Actor** | Student, Parent, Lecturer and Admin |
-| **Trigger** | 1. User accesses the chat section<br>2. User receives a new message notification and clicks to open chat |
-| **Precondition** | User is logged in |
-| **Postcondition** | 1. Messages are exchanged in real time<br>2. Chat is updated with the latest conversation |
-| **Author** | Nickleirsch |
-
-#### Main Flow
-
-| **Step** | **Action** |
-|----------|------------|
-| 1 | User navigates to live chat interface |
-| 2 | System displays conversation history |
-| 3 | User selects a chat box |
-| 4 | System displays past exchanged messages |
-| 5 | User types and sends a message |
-| 6 | System delivers the message to the recipient in real time |
-
-#### Alternate Flow – Initiate New Chat
-
-| **Step** | **Action** |
-|----------|------------|
-| 3.1 | User starts a new chat by searching for a user |
-| 3.2 | System displays search results |
-| 3.3 | Return to Main Flow step 5 |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|----------|----------------------|
-| 1 | System must load chat boxes within 3 seconds [REQ_P0001] |
-| 2 | System must ensure chat data is encrypted during transmission [REQ_F0003] |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC011</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F011 Use Live Chat</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To allow students, parents, lecturers, admins to communicate and exchange messages in real time through a built-in live chat feature.</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Student, Parent, Lecturer and Admin</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>1. User accesses the chat section<br>2. User receives a new message notification and clicks to open chat</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>User is logged in</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>1. Messages are exchanged in real time<br>2. Chat is updated with the latest conversation</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr>
+    <td>Step 1</td>
+    <td>User navigates to live chat interface</td>
+  </tr>
+  <tr>
+    <td>Step 2</td>
+    <td>System displays conversation history</td>
+  </tr>
+  <tr>
+    <td>Step 3</td>
+    <td>User selects a chat box</td>
+  </tr>
+  <tr>
+    <td>Step 4</td>
+    <td>System displays past exchanged messages</td>
+  </tr>
+  <tr>
+    <td>Step 5</td>
+    <td>User types and sends a message</td>
+  </tr>
+  <tr>
+    <td>Step 6</td>
+    <td>System delivers the message to the recipient in real time</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Alternate Flow – Initiate New Chat</b></td>
+  </tr>
+  <tr>
+    <td>Step 3.1</td>
+    <td>User starts a new chat by searching for a user</td>
+  </tr>
+  <tr>
+    <td>Step 3.2</td>
+    <td>System displays search results</td>
+  </tr>
+  <tr>
+    <td>Step 3.3</td>
+    <td>Return to Main Flow step 5</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr>
+    <td>Rule 1</td>
+    <td>System must load chat boxes within 3 seconds [REQ_P0001]</td>
+  </tr>
+  <tr>
+    <td>Rule 2</td>
+    <td>System must ensure chat data is encrypted during transmission [REQ_F0003]</td>
+  </tr>
+  <tr>
+    <td><b>Author</b></td>
+    <td>Nickleirsch</td>
+  </tr>
+</table>
 
 <p align="center"><em>Table 3.1.11: Use Case UC011 Use Live Chat</em></p>
 
@@ -1087,41 +1716,93 @@ The functional requirement(s) for F012 View Attendance Record:
 
 Table 3.1.12 illustrates the use case for the view attendance record functionality (UC012), detailing the process as defined by Requirement REQ_F1201, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC012 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F012 View Attendance Record |
-| **Purpose** | To allow students to access and monitor their attendance records across all enrolled courses |
-| **Actor** | Student |
-| **Trigger** | 1. Student accesses attendance section<br>2. Student selects specific course for attendance view<br>3. Automated attendance digest notification clicked |
-| **Precondition** | 1. Student is logged in<br>2. Student has active course enrolments |
-| **Postcondition** | 1. Attendance records are displayed<br>2. Any attendance alerts are highlighted as read |
-| **Author** | Hesham |
-
-#### Main Flow
-
-| **Step** | **Action** |
-|----------|------------|
-| 1 | Student navigates to attendance section |
-| 2 | System retrieves current attendance records |
-| 3 | System displays attendance overview for all courses |
-| 4 | Student views detailed attendance information |
-
-#### Alternate Flow – Attendance Record Cannot Be Retrieved
-
-| **Step** | **Action** |
-|----------|------------|
-| 2.1 | System cannot retrieve attendance record |
-| 2.2 | Display error message |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|----------|----------------------|
-| 1 | System must load attendance records within 3 seconds [REQ_P0001] |
-| 2 | System must provide consistent header formatting [REQ_I0001] |
-| 3 | System must provide tooltips for attendance calculations [REQ_F0701] |
-| 4 | Attendance record must synchronize across interfaces within 5 seconds [REQ_P0003, REQ_F0005, REQ_F0010] |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC012</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F012 View Attendance Record</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To allow students to access and monitor their attendance records across all enrolled courses.</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Student</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>1. Student accesses attendance section<br>2. Student selects specific course for attendance view<br>3. Automated attendance digest notification clicked</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>1. Student is logged in<br>2. Student has active course enrolments</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>1. Attendance records are displayed<br>2. Any attendance alerts are highlighted as read</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr>
+    <td>Step 1</td>
+    <td>Student navigates to attendance section</td>
+  </tr>
+  <tr>
+    <td>Step 2</td>
+    <td>System retrieves current attendance records</td>
+  </tr>
+  <tr>
+    <td>Step 3</td>
+    <td>System displays attendance overview for all courses</td>
+  </tr>
+  <tr>
+    <td>Step 4</td>
+    <td>Student views detailed attendance information</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Alternate Flow - Attendance Record Cannot Be Retrieved</b></td>
+  </tr>
+  <tr>
+    <td>Step 2.1</td>
+    <td>System cannot retrieve attendance record</td>
+  </tr>
+  <tr>
+    <td>Step 2.2</td>
+    <td>Display error message</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr>
+    <td>Rule 1</td>
+    <td>System must load attendance records within 3 seconds [REQ_P0001]</td>
+  </tr>
+  <tr>
+    <td>Rule 2</td>
+    <td>System must provide consistent header formatting [REQ_I0001]</td>
+  </tr>
+  <tr>
+    <td>Rule 3</td>
+    <td>System must provide tooltips for attendance calculations [REQ_F0701]</td>
+  </tr>
+  <tr>
+    <td>Rule 4</td>
+    <td>Attendance record must synchronize across interfaces within 5 seconds [REQ_P0003, REQ_F0005, REQ_F0010]</td>
+  </tr>
+  <tr>
+    <td><b>Author</b></td>
+    <td>Hesham</td>
+  </tr>
+</table>
 
 <p align="center"><em>Table 3.1.12: Use Case UC012 View Attendance Record</em></p>
 
@@ -1143,35 +1824,86 @@ The functional requirement(s) for F013 View Academic Record:
 
 Table 3.1.13 illustrates the use case for the view academic record functionality (UC013), detailing the process as defined by Requirement REQ_F1301, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC013 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F013 View Academic Record |
-| **Purpose** | To allow students to access and review their comprehensive academic records including grades, transcripts, and academic progress |
-| **Actor** | Student |
-| **Trigger** | 1. Student accesses academic records section<br>2. New grade notification received and clicked |
-| **Precondition** | 1. Student is logged in<br>2. Student has academic records in the system |
-| **Postcondition** | 1. Academic records are displayed<br>2. Any academic alerts are highlighted as read |
-| **Author** | Nickleirsch |
-
-#### Main Flow
-
-| **Step** | **Action** |
-|----------|------------|
-| 1 | Student navigates to academic section |
-| 2 | System retrieves academic records |
-| 3 | System displays comprehensive academic performance |
-| 4 | Student views detailed academic information |
-| 5 | Student can export their academic data if they wish to |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|---------|-----------------------|
-| 1 | Academic data must sync within 5 seconds of lecturer updates [REQ_P0003, REQ_F0005, REQ_F0010] |
-| 2 | System must maintain consistent header formatting [REQ_I0001] |
-| 3 | System must provide tooltips for GPA calculations and academic standings [REQ_F0701] |
-| 4 | Academic data must be exportable in Excel/CSV format [REQ_F2601] |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC013</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F013 View Academic Record</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To allow students to access and review their comprehensive academic records including grades, transcripts, and academic progress.</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Student</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>1. Student accesses academic records section<br>2. New grade notification received and clicked</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>1. Student is logged in<br>2. Student has academic records in the system</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>1. Academic records are displayed<br>2. Any academic alerts are highlighted as read</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr>
+    <td>Step 1</td>
+    <td>Student navigates to academic section</td>
+  </tr>
+  <tr>
+    <td>Step 2</td>
+    <td>System retrieves academic records</td>
+  </tr>
+  <tr>
+    <td>Step 3</td>
+    <td>System displays comprehensive academic performance</td>
+  </tr>
+  <tr>
+    <td>Step 4</td>
+    <td>Student views detailed academic information</td>
+  </tr>
+  <tr>
+    <td>Step 5</td>
+    <td>Student can export their academic data if they wish to</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr>
+    <td>Rule 1</td>
+    <td>Academic data must sync within 5 seconds of lecturer updates [REQ_P0003, REQ_F0005, REQ_F0010]</td>
+  </tr>
+  <tr>
+    <td>Rule 2</td>
+    <td>System must maintain consistent header formatting [REQ_I0001]</td>
+  </tr>
+  <tr>
+    <td>Rule 3</td>
+    <td>System must provide tooltips for GPA calculations and academic standings [REQ_F0701]</td>
+  </tr>
+  <tr>
+    <td>Rule 4</td>
+    <td>Academic data must be exportable in Excel/CSV format [REQ_F2601]</td>
+  </tr>
+  <tr>
+    <td><b>Author</b></td>
+    <td>Nickleirsch</td>
+  </tr>
+</table>
 
 <p align="center"><em>Table 3.1.13: Use Case UC013 View Academic Record</em></p>
 
@@ -1193,44 +1925,97 @@ The functional requirement(s) for F014 View Class Schedule:
 
 Table 3.1.14 illustrates the use case for the view class schedule functionality (UC014), detailing the process as defined by Requirement REQ_F1401, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC014 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F014 View Class Schedule |
-| **Purpose** | To allow students to view their current class schedule |
-| **Actor** | Student |
-| **Trigger** | 1. Student navigates to class schedule section <br> 2. Schedule change notification received and clicked |
-| **Precondition** | 1. Student is logged in <br> 2. Student has active course enrolments |
-| **Postcondition** | Current class schedule is displayed |
-
-#### Main Flow
-
-| **Step** | **Action** |
-|----------|------------|
-| 1 | Student navigates to class schedule section |
-| 2 | System retrieves current class schedule |
-| 3 | System displays comprehensive schedule view |
-| 4 | Student views detailed schedule information |
-
-#### Alternate Flow – Schedule Cannot Be Retrieved
-
-| **Step** | **Action** |
-|----------|------------|
-| 2.1 | System cannot retrieve schedule data |
-| 2.2 | Display error message |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|---------|-----------------------|
-| 1 | System must maintain consistent header formatting [REQ_I0001] |
-| 2 | System must provide tooltips for schedule features [REQ_F0701] |
-| 3 | Schedule changes must sync across interfaces within 5 seconds [REQ_P0003, REQ_F0005, REQ_F0010] |
-| 4 | Descriptive course names [REQ_I0003] |
-
-| **Notes** | The class schedule is different from the calendar; the class schedule is a list of every course the student is enrolled in, detailed each class, the instructor, time and location. The calendar on the other hand is an integrated external calendar where events and reminders can be saved too, detailed in F010 Access Calendar |
-|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Author** | Hesham |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC014</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F014 View Class Schedule</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To allow students to view their current class schedule.</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Student</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>1. Student navigates to class schedule section<br>2. Schedule change notification received and clicked</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>1. Student is logged in<br>2. Student has active course enrolments</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>Current class schedule is displayed</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr>
+    <td>Step 1</td>
+    <td>Student navigates to class schedule section</td>
+  </tr>
+  <tr>
+    <td>Step 2</td>
+    <td>System retrieves current class schedule</td>
+  </tr>
+  <tr>
+    <td>Step 3</td>
+    <td>System displays comprehensive schedule view</td>
+  </tr>
+  <tr>
+    <td>Step 4</td>
+    <td>Student views detailed schedule information</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Alternate Flow - Schedule Cannot Be Retrieved</b></td>
+  </tr>
+  <tr>
+    <td>Step 2.1</td>
+    <td>System cannot retrieve schedule data</td>
+  </tr>
+  <tr>
+    <td>Step 2.2</td>
+    <td>Display error message</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr>
+    <td>Rule 1</td>
+    <td>System must maintain consistent header formatting [REQ_I0001]</td>
+  </tr>
+  <tr>
+    <td>Rule 2</td>
+    <td>System must provide tooltips for schedule features [REQ_F0701]</td>
+  </tr>
+  <tr>
+    <td>Rule 3</td>
+    <td>Schedule changes must sync across interfaces within 5 seconds [REQ_P0003, REQ_F0005, REQ_F0010]</td>
+  </tr>
+  <tr>
+    <td>Rule 4</td>
+    <td>Descriptive course names [REQ_I0003]</td>
+  </tr>
+  <tr>
+    <td><b>Notes</b></td>
+    <td>The class schedule is different from the calendar; the class schedule is a list of every course the student is enrolled in, detailed each class, the instructor, time and location. The calendar on the other hand is an integrated external calendar where events and reminders can be saved too, detailed in F010 Access Calendar.</td>
+  </tr>
+  <tr>
+    <td><b>Author</b></td>
+    <td>Hesham</td>
+  </tr>
+</table>
 
 <p align="center"><em>Table 3.1.14: Use Case UC014 View Class Schedule</em></p>
 
@@ -1252,39 +2037,85 @@ The functional requirement(s) for F015 View Exam Timetable:
 
 Table 3.1.15 illustrates the use case for the view exam timetable functionality (UC015), detailing the process as defined by Requirement REQ_F1501, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC015 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | View Exam Timetable |
-| **Purpose** | To allow students to access and view their examination schedule, including dates, times, locations, and exam requirements |
-| **Actor** | Student |
-| **Trigger** | 1. Student accesses exam timetable section <br> 2. Exam schedule notification received and clicked |
-| **Precondition** | 1. Student is logged in <br> 2. Student has active enrolments with exams <br> 3. Exam schedule is published |
-| **Postcondition** | Exam timetable is displayed |
-| **Author** | Hesham |
-
-#### Main Flow
-
-| **Step** | **Action** |
-|----------|------------|
-| 1 | Student navigates to exam timetable section |
-| 2 | System retrieves current exam schedule |
-| 3 | System displays comprehensive exam timetable |
-| 4 | Student views detailed exam information |
-
-#### Alternate Flow – If Exam Timetable Data Cannot Be Retrieved
-
-| **Step** | **Action** |
-|----------|------------|
-| 2.1 | System cannot retrieve exam data |
-| 2.2 | System displays error message |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|---------|-----------------------|
-| 1 | System must maintain consistent header formatting [REQ_I0001] |
-| 2 | Exam dates must sync across interfaces within 5 seconds [REQ_P0003, REQ_F0005, REQ_F0010] |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC015</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>View Exam Timetable</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To allow students to access and view their examination schedule, including dates, times, locations, and exam requirements.</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Student</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>1. Student accesses exam timetable section<br>2. Exam schedule notification received and clicked</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>1. Student is logged in<br>2. Student has active enrolments with exams<br>3. Exam schedule is published</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>Exam timetable is displayed</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr>
+    <td>Step 1</td>
+    <td>Student navigates to exam timetable section</td>
+  </tr>
+  <tr>
+    <td>Step 2</td>
+    <td>System retrieves current exam schedule</td>
+  </tr>
+  <tr>
+    <td>Step 3</td>
+    <td>System displays comprehensive exam timetable</td>
+  </tr>
+  <tr>
+    <td>Step 4</td>
+    <td>Student views detailed exam information</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Alternative Flow – If Exam Timetable Data Cannot Be Retrieved</b></td>
+  </tr>
+  <tr>
+    <td>Step 2.1</td>
+    <td>System cannot retrieve exam data</td>
+  </tr>
+  <tr>
+    <td>Step 2.2</td>
+    <td>System displays error message</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr>
+    <td>Rule 1</td>
+    <td>System must maintain consistent header formatting [REQ_I0001]</td>
+  </tr>
+  <tr>
+    <td>Rule 2</td>
+    <td>Exam dates must sync across interfaces within 5 seconds [REQ_P0003, REQ_F0005, REQ_F0010]</td>
+  </tr>
+  <tr>
+    <td><b>Author</b></td>
+    <td>Hesham</td>
+  </tr>
+</table>
 
 <p align="center"><em>Table 3.1.15: Use Case UC015 View Exam Timetable</em></p>
 
@@ -1306,41 +2137,89 @@ The functional requirement(s) for F016 View Billing Information:
 
 Table 3.1.16 illustrates the use case for the view billing information functionality (UC016), detailing the process as defined by Requirement REQ_F1601, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC016 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | View Billing Information |
-| **Purpose** | To allow students to access and view their invoices and fee as well as due dates to make those payments |
-| **Actor** | Student |
-| **Trigger** | 1. Student accesses billing section <br> 2. Billing update notification received and clicked |
-| **Precondition** | Student is logged in |
-| **Postcondition** | Billing information is displayed |
-
-#### Main Flow
-
-| **Step** | **Action** |
-|----------|------------|
-| 1 | Student navigates to billing section |
-| 2 | System retrieves current billing data |
-| 3 | System displays comprehensive billing information |
-| 4 | Student views detailed billing information with breakdowns by course and due dates |
-
-#### Alternate Flow – If Billing Data Cannot Be Retrieved
-
-| **Step** | **Action** |
-|----------|------------|
-| 2.1 | System cannot retrieve billing information |
-| 2.2 | System displays error message |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|---------|-----------------------|
-| i | System must maintain consistent header formatting [REQ_I0001] |
-| ii | System must provide tooltips for how finances are calculated [REQ_F0701] |
-
-| **Notes** | Billing data is view-only within COMSYS, payments are made externally and as such, not within the confines of the system. |
-| **Author** | Hesham |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC016</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>View Billing Information</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To allow students to access and view their invoices and fees as well as due dates to make those payments.</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Student</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>1. Student accesses billing section<br>2. Billing update notification received and clicked</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>Student is logged in</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>Billing information is displayed</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr>
+    <td>Step 1</td>
+    <td>Student navigates to billing section</td>
+  </tr>
+  <tr>
+    <td>Step 2</td>
+    <td>System retrieves current billing data</td>
+  </tr>
+  <tr>
+    <td>Step 3</td>
+    <td>System displays comprehensive billing information</td>
+  </tr>
+  <tr>
+    <td>Step 4</td>
+    <td>Student views detailed billing information with breakdowns by course and due dates</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Alternative Flow – If Billing Data Cannot Be Retrieved</b></td>
+  </tr>
+  <tr>
+    <td>Step 2.1</td>
+    <td>System cannot retrieve billing information</td>
+  </tr>
+  <tr>
+    <td>Step 2.2</td>
+    <td>System displays error message</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr>
+    <td>Rule i</td>
+    <td>System must maintain consistent header formatting [REQ_I0001]</td>
+  </tr>
+  <tr>
+    <td>Rule ii</td>
+    <td>System must provide tooltips for how finances are calculated [REQ_F0701]</td>
+  </tr>
+  <tr>
+    <td><b>Notes</b></td>
+    <td>Billing data is view-only within COMSYS, payments are made externally and as such, not within the confines of the system.</td>
+  </tr>
+  <tr>
+    <td><b>Author</b></td>
+    <td>Hesham</td>
+  </tr>
+</table>
 
 <p align="center"><em>Table 3.1.16: Use Case UC016 View Billing Information</em></p>
 
@@ -1362,61 +2241,73 @@ The functional requirement(s) for F017 Enrol in Course:
 
 Table 3.1.17 illustrates the use case for the enrol in course functionality (UC017), detailing the process as defined by Requirement REQ_F1701, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC017 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F017 Enrol in Course |
-| **Purpose** | To enable students to register for courses during their designated enrolment period |
-| **Actor** | Student |
-| **Trigger** | Student navigates to enrolment section |
-| **Precondition** | 1. Student is logged in <br> 2. Student has an active enrolment session |
-| **Postcondition** | 1. Student is enrolled in selected course(s) <br> 2. Student schedule is updated <br> 3. Calendar is synced with new schedule |
-| **Author** | Hesham |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC017</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F017 Enrol in Course</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To enable students to register for courses during their designated enrolment period.</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Student</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>1. Student navigates to enrolment section</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>1. Student is logged in<br>2. Student has an active enrolment session</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>1. Student is enrolled in selected course(s)<br>2. Student schedule is updated<br>3. Calendar is synced with new schedule</td>
+  </tr>
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr><td>Step 1</td><td>Student navigates to course enrolment section</td></tr>
+  <tr><td>Step 2</td><td>System displays available courses for enrolment</td></tr>
+  <tr><td>Step 3</td><td>Student selects desired course(s)</td></tr>
+  <tr><td>Step 4</td><td>System validates enrolment eligibility</td></tr>
+  <tr><td>Step 5</td><td>Student confirms course selection</td></tr>
+  <tr><td>Step 6</td><td>System processes enrolment request</td></tr>
+  <tr><td>Step 7</td><td>System displays “enrolment successful”</td></tr>
+  <tr><td>Step 8</td><td>System calls calendar sync to update calendar</td></tr>
+  <tr><td>Step 9</td><td>System asks whether user wants to enrol another course</td></tr>
+  <tr><td>Step 10</td><td>User chooses “No”</td></tr>
 
-#### Main Flow
+  <tr><td colspan="2"><b>Alternative Flow – If Prerequisites Not Met</b></td></tr>
+  <tr><td>Step 4.1.1</td><td>Student does not meet prerequisite requirements</td></tr>
+  <tr><td>Step 4.1.2</td><td>System displays “prerequisite(s) not met!” error</td></tr>
+  <tr><td>Step 4.1.3</td><td>Return to main flow step 9</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 1 | Student navigates to course enrolment section |
-| 2 | System displays available courses for enrolment |
-| 3 | Student selects desired course(s) |
-| 4 | System validates enrolment eligibility |
-| 5 | Student confirms course selection |
-| 6 | System processes enrolment request |
-| 7 | System displays “enrolment successful” |
-| 8 | System calls calendar sync to update calendar |
-| 9 | System asks whether user wants to enrol another course |
-| 10 | User chooses “No” |
+  <tr><td colspan="2"><b>Alternative Flow – If Schedule Conflict Found</b></td></tr>
+  <tr><td>Step 4.2.1</td><td>System detected a schedule conflict</td></tr>
+  <tr><td>Step 4.2.2</td><td>System displays “schedule conflict found!” error</td></tr>
+  <tr><td>Step 4.2.3</td><td>Return to Main Flow step 9</td></tr>
 
-#### Alternate Flow – If Prerequisites Not Met
+  <tr><td colspan="2"><b>Alternative Flow – Enrol Another Course</b></td></tr>
+  <tr><td>Step 9.1</td><td>Student chooses “Yes”</td></tr>
+  <tr><td>Step 9.2</td><td>Return to Main Flow step 2</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 4.1.1 | Student does not meet prerequisite requirements |
-| 4.1.2 | System displays “prerequisite(s) not met!” error |
-| 4.1.3 | Return to main flow step 9 |
+  <tr><td colspan="2"><b>Rules</b></td></tr>
+  <tr><td>Rule 1</td><td>System must maintain consistent header formatting [REQ_I0001]</td></tr>
+  <tr><td>Rule 2</td><td>The course enrolment process must be in a single window [REQ_I0007]</td></tr>
 
-#### Alternate Flow – If Schedule Conflict Found
-
-| **Step** | **Action** |
-|----------|------------|
-| 4.2.1 | System detected a schedule conflict |
-| 4.2.2 | System displays “schedule conflict found!” error |
-| 4.2.3 | Return to Main Flow step 9 |
-
-#### Alternate Flow – Enrol Another Course
-
-| **Step** | **Action** |
-|----------|------------|
-| 9.1 | Student chooses “Yes” |
-| 9.2 | Return to Main Flow step 2 |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|---------|-----------------------|
-| 1 | System must maintain consistent header formatting [REQ_I0001] |
-| 2 | The course enrolment process must be in a single window [REQ_I0007] |
+  <tr><td><b>Author</b></td><td>Hesham</td></tr>
+</table>
 
 <p align="center"><em>Table 3.1.17: Use Case UC017 Enrol in Course</em></p>
 
@@ -1444,42 +2335,65 @@ The functional requirement(s) for F018 Search Past Announcement:
 
 Table 3.1.18 illustrates the use case for the search past announcement functionality (UC018), detailing the process as defined by Requirement REQ_F1801 and REQ_F1802, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC018 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F018 Search Past Announcements |
-| **Purpose** | To allow students to search and retrieve historical announcements using various search criteria |
-| **Actor** | Student |
-| **Trigger** | Student navigates to announcement search page |
-| **Precondition** | 1. Student has an active session <br> 2. Announcements exist for the requesting student |
-| **Postcondition** | Search results are displayed |
-| **Author** | Nickleirsch |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC018</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F018 Search Past Announcements</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To allow students to search and retrieve historical announcements using various search criteria.</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Student</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>1. Student navigates to announcement search page</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>1. Student has an active session<br>2. Announcements exist for the requesting student</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>Search results are displayed</td>
+  </tr>
 
-#### Main Flow
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr><td>Step 1</td><td>Student navigates to announcement search section</td></tr>
+  <tr><td>Step 2</td><td>System displays search interface</td></tr>
+  <tr><td>Step 3</td><td>Student enters search criteria</td></tr>
+  <tr><td>Step 4</td><td>System retrieves matching announcements</td></tr>
+  <tr><td>Step 5</td><td>System displays search results</td></tr>
+  <tr><td>Step 6</td><td>Student views desired announcement</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 1 | Student navigates to announcement search section |
-| 2 | System displays search interface |
-| 3 | Student enters search criteria |
-| 4 | System retrieves matching announcements |
-| 5 | System displays search results |
-| 6 | Student views desired announcement |
+  <tr>
+    <td colspan="2"><b>Alternative Flow – If No Results Found</b></td>
+  </tr>
+  <tr><td>Step 4.1</td><td>System finds no result for search criteria</td></tr>
+  <tr><td>Step 4.2</td><td>System displays “No Results” message</td></tr>
+  <tr><td>Step 4.3</td><td>System prompts retry</td></tr>
+  <tr><td>Step 4.4</td><td>Return to Main Flow step 2</td></tr>
 
-#### Alternate Flow – If No Results Found
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr><td>Rule 1</td><td>System must maintain announcement read status tracking [REQ_F0001]</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 4.1 | System finds no result for search criteria |
-| 4.2 | System displays “No Results” message |
-| 4.3 | System prompts retry |
-| 4.4 | Return to Main Flow step 2 |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|---------|-----------------------|
-| 1 | System must maintain announcement read status tracking [REQ_F0001] |
+  <tr><td><b>Author</b></td><td>Nickleirsch</td></tr>
+</table>
 
 <p align="center"><em>Table 3.1.18: Use Case UC018 Search Past Announcement</em></p>
 
@@ -1513,34 +2427,58 @@ The functional requirement(s) for F019 Customize Notification Preferences:
 
 Table 3.1.19 illustrates the use case for the customize notification preferences functionality (UC019), detailing the process as defined by Requirement REQ_F1901, REQ_F1902 and REQ_F1903, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC019 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F019 Customize Notifications Preference |
-| **Purpose** | To allow students to personalize their notification settings across different channels and categories |
-| **Actor** | Student |
-| **Trigger** | Student accesses notification settings |
-| **Precondition** | Student is logged in |
-| **Postcondition** | 1. Notification preferences are updated <br> 2. New settings are active immediately |
-| **Author** | Hesham |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC019</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F019 Customize Notifications Preference</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To allow students to personalize their notification settings across different channels and categories.</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Student</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>Student accesses notification settings.</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>Student is logged in.</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>1. Notification preferences are updated.<br>2. New settings are active immediately.</td>
+  </tr>
 
-#### Main Flow
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr><td>Step 1</td><td>Student navigates to notification preferences</td></tr>
+  <tr><td>Step 2</td><td>System displays current notification settings</td></tr>
+  <tr><td>Step 3</td><td>Student modifies preferred channels/categories</td></tr>
+  <tr><td>Step 4</td><td>Student confirms modifications</td></tr>
+  <tr><td>Step 5</td><td>System saves new preferences</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 1 | Student navigates to notification preferences |
-| 2 | System displays current notification settings |
-| 3 | Student modifies preferred channels/categories |
-| 4 | Student confirms modifications |
-| 5 | System saves new preferences |
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr><td>Rule 1</td><td>System must support filtering and muting by category [REQ_F1901]</td></tr>
+  <tr><td>Rule 2</td><td>System must respect quiet hours setting [REQ_F2001]</td></tr>
+  <tr><td>Rule 3</td><td>System will store and apply notification preferences ensuring it persists across sessions [REQ_F1903]</td></tr>
 
-#### Rules
-
-| **No.** | **Rule Description** |
-|---------|-----------------------|
-| 1 | System must support filtering and muting by category [REQ_F1901] |
-| 2 | System must respect quiet hours setting [REQ_F2001] |
-| 3 | The system will store and apply notification preferences ensuring it persists across sessions [REQ_F1903] |
+  <tr><td><b>Author</b></td><td>Hesham</td></tr>
+</table>
 
 <p align="center"><em>Table 3.1.19: Use Case UC019 Customize Notification Preference</em></p>
 
@@ -1562,35 +2500,59 @@ The functional requirement(s) for F020 Set ‘Quiet Hours’:
 
 Table 3.1.20 illustrates the use case for the set ‘quiet hours’ functionality (UC020), detailing the process as defined by Requirement REQ_F2001, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC020 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F020 Set ‘Quiet Hours’ |
-| **Purpose** | To allow users to define time periods when notifications should be suppressed |
-| **Actor** | Student |
-| **Trigger** | 1. Student accesses quiet hours settings <br> 2. System prompts student for quiet hours setup |
-| **Precondition** | User is logged in |
-| **Postcondition** | 1. Quiet hours settings are updated <br> 2. Changes are saved and active |
-| **Author** | Hesham |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC020</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F020 Set ‘Quiet Hours’</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To allow users to define time periods when notifications should be suppressed.</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Student</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>1. Student accesses quiet hours settings.<br>2. System prompts student for quiet hours setup.</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>User is logged in.</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>1. Quiet hours settings are updated.<br>2. Changes are saved and active.</td>
+  </tr>
 
-#### Main Flow
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr><td>Step 1</td><td>User navigates to quiet hours settings</td></tr>
+  <tr><td>Step 2</td><td>System displays current quiet hours configuration</td></tr>
+  <tr><td>Step 3</td><td>User sets quiet hours’ time ranges</td></tr>
+  <tr><td>Step 4</td><td>User selects days of week for quiet hours</td></tr>
+  <tr><td>Step 5</td><td>User configures critical notification exceptions</td></tr>
+  <tr><td>Step 6</td><td>User confirms changes</td></tr>
+  <tr><td>Step 7</td><td>System saves new quiet hours configuration</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 1 | User navigates to quiet hours settings |
-| 2 | System displays current quiet hours configuration |
-| 3 | User sets quiet hours’ time ranges |
-| 4 | User selects days of week for quiet hours |
-| 5 | User configures critical notification exceptions |
-| 6 | User confirms changes |
-| 7 | System saves new quiet hours configuration |
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr><td>Rule 1</td><td>System must support filtering and muting by category [REQ_F1901]</td></tr>
+  <tr><td>Rule 2</td><td>System will store and apply notification preferences ensuring it persists across sessions [REQ_F1903]</td></tr>
 
-#### Rules
-
-| **No.** | **Rule Description** |
-|---------|-----------------------|
-| 1 | System must support filtering and muting by category [REQ_F1901] |
-| 2 | The system will store and apply notification preferences ensuring it persists across sessions [REQ_F1903] |
+  <tr><td><b>Author</b></td><td>Hesham</td></tr>
+</table>
 
 <p align="center"><em>Table 3.1.20: Use Case UC020 Set ‘Quiet Hours’</em></p>
 
@@ -1612,45 +2574,72 @@ The functional requirement(s) for F021 View Child’s Information:
 
 Table 3.1.21 illustrates the use case for the view child’s information functionality (UC021), detailing the process as defined by Requirement REQ_F2101, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC021 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F021 View Child’s Information |
-| **Purpose** | To allow parents to securely access and view their child's academic, attendance, and financial records through the university's portal. |
-| **Actor** | Parent |
-| **Trigger** | Parent logs in to the university portal and selects the option to view their child’s information. |
-| **Precondition** | 1. Parent has a registered and verified user account. <br> 2. The student (child) has granted the necessary consent for data access, in accordance with university privacy policies |
-| **Postcondition** | The parent can view up-to-date information regarding their child’s grades, attendance, financial status, and academic details, as presented in a readable format (e.g., tables, summaries, charts). |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC021</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F021 View Child’s Information</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To allow parents to securely access and view their child's academic, attendance, and financial records through the university's portal.</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Parent</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>Parent logs in to the university portal and selects the option to view their child’s information.</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>1. Parent has a registered and verified user account.<br>2. The student (child) has granted the necessary consent for data access, in accordance with university privacy policies.</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>The parent can view up-to-date information regarding their child’s grades, attendance, financial status, and academic details, as presented in a readable format (e.g., tables, summaries, charts).</td>
+  </tr>
 
-#### Main Flow
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr><td>Step 1</td><td>Parent navigates to child information section.</td></tr>
+  <tr><td>Step 2</td><td>System checks that consent has been provided by the student.</td></tr>
+  <tr><td>Step 3</td><td>System retrieves child’s academic, attendance, and financial data.</td></tr>
+  <tr><td>Step 4</td><td>System displays the information with visual aids.</td></tr>
+  <tr><td>Step 5</td><td>Parent may choose to export academic data for record-keeping.</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 1 | Parent selects navigates to child information section |
-| 2 | System checks that consent has been provided by the student. |
-| 3 | System retrieves child’s academic, attendance, and financial data. |
-| 4 | System displays the information with visual aids |
-| 5 | Parent may choose to export academic data for record-keeping. |
+  <tr>
+    <td colspan="2"><b>Alternate Flow – Student Consent Not Granted</b></td>
+  </tr>
+  <tr><td>Step 2.1</td><td>Student did not grant consent to the parent.</td></tr>
+  <tr><td>Step 2.2</td><td>System displays a prompt stating that access to the requested information is restricted.</td></tr>
 
-#### Alternative Flow – Student Consent Not Granted
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr><td>Rule 1</td><td>Only parents with valid authentication and authorization (student’s explicit consent) can access child-related data. [REQ_F0009, REQ_F3001]</td></tr>
+  <tr><td>Rule 2</td><td>Information displayed must comply with privacy regulation. [REQ_F0002]</td></tr>
+  <tr><td>Rule 3</td><td>Parental access is restricted to only the child’s academic, financial, and attendance information. [REQ_F2101]</td></tr>
+  <tr><td>Rule 4</td><td>Data presented must be in a readable, structured format for comprehension. [REQ_I0004]</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 2.1 | Student did not grant consent to the parent. |
-| 2.2 | System displays a prompt stating that access to the requested information is restricted. |
+  <tr><td><b>Notes</b></td><td>
+  Visual aids refer to tables, charts and summaries as parents are users who need quick understanding.<br>
+  For a parent to view a student’s personal data, the student must first provide explicit consent to the university. This consent must be given by physically submitting a signed consent form to the university administration.<br>
+  Once the form is received, an admin user will configure the parent’s access to the student’s data in the system, as defined in F00X: Configure Parent Access.<br>
+  This process is required to ensure compliance with applicable privacy laws and protect student data.
+  </td></tr>
 
-#### Rules
-
-| **No.** | **Rule Description** |
-|---------|-----------------------|
-| 1 | Only parents with valid authentication and authorization (student’s explicit consent) can access child-related data. [REQ_F0009, REQ_F3001] |
-| 2 | Information displayed must comply with privacy regulation. [REQ_F0002] |
-| 3 | Parental access is restricted to only the child’s academic, financial, and attendance information. [REQ_F2101] |
-| 4 | Data presented must be in a readable, structured format for comprehension. [REQ_I0004] |
-
-| **Notes** | Visual aids refer to tables, charts and summaries as parents are users who need quick understanding. <br> For a parent to view a student’s personal data, the student must first provide explicit consent to the university. This consent must be given by physically submitting a signed consent form to the university administration. <br> Once the form is received, an admin user will configure the parent’s access to the student’s data in the system, as defined in F00X: Configure Parent Access. <br> This process is required to ensure compliance with applicable privacy laws and protect student data. |
-|-----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Author** | Lim Xin Yee and Nickleirsch |
+  <tr><td><b>Author</b></td><td>Lim Xin Yee and Nickleirsch</td></tr>
+</table>
 
 <p align="center"><em>Table 3.1.21: Use Case UC021 View Child’s Information</em></p>
 
@@ -1672,50 +2661,74 @@ The functional requirement(s) for F022 View University Contact Directory:
 
 Table 3.1.22 illustrates the use case for the view university contact directory functionality (UC022), detailing the process as defined by Requirement REQ_F2201, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC022 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F022 View University Contact Directory |
-| **Purpose** | To allow parents to access and view university contact details, including departments and relevant staff. |
-| **Actor** | Parent |
-| **Trigger** | The parent selects the "Contact Directory" option from the university portal after logging in. |
-| **Precondition** | Parent is logged in |
-| **Postcondition** | 1. The system displays a filtered contact directory containing permitted university contact details. <br> 2. Parent may optionally initiate communication through live chat or contact form. |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC022</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F022 View University Contact Directory</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To allow parents to access and view university contact details, including departments and relevant staff.</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Parent</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>The parent selects the "Contact Directory" option from the university portal after logging in.</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>Parent is logged in.</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>1. The system displays a filtered contact directory containing permitted university contact details.<br>2. Parent may optionally initiate communication through live chat or contact form.</td>
+  </tr>
 
-#### Main Flow
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr><td>Step 1</td><td>Parent navigates to the contact directory section.</td></tr>
+  <tr><td>Step 2</td><td>Parent chooses faculty or department to contact.</td></tr>
+  <tr><td>Step 3</td><td>The system loads the contact directory interface with filters (if any are applied).</td></tr>
+  <tr><td>Step 4</td><td>Parent selects a contact entry to view full details.</td></tr>
+  <tr><td>Step 5</td><td>Parent can choose to initiate communication via live chat or contact form.</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 1 | Parent navigates to the contact directory section |
-| 2 | Parent chooses faculty or department to contact |
-| 3 | The system loads the contact directory interface with filters (if any are applied). |
-| 4 | Parent selects a contact entry to view full details. |
-| 5 | Parent can choose to initiate communication via live chat or contact form. |
+  <tr>
+    <td colspan="2"><b>Alternate Flow – Parent Initiates Live Chat</b></td>
+  </tr>
+  <tr><td>Step 5.1.1</td><td>Parent clicks on “Live Chat” from a contact entry.</td></tr>
+  <tr><td>Step 5.1.2</td><td>Proceed to F011 Chat.</td></tr>
 
-#### Alternative Flow – Parent Initiates Live Chat
+  <tr>
+    <td colspan="2"><b>Alternate Flow – Parent Initiates Contact Form</b></td>
+  </tr>
+  <tr><td>Step 5.2.1</td><td>Parent clicks on “Contact Form” from a contact entry.</td></tr>
+  <tr><td>Step 5.2.2</td><td>Proceed to F023 Schedule Meeting with University Staff.</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 5.1.1 | Parent clicks on “Live Chat” from a contact entry. |
-| 5.1.2 | Proceed to F011 Chat |
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr><td>Rule 1</td><td>The contact directory interface shall include filters for faculty and department. [REQ_F2201]</td></tr>
+  <tr><td>Rule 2</td><td>The system shall enable communication between parents and authorized university staff through chat, or a secure contact form embedded within the directory interface. [REQ_F2201, REQ_F2301]</td></tr>
 
-#### Alternative Flow – Parent Initiates Contact Form
+  <tr><td><b>Notes</b></td><td>
+  1. Faculty refers to educational divisions within the university (e.g. Faculty of Multimedia, Faculty of Engineering).<br>
+  2. Department refers to the administrative divisions of the university (e.g. Finance, Student Affairs).
+  </td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 5.2.1 | Parent clicks on “Contact form” from a contact entry. |
-| 5.2.2 | Proceed to F023 Schedule Meeting with University Staff |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|---------|-----------------------|
-| 1 | The contact directory interface shall include filters for faculty and department. [REQ_F2201] |
-| 2 | The system shall enable communication between parents and authorized university staff through chat, or a secure contact form embedded within the directory interface. [REQ_F2201, REQ_F2301] |
-
-| **Notes** | 1. Faculty refers to educational divisions within the university (e.g. Faculty of Multimedia, Faculty of Engineering). <br> 2. Department refers to the administrative divisions of the university (e.g. Finance, Student Affairs). |
-|-----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Author** | Lim Xin Yee |
+  <tr><td><b>Author</b></td><td>Lim Xin Yee</td></tr>
+</table>
 
 <p align="center"><em>Table 3.1.22: Use Case UC022 View University Contact Directory</em></p>
 
@@ -1737,42 +2750,65 @@ The functional requirement(s) for F023 Schedule Meeting with University Staff:
 
 Table 3.1.23 illustrates the use case for the schedule meeting with university staff functionality (UC023), detailing the process as defined by Requirement REQ_F2301, followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC023 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F023 Schedule Meeting with University Staff |
-| **Purpose** | To allow parents to request and schedule meetings with relevant university staff using a secure contact form integrated within the parent portal. |
-| **Actor** | Parent |
-| **Trigger** | Parent submits a meeting request through the contact form available on the university portal. |
-| **Precondition** | 1. Parent is logged in <br> 2. The contact form is properly configured and operational. |
-| **Postcondition** | 1. A meeting request is logged and sent to the selected staff member. <br> 2. The requested meeting is scheduled or followed up via further communication. |
-| **Author** | Lim Xin Yee |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC023</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F023 Schedule Meeting with University Staff</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To allow parents to request and schedule meetings with relevant university staff using a secure contact form integrated within the parent portal.</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Parent</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>Parent submits a meeting request through the contact form available on the university portal.</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>1. Parent is logged in.<br>2. The contact form is properly configured and operational.</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>1. A meeting request is logged and sent to the selected staff member.<br>2. The requested meeting is scheduled or followed up via further communication.</td>
+  </tr>
 
-#### Main Flow
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr><td>Step 1</td><td>Parent navigates to contact directory section.</td></tr>
+  <tr><td>Step 2</td><td>Parent selects a university staff member from the contact list.</td></tr>
+  <tr><td>Step 3</td><td>Parent fills out the contact form, including preferred meeting date, time, and purpose.</td></tr>
+  <tr><td>Step 4</td><td>Parent submits the form.</td></tr>
+  <tr><td>Step 5</td><td>System sends the meeting request to the selected staff member.</td></tr>
+  <tr><td>Step 6</td><td>The meeting request is sent to the staff member.</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 1 | Parent navigates to contact directory section |
-| 2 | Parent selects a university staff member from the contact list. |
-| 3 | Parent fills out the contact form, including preferred meeting date, time, and purpose. |
-| 4 | Parent submits the form. |
-| 5 | System sends the meeting request to the selected staff member. |
-| 6 | The meeting request is sent to the staff member. |
+  <tr>
+    <td colspan="2"><b>Alternate Flow – Invalid Form Submission</b></td>
+  </tr>
+  <tr><td>Step 4.1</td><td>System detects missing/invalid required fields.</td></tr>
+  <tr><td>Step 4.2</td><td>System prompts the parent to complete all necessary fields.</td></tr>
 
-#### Alternative Flow – Invalid Form Submission
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr><td>Rule 1</td><td>The contact directory interface shall include filters for faculty and department. [REQ_F2201]</td></tr>
+  <tr><td>Rule 2</td><td>The system shall enable communication between parents and authorized university staff through chat, or a secure contact form embedded within the directory interface. [REQ_F2201, REQ_F2301]</td></tr>
+  <tr><td>Rule 3</td><td>System will notify the parent of the meeting status (confirmed, rescheduled, or declined). [REQ_0601]</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 4.1 | System detects missing/invalid required fields. |
-| 4.2 | System prompts the parent to complete all necessary fields. |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|---------|-----------------------|
-| 1 | The contact directory interface shall include filters for faculty and department. [REQ_F2201] |
-| 2 | The system shall enable communication between parents and authorized university staff through chat, or a secure contact form embedded within the directory interface. [REQ_F2201, REQ_F2301] |
-| 3 | System will notify the parent of the meeting status (confirmed, rescheduled, or declined). [REQ_0601] |
+  <tr><td><b>Author</b></td><td>Lim Xin Yee</td></tr>
+</table>
 
 <p align="center"><em>Table 3.1.23: Use Case UC023 Schedule Meeting with University Staff</em></p>
 
@@ -1800,42 +2836,65 @@ The functional requirement(s) for F024 Manage Academic Resource:
 
 Table 3.1.24 illustrates the use case for the manage academic resource functionality (UC024), detailing the process as defined by Requirement REQ_F2401, and REQ_F2402 followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC024 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F024 Manage Academic Resource |
-| **Purpose** | Enable lecturers to update academic materials in a centralized folder and share a unique link to it. |
-| **Actor** | Lecturer |
-| **Trigger** | Lecturer selects the option to update course material. |
-| **Precondition** | Lecturer is logged in |
-| **Postcondition** | Academic resource is successfully uploaded |
-| **Author** | Nickleirsch |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC024</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F024 Manage Academic Resource</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>Enable lecturers to update academic materials in a centralized folder and share a unique link to it.</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Lecturer</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>Lecturer selects the option to update course material.</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>Lecturer is logged in.</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>Academic resource is successfully uploaded.</td>
+  </tr>
 
-#### Main Flow
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr><td>Step 1</td><td>Lecturer navigates to the course management section.</td></tr>
+  <tr><td>Step 2</td><td>Lecturer selects the relevant course.</td></tr>
+  <tr><td>Step 3</td><td>Lecturer selects “Update Academic Resource.”</td></tr>
+  <tr><td>Step 4</td><td>Lecturer chooses one or more files to upload.</td></tr>
+  <tr><td>Step 5</td><td>System checks file type and size.</td></tr>
+  <tr><td>Step 6</td><td>System stores the material in a centralized location.</td></tr>
+  <tr><td>Step 7</td><td>System displays a confirmation of successful upload along with unique link to the resource.</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 1 | Lecturer navigates to the course management section. |
-| 2 | Lecturer selects the relevant course. |
-| 3 | Lecturer selects “Update Academic Resource.” |
-| 4 | Lecturer chooses one or more files to upload. |
-| 5 | System checks file type and size. |
-| 6 | System stores the material in a centralized location. |
-| 7 | System displays a confirmation of successful upload along with unique link to the resource. |
+  <tr>
+    <td colspan="2"><b>Alternate Flow – Uploading Unsupported File Type or Size</b></td>
+  </tr>
+  <tr><td>Step 5.1.1</td><td>The lecturer tries to upload an unsupported file format or size.</td></tr>
+  <tr><td>Step 5.1.2</td><td>The system displays a clear error, prompting a retry.</td></tr>
 
-#### Alternative Flow – Uploading Unsupported File Type or Size
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr><td>Rule 1</td><td>Only authenticated lecturers can upload materials. [REQ_F0009]</td></tr>
+  <tr><td>Rule 2</td><td>Upload location must be centralized and accessible via a unique link. [REQ_F2401, REQ_F2402]</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 5.1.1 | The lecturer tries to upload an unsupported file format or size. |
-| 5.1.2 | The system displays a clear error, prompting a retry. |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|---------|-----------------------|
-| 1 | Only authenticated lecturers can upload materials. [REQ_F0009] |
-| 2 | Upload location must be centralized and accessible via a unique link. [REQ_F2401, REQ_F2402] |
+  <tr><td><b>Author</b></td><td>Nickleirsch</td></tr>
+</table>
 
 <p align="center"><em>Table 3.1.24: Use Case UC024 Manage Academic Resource</em></p>
 
@@ -1857,40 +2916,61 @@ The functional requirement(s) for F025 View Announcement Read Status:
 
 Table 3.1.25 illustrates the use case for the view announcement read status functionality (UC025), detailing the process as defined by Requirement REQ_F2501 followed by an activity diagram which represents the process flow.
 
-| **Use Case ID** | UC025 |
-|------------------|-------|
-| **Version** | 1.0 |
-| **Use Case** | F025 View Announcement Read Status |
-| **Purpose** | To allow lecturers to view which students have read a particular announcement. |
-| **Actor** | Lecturer |
-| **Trigger** | Lecturer wants to check which recipients have read a specific announcement. |
-| **Precondition** | Lecturer is logged in |
-| **Postcondition** | Lecturer can see which recipients have read or have not read the announcement. |
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td><b>Use Case ID</b></td>
+    <td>UC025</td>
+  </tr>
+  <tr>
+    <td><b>Version</b></td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td><b>Use Case</b></td>
+    <td>F025 View Announcement Read Status</td>
+  </tr>
+  <tr>
+    <td><b>Purpose</b></td>
+    <td>To allow lecturers to view which students have read a particular announcement.</td>
+  </tr>
+  <tr>
+    <td><b>Actor</b></td>
+    <td>Lecturer</td>
+  </tr>
+  <tr>
+    <td><b>Trigger</b></td>
+    <td>Lecturer wants to check which recipients have read a specific announcement.</td>
+  </tr>
+  <tr>
+    <td><b>Precondition</b></td>
+    <td>Lecturer is logged in.</td>
+  </tr>
+  <tr>
+    <td><b>Postcondition</b></td>
+    <td>Lecturer can see which recipients have read or have not read the announcement.</td>
+  </tr>
 
-#### Main Flow
+  <tr>
+    <td colspan="2"><b>Main Flow</b></td>
+  </tr>
+  <tr><td>Step 1</td><td>Lecturer navigates to the announcement history.</td></tr>
+  <tr><td>Step 2</td><td>Lecturer selects an announcement they have sent.</td></tr>
+  <tr><td>Step 3</td><td>System displays a list of recipients with their read status, with real-time updates.</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 1 | Lecturer navigates to the announcement history. |
-| 2 | Lecturer selects an announcement they have sent. |
-| 3 | System displays a list of recipients with their read status, with real-time updates. |
+  <tr>
+    <td colspan="2"><b>Alternate Flow – No Announcements Exist</b></td>
+  </tr>
+  <tr><td>Step 1.1</td><td>If no announcements have been made yet, the system prompts the user to make an announcement.</td></tr>
 
-#### Alternative Flow – No Announcements Exist
+  <tr>
+    <td colspan="2"><b>Rules</b></td>
+  </tr>
+  <tr><td>Rule 1</td><td>Only announcement authors can view read statuses. [REQ_F2501]</td></tr>
+  <tr><td>Rule 2</td><td>Read status is updated in real time. [REQ_F0001]</td></tr>
 
-| **Step** | **Action** |
-|----------|------------|
-| 1.1 | If no announcements have been made yet, the system prompts the user to make an announcement. |
-
-#### Rules
-
-| **No.** | **Rule Description** |
-|---------|-----------------------|
-| 1 | Only announcement authors can view read statuses. [REQ_F2501] |
-| 2 | Read status is updated in real time. [REQ_F0001] |
-
-| **Notes** | Read receipts are only supported for portal announcements. |
-|-----|---------------------------------------------------------------|
-| **Author** | Nickleirsch |
+  <tr><td><b>Notes</b></td><td>Read receipts are only supported for portal announcements.</td></tr>
+  <tr><td><b>Author</b></td><td>Nickleirsch</td></tr>
+</table>
 
 <p align="center"><em>Table 3.1.25: Use Case UC025 View Announcement Read Status</em></p>
 
