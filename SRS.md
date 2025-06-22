@@ -4229,6 +4229,7 @@ The period of inactivity after which a user is automatically logged out to maint
 A communication protocol used in COMSYS for real-time features like live chat and instant notifications, enabling bidirectional, low-latency data exchange.
 
 ---
+---
 
 ## 3.8 Supporting Information
 
@@ -4236,23 +4237,22 @@ A communication protocol used in COMSYS for real-time features like live chat an
 
 | **Session ID** | **Date and Time** | **Technique** | **Section Reviewed** | **Participant & Role** | **No. of Defects** |
 |----------------|-------------------|---------------|----------------------|------------------------|--------------------|
-| VS-01 | 20/06/2025; 10am-1pm | Inspection | Sections 3.1, 3.3, 3.4 | Yang Jia En (Inspector), Teoh Xuan Xuan (Inspector, Moderator), Tey Jun Cheng (Inspector) | 12 |
-| VS-02 | 21/06/2025; 2pm-5pm | Inspection | Sections 3.2, 3.5, 3.7 | Tey Jun Cheng (Author), Teoh Xuan Xuan (Inspector), Yang Jia En (Inspector, Organizer) | 12 |
+| VS-01 | 20/06/2025; 10am-1pm | Inspection | Sections 3.1, 3.3, 3.4 | Yang Jia En (Inspector), Teoh Xuan Xuan (Inspector), Tey Jun Cheng (Inspector) | 12 |
+| VS-02 | 21/06/2025; 2pm-5pm | Inspection | Sections 3.2, 3.5, 3.7 | Tey Jun Cheng (Inspector), Teoh Xuan Xuan (Inspector), Yang Jia En (Inspector, Organizer) | 12 |
 
 ### 3.8.2 Defect Summary
 
+#### Severity Levels
+
 | **Severity** | **Description** |
 |--------------|------------------|
-| High | Affects legal clarity and implementation |
-| Medium | Unclear scope for developers/translators |
-| Medium | Vague functionality |
-| Medium | Incomplete data presentation |
-| High | Affects traceability and RTM integrity |
-| Critical | Key functionality gap |
-| Minor | Affects readability |
-| High | Functional inconsistency |
-| High | Conflicting system logic |
-| Critical | Breaks digital UX and feasibility |
+| 1 | Minor issue; affects readability or minor clarity problems |
+| 2 | Low impact; vague functionality, incomplete data presentation, or unclear scope for developers/translators |
+| 3 | Medium impact; functional inconsistency or conflicting system logic |
+| 4 | High impact; affects legal clarity, traceability, or RTM integrity |
+| 5 | Critical defect; key functionality gap or breaks digital UX and feasibility |
+
+--
 
 #### A. Content Defect
 
@@ -4356,6 +4356,17 @@ A communication protocol used in COMSYS for real-time features like live chat an
 
 ### 3.8.6 Requirements Traceability Matrix
 
+#### Traceability Score Description
+
+| **Traceability Score** | **Description** |
+|------------------------|------------------|
+| 1 | Linked to only 1 artifact (e.g., just a goal, or just a use case) |
+| 2 | Linked to 2 artifacts (e.g., goal + feature) |
+| 3 | Linked to 3 artifacts, but links may be basic or unverified |
+| 4 | Linked to 3 artifacts with high confidence, correctness, and completeness (e.g., validated relationships, clear traceability) |
+
+--
+
 | Req ID     | Requirement Description                                              | Linked Goal(s) | Feature(s) | Use Case(s)  | Traceability Score (1–4) |
 |------------|-----------------------------------------------------------------------|----------------|------------|--------------|--------------------------|
 | REQ_F0002  | The system shall comply with GDPR and FERPA with specific controls   | G1             | F0002      | UC0002       | 4                        |
@@ -4373,9 +4384,9 @@ A communication protocol used in COMSYS for real-time features like live chat an
 
 | Role   | Name          | Primary Responsibility           | No. of Session Participated |
 |--------|---------------|-----------------------------------|-----------------------------|
-| Student | Yang Jia En   | Inspector, Validation Contributor | 2                           |
-| Student | Tey Jun Cheng | Inspector, Validation Contributor | 2                           |
-| Student | Teoh Xuan Xuan| Author, Documentation Reviewer    | 2                           |
+| Student | Yang Jia En   | Inspector, Organizer | 2                           |
+| Student | Tey Jun Cheng | Inspector | 2                           |
+| Student | Teoh Xuan Xuan | Inspector | 2                           |
 
 --
 
@@ -4383,7 +4394,7 @@ A communication protocol used in COMSYS for real-time features like live chat an
 
 | Activity                  | Yang Jia En | Tey Jun Cheng | Teoh Xuan Xuan |
 |---------------------------|-------------|---------------|----------------|
-| Commits Made              | 8           | 6             | 10             |
-| Pull Requests Merged      | 3           | 2             | 4              |
-| Change Log Entries Made   | 5           | 4             | 6              |
+| Commits Made              | 5           | 3             | 5             |
+| Pull Requests Merged      | 3           | 1             | 1              |
+| Change Log Entries Made   | 2           | 1             | 2              |
 
