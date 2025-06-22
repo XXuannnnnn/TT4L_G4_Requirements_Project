@@ -16,3 +16,6 @@
 | CH-12         | REQ_P0003, REQ_P0005         | Standardized “real-time” threshold and revised conflicting performance wording.                           | Tey Jun Cheng       | 2025-06-22              | VS-02              |
 | CH-13         | REQ_F2001, UC020             | Added exception logic to Quiet Hours feature to allow override by critical notifications.                 | Yang Jia En         | 2025-06-22              | VS-01              |
 | CH-14         | REQ_F3001, Glossary          | Replaced physical consent requirement with secure digital consent methods (e.g., OTP, verified email link). | Teoh Xuan Xuan      | 2025-06-22              | VS-01              |
+| CH-15 | REQ_I0004 / REQ_I0006 | Removed duplicate requirement (REQ_I0006); retained REQ_I0004 only | Teoh Xuan Xuan | 22-06-2025 | VS-02 |
+| CH-16 | REQ_F0801, UC008 | Listed complex features (quiet time, timeout, etc.); updated rule; added glossary definition for "complex feature" | Tey Jun Cheng | 22-06-2025 | VS-02 |
+| CH-17 | UC001 | Added alternate flow for password recovery ("Forgot Password") | Yang Jia En | 22-06-2025 | VS-02 |
