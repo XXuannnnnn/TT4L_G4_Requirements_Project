@@ -4237,8 +4237,8 @@ A communication protocol used in COMSYS for real-time features like live chat an
 
 | **Session ID** | **Date and Time** | **Technique** | **Section Reviewed** | **Participant & Role** | **No. of Defects** |
 |----------------|-------------------|---------------|----------------------|------------------------|--------------------|
-| VS-01 | 20/06/2025; 10am-1pm | Inspection | Sections 3.1, 3.3, 3.4 | Yang Jia En (Inspector), Teoh Xuan Xuan (Inspector), Tey Jun Cheng (Inspector) | 12 |
-| VS-02 | 21/06/2025; 2pm-5pm | Inspection | Sections 3.2, 3.5, 3.7 | Tey Jun Cheng (Inspector), Teoh Xuan Xuan (Inspector), Yang Jia En (Inspector, Organizer) | 12 |
+| VS-01 | 21/06/2025; 10am-1pm | Inspection | Sections 3.1, 3.3, 3.4 | Yang Jia En (Inspector), Teoh Xuan Xuan (Inspector), Tey Jun Cheng (Inspector) | 12 |
+| VS-02 | 22/06/2025; 2pm-5pm | Inspection | Sections 3.2, 3.5, 3.7 | Tey Jun Cheng (Inspector), Teoh Xuan Xuan (Inspector), Yang Jia En (Inspector, Organizer) | 12 |
 
 ### 3.8.2 Defect Summary
 
@@ -4271,6 +4271,10 @@ A communication protocol used in COMSYS for real-time features like live chat an
 | REQ_I0004 / REQ_I0006 | Duplicate functional requirements with identical description and different IDs detected | Inspector | Consolidate into one unique ID and remove redundancy | VS-02 | 4 |
 | REQ_F0801 | Requirement refers to “complex features” without defining which features are considered complex | Inspector | List specific complex features in REQ_F0801 and UC008 Rules section | VS-02 | 3 |
 | UC001 | Login use case lacks flow for password recovery/account reset | Inspector | Add alternate flow: “Forgot Password” handling | VS-02 | 3 |
+| UC004, UC008, UC011, UC015, UC016, UC017, UC018 | Inconsistent naming of “Alternative Flow” vs. “Alternate Flow” on Pg 23–24, 28, etc. | Inspector | Standardize to a single term across all use cases | VS-02 | 1 |
+| UC021 | Reference to “F00X: Configure Parent Access” is invalid (placeholder not replaced) | Inspector | Replace with correct label “F030: Configure Parent Access” | VS-02 | 2 |
+| UC023 | Text refers to incorrect table caption “3.1.22” instead of “3.1.23" | Inspector | Update text to reflect correct table number (3.1.23) | VS-02 | 2 |
+| REQ_F0902 | REQ_F0902 does not specify if users can cancel/edit scheduled notifications before sending | Inspector | Add an alternate flow in UC009 to allow editing or cancelling scheduled notifications | VS-02 | 2 |
 
 --
 
@@ -4283,12 +4287,15 @@ A communication protocol used in COMSYS for real-time features like live chat an
 | Section 1 | Missing list of clearly defined system goals (Goal ID: G1–G5) | Inspector | Add “System Goals” section and use Goal IDs in RTM | VS-01 | 3 |
 | - | Feature missing from functional requirements list and use case index | Inspector | Add F034 and UC034 with activity diagram and alternate flows | VS-01 | 4 |
 | Pg 17 | Typographical error in user expectations paragraph | Inspector | Remove “be” from phrase “expected to be undergo training” | VS-01 | 2 |
-| Pg 7 | Glossary defines “real-time” as 5 seconds but used inconsistently in later requirements | Inspector | Add consistent glossary definition and revise all related REQs | VS-01 | 3 |
+| Pg 7 | Definition defines “real-time” as 5 seconds but used inconsistently in later requirements | Inspector | Add consistent glossary definition and revise all related REQs | VS-01 | 3 |
 | Pg 31 | No documentation of exception behavior for critical messages during quiet hours | Inspector | Add a rule or note in UC020 to clarify override conditions | VS-01 | 3 |
 | Pg 36 | Glossary defines consent revocation as physical-only with no mention of digital flow | Inspector | Revise glossary and REQ_F3001 to include secure digital revocation options | VS-01 | 3 |
 | Pg 90 | REQ_I0004 and REQ_I0006 are identical in wording, causing redundancy | Inspector | Remove one instance or reword if truly distinct | VS-02 | 4 |
 | Pg 32 | “Complex features” term in REQ_F0801 is undefined | Inspector | Add glossary term and explicitly list complex features in requirement | VS-02 | 3 |
 | Pg 18 | No alternate flow for password recovery is documented in UC001 | Inspector | Add alternate flow for “Forgot Password” scenario | VS-02 | 3 |
+| Pg 23–24, 28, 39, 47, 49, 51–53 | Mixed use of "Alternative Flow" and "Alternate Flow" | Inspector | Unify terminology: Use either “Alternate Flow” or “Alternative Flow” consistently | VS-02 | 1 |
+| Pg 59 | Incorrect cross-reference to “F00X” instead of actual use case “F030” | Inspector | Correct to “F030” for accurate mapping | VS-02 | 2 |
+| Pg 64 | Text incorrectly references Table 3.1.23 as 3.1.22 | Inspector | Update to correct number in caption and cross-references | VS-02 | 2 |
 
 --
 
@@ -4305,6 +4312,9 @@ A communication protocol used in COMSYS for real-time features like live chat an
 | REQ_I0004/I0006 | Stakeholders may assume two separate behaviors when it’s actually a duplicate requirement | Inspector | VS-02 | 4 |
 | REQ_F0801 | Stakeholders unsure which features need to be supported by help documentation | Inspector | VS-02 | 3 |
 | UC001 | Stakeholders expect a basic system to support password reset functionality | Inspector | VS-02 | 3 |
+| UC004, UC008, UC011, UC015, UC016, UC017, UC018 | Terminology inconsistency may confuse readers and reviewers of use cases | Inspector | VS-02 | 1 |
+| UC021 | Incorrect use case reference may confuse reviewers or downstream developers | Inspector | VS-02 | 2 |
+| UC023 | Table references mismatch may cause reviewer confusion in documentation | Inspector | VS-02 | 2 |
 
 --
 
@@ -4325,6 +4335,10 @@ A communication protocol used in COMSYS for real-time features like live chat an
 | CF-11 | Requirement REQ_I0004 and REQ_I0006 describe the exact same functionality using different IDs | Duplicate requirement IDs may create confusion in development, testing, and maintenance processes. May also cause redundancy in traceability matrices and validation reports. | QA Team, Developers | VS-02 |
 | CF-12 | “Complex features” is vague; may lead to incomplete or inconsistent documentation coverage | Without defining which features are considered complex, help documentation may not address user needs completely. Leads to inconsistent support coverage across modules. | Developers, QA, Helpdesk | VS-02 |
 | CF-13 | Login use case lacks handling of forgotten passwords, a standard user expectation | Absence of password recovery flow can affect usability, user experience, and system adoption. May cause user frustration and increase helpdesk tickets. | QA Team, Developers, End Users | VS-02 |
+| CF-14 | Use cases inconsistently use “Alternative Flow” vs “Alternate Flow” | The inconsistency reduces document professionalism, may cause confusion during reviews, and affects standardization | QA, Documentation Team | VS-02 |
+| CF-15 | Use case references placeholder “F00X” instead of resolved use case ID “F030” | Placeholder label not updated creates traceability errors and complicates downstream implementation mapping | QA team, Technical Writers | VS-02 |
+| CF-16 | Text mislabelled Table 3.1.23 as 3.1.22 | Incorrect table references lead to navigation ambiguity for reviewers and breaks internal document cross-referencing | QA, Editors | VS-02 |
+| CF-17 | No mention of cancel/edit options for scheduled notifications | Missing alternate flow for scheduled notification management may lead to confusion or inability to modify queued messages | Lecturers, Admin | VS-02 |
 
 --
 
@@ -4345,6 +4359,10 @@ A communication protocol used in COMSYS for real-time features like live chat an
 | CF-11 | Retain REQ_I0004 as the primary ID, delete REQ_I0006, and update all references accordingly | Y | Duplicates removed, ID reference integrity restored | Avoids traceability error and stakeholder confusion |
 | CF-12 | Expanded REQ_F0801 and UC008 Rule 3 with a list of complex features; added glossary term for clarity | Y | All stakeholders aligned on features requiring detailed guides | Ensures help documentation covers all critical areas |
 | CF-13 | Added alternate flow under UC001 to describe password recovery (Forgot Password) functionality | Y | Password reset scenario is now captured in the login process | Aligns with usability expectations and completeness |
+| CF-14 | Replaced all instances of “Alternative Flow” with “Alternate Flow” for consistency | Y | Unified terminology across use cases | Increases clarity and editorial consistency |
+| CF-15 | Update “F00X: Configure Parent Access” to “F030: Configure Parent Access” in UC021 | Y | Reference is now accurate and traceable | Ensures referential integrity in documentation |
+| CF-16 | Corrected text from “Table 3.1.22” to “Table 3.1.23” | Y | Numbering aligns with actual section reference | Fixes cross-reference clarity in SRS document |
+| CF-17 | Introduced an alternate flow titled "Cancel or Modify Scheduled Notification" in UC009. Include access, selection, update/cancel options, and confirmation. | Y | Scheduled notifications can now be modified or cancelled | Ensures clarity |
 
 --
 
@@ -4369,6 +4387,10 @@ A communication protocol used in COMSYS for real-time features like live chat an
 | CH-15 | REQ_I0004 / REQ_I0006 | Removed duplicate requirement (REQ_I0006); retained REQ_I0004 only | Teoh Xuan Xuan | 22-06-2025 | VS-02 |
 | CH-16 | REQ_F0801, UC008 | Listed complex features (quiet time, timeout, etc.); updated rule; added glossary definition for "complex feature" | Tey Jun Cheng | 22-06-2025 | VS-02 |
 | CH-17 | UC001 | Added alternate flow for password recovery ("Forgot Password") | Yang Jia En | 22-06-2025 | VS-02 |
+| CH-18 | UC004, UC008, UC011, UC015, UC016, UC017, UC018 | Replaced “Alternative Flow” with “Alternate Flow” on 8 pages | Yang Jia En | 22-06-2025 | VS-02 |
+| CH-19 | UC021 | Fixed broken reference “F00X” to “F030” in View Child’s Info use case | Teoh Xuan Xuan | 22-06-2025 | VS-02 |
+| CH-20 | UC023 | Corrected table number reference to 3.1.23 | Tey Jun Cheng | 22-06-2025 | VS-02 |
+| CH-21 | REQ_F0902 | Added alternate flow to UC009 for cancelling or modifying scheduled notifications. Clarified REQ_F0902. | Yang Jia En | 22-06-2025 | VS-02 |
 
 --
 
