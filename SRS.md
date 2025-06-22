@@ -4268,6 +4268,9 @@ A communication protocol used in COMSYS for real-time features like live chat an
 | REQ_P0003, REQ_P0005 | “Real-time” is defined as 5s in Section 1.4 but used inconsistently (2min in P0005) | Inspector | Standardize all performance-related timing to a unified threshold or redefine terms | VS-01 | 4 |
 | REQ_F2001 | Quiet Hours feature lacks exception handling for critical notifications (e.g., urgent alerts) | Inspector | Specify that critical alerts override quiet hours and are always delivered immediately | VS-01 | 4 |
 | REQ_F3001 | Requiring students to mail physical letters for parental consent is impractical in a digital system | Inspector | Replace with secure digital consent method: digital signature, OTP, or verified email | VS-01 | 5 |
+| REQ_I0004 / REQ_I0006 | Duplicate functional requirements with identical description and different IDs detected | Inspector | Consolidate into one unique ID and remove redundancy | VS-02 | 4 |
+| REQ_F0801 | Requirement refers to “complex features” without defining which features are considered complex | Inspector | List specific complex features in REQ_F0801 and UC008 Rules section | VS-02 | 3 |
+| UC001 | Login use case lacks flow for password recovery/account reset | Inspector | Add alternate flow: “Forgot Password” handling | VS-02 | 3 |
 
 --
 
@@ -4283,6 +4286,9 @@ A communication protocol used in COMSYS for real-time features like live chat an
 | Pg 7 | Glossary defines “real-time” as 5 seconds but used inconsistently in later requirements | Inspector | Add consistent glossary definition and revise all related REQs | VS-01 | 3 |
 | Pg 31 | No documentation of exception behavior for critical messages during quiet hours | Inspector | Add a rule or note in UC020 to clarify override conditions | VS-01 | 3 |
 | Pg 36 | Glossary defines consent revocation as physical-only with no mention of digital flow | Inspector | Revise glossary and REQ_F3001 to include secure digital revocation options | VS-01 | 3 |
+| Pg 90 | REQ_I0004 and REQ_I0006 are identical in wording, causing redundancy | Inspector | Remove one instance or reword if truly distinct | VS-02 | 4 |
+| Pg 32 | “Complex features” term in REQ_F0801 is undefined | Inspector | Add glossary term and explicitly list complex features in requirement | VS-02 | 3 |
+| Pg 18 | No alternate flow for password recovery is documented in UC001 | Inspector | Add alternate flow for “Forgot Password” scenario | VS-02 | 3 |
 
 --
 
@@ -4296,6 +4302,9 @@ A communication protocol used in COMSYS for real-time features like live chat an
 | REQ_P0005 | Misaligned stakeholder expectations: "real-time" varies by requirement (5s vs 2min) | Inspector | VS-01 | 4 |
 | REQ_F2001 | Stakeholders expect critical alerts (e.g., emergencies, system downtime) to bypass quiet hours | Inspector | VS-01 | 4 |
 | REQ_F3001 | Parents and students expect digital systems to allow secure consent handling and revocation | Inspector | VS-01 | 4 |
+| REQ_I0004/I0006 | Stakeholders may assume two separate behaviors when it’s actually a duplicate requirement | Inspector | VS-02 | 4 |
+| REQ_F0801 | Stakeholders unsure which features need to be supported by help documentation | Inspector | VS-02 | 3 |
+| UC001 | Stakeholders expect a basic system to support password reset functionality | Inspector | VS-02 | 3 |
 
 --
 
@@ -4313,6 +4322,9 @@ A communication protocol used in COMSYS for real-time features like live chat an
 | CF-08 | Conflicting definition of "real-time". | Defined as 5 seconds in glossary but used inconsistently (e.g., 2 minutes in REQ_P0005), causing confusion and validation issues. | QA Team, Performance Engineer | VS-01 |
 | CF-09 | Quiet Hours feature doesn’t clarify handling of urgent notifications. | Ambiguity on whether critical alerts can bypass quiet hours creates inconsistent system behavior. | Users, QA Team, Developers | VS-01 |
 | CF-10 | Requiring physical letters for parental access revocation is unrealistic. | Incompatible with digital workflows; no secure digital fallback is provided. | Students, Parents, QA Team | VS-01 |
+| CF-11 | Requirement REQ_I0004 and REQ_I0006 describe the exact same functionality using different IDs | Duplicate requirement IDs may create confusion in development, testing, and maintenance processes. May also cause redundancy in traceability matrices and validation reports. | QA Team, Developers | VS-02 |
+| CF-12 | “Complex features” is vague; may lead to incomplete or inconsistent documentation coverage | Without defining which features are considered complex, help documentation may not address user needs completely. Leads to inconsistent support coverage across modules. | Developers, QA, Helpdesk | VS-02 |
+| CF-13 | Login use case lacks handling of forgotten passwords, a standard user expectation | Absence of password recovery flow can affect usability, user experience, and system adoption. May cause user frustration and increase helpdesk tickets. | QA Team, Developers, End Users | VS-02 |
 
 --
 
@@ -4330,6 +4342,9 @@ A communication protocol used in COMSYS for real-time features like live chat an
 | CF-08 | Standardized “real-time” as 5 seconds across all related REQs. REQ_P0005 reworded to say “timely” if needed. | Y | Glossary and requirements now aligned. | Prevents performance ambiguity and test confusion. |
 | CF-09 | Updated REQ_F2001 and UC020 to explicitly state that critical notifications (e.g., emergency alerts) override quiet hours. | Y | Quiet Hours feature now supports exceptions properly. | Ensures reliable delivery of urgent communications. |
 | CF-10 | Updated REQ_F3001 and glossary to include secure digital consent process (OTP, email token, or digital signature confirmation). | Y | System now supports modern, verifiable consent flows. | Aligns with expectations for digital systems. |
+| CF-11 | Retain REQ_I0004 as the primary ID, delete REQ_I0006, and update all references accordingly | Y | Duplicates removed, ID reference integrity restored | Avoids traceability error and stakeholder confusion |
+| CF-12 | Expanded REQ_F0801 and UC008 Rule 3 with a list of complex features; added glossary term for clarity | Y | All stakeholders aligned on features requiring detailed guides | Ensures help documentation covers all critical areas |
+| CF-13 | Added alternate flow under UC001 to describe password recovery (Forgot Password) functionality | Y | Password reset scenario is now captured in the login process | Aligns with usability expectations and completeness |
 
 --
 
@@ -4351,6 +4366,9 @@ A communication protocol used in COMSYS for real-time features like live chat an
 | CH-12         | REQ_P0003, REQ_P0005         | Standardized “real-time” threshold and revised conflicting performance wording.                           | Tey Jun Cheng       | 2025-06-22              | VS-02              |
 | CH-13         | REQ_F2001, UC020             | Added exception logic to Quiet Hours feature to allow override by critical notifications.                 | Yang Jia En         | 2025-06-22              | VS-01              |
 | CH-14         | REQ_F3001, Glossary          | Replaced physical consent requirement with secure digital consent methods (e.g., OTP, verified email link). | Teoh Xuan Xuan      | 2025-06-22              | VS-01              |
+| CH-15 | REQ_I0004 / REQ_I0006 | Removed duplicate requirement (REQ_I0006); retained REQ_I0004 only | Teoh Xuan Xuan | 22-06-2025 | VS-02 |
+| CH-16 | REQ_F0801, UC008 | Listed complex features (quiet time, timeout, etc.); updated rule; added glossary definition for "complex feature" | Tey Jun Cheng | 22-06-2025 | VS-02 |
+| CH-17 | UC001 | Added alternate flow for password recovery ("Forgot Password") | Yang Jia En | 22-06-2025 | VS-02 |
 
 --
 
@@ -4377,6 +4395,8 @@ A communication protocol used in COMSYS for real-time features like live chat an
 | REQ_P0005  | The system shall sync data in a “timely” manner (standardized term)  | G4             | P005       | UC005, UC012 | 4                        |
 | REQ_F2001  | The system shall allow quiet hours but always deliver critical notifications | G2        | F020       | UC020        | 4                        |
 | REQ_F3001  | The system shall handle parental consent using secure digital methods | G1           | F030       | UC030        | 4                        |
+| REQ_F0801 | The system shall provide help documentation for complex features such as GPA, timeout, and parental settings | G5 | F008 | UC008 | 4 | Complex features explicitly listed; linked to help access flow and glossary |
+| UC001 | Login use case now includes alternate flow for password reset | G1 | F001 | UC001 | 4 | Flow supports both login and account recovery scenarios |
 
 --
 
