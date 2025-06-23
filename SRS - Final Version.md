@@ -1783,7 +1783,7 @@ The functional requirement(s) for F012 View Attendance Record:
 | **Requirement ID** | REQ_F1201 |
 |--------------------|-----------|
 | **Version** | 1.0 |
-| **Description** | The student dashboard shall display an overview of the student’s attendance records for each enrolled course. |
+| **Description** | The student dashboard shall display an overview of the student’s attendance records for each enrolled course.<br><br>This includes:<br>• Attendance percentage<br>• Number of classes attended and missed<br>• Last date of attendance<br>• Any late entries or excused absences (if applicable) |
 | **Author** | Hesham |
 
 Table 3.1.12 illustrates the use case for the view attendance record functionality (UC012), detailing the process as defined by Requirement REQ_F1201, followed by an activity diagram which represents the process flow.
@@ -1819,7 +1819,7 @@ Table 3.1.12 illustrates the use case for the view attendance record functionali
   </tr>
   <tr>
     <td><b>Postcondition</b></td>
-    <td>1. Attendance records are displayed<br>2. Any attendance alerts are highlighted as read</td>
+    <td>1. 1.	Attendance records with percentage and breakdown are displayed<br>2. 2.	Any attendance alerts (e.g., below threshold) are highlighted</td>
   </tr>
   <tr>
     <td colspan="2"><b>Main Flow</b></td>
@@ -1834,11 +1834,11 @@ Table 3.1.12 illustrates the use case for the view attendance record functionali
   </tr>
   <tr>
     <td>Step 3</td>
-    <td>System displays attendance overview for all courses</td>
+    <td>System displays attendance overview including percentage, total sessions, attended/missed count</td>
   </tr>
   <tr>
     <td>Step 4</td>
-    <td>Student views detailed attendance information</td>
+    <td>Student views detailed breakdown by course and session status (present, absent, late)</td>
   </tr>
   <tr>
     <td colspan="2"><b>Alternate Flow - Attendance Record Cannot Be Retrieved</b></td>
@@ -1856,7 +1856,7 @@ Table 3.1.12 illustrates the use case for the view attendance record functionali
   </tr>
   <tr>
     <td>Rule 1</td>
-    <td>System must load attendance records within 3 seconds [REQ_P0001]</td>
+    <td>System must load attendance records within 5 seconds [REQ_P0001]</td>
   </tr>
   <tr>
     <td>Rule 2</td>
@@ -1869,6 +1869,10 @@ Table 3.1.12 illustrates the use case for the view attendance record functionali
   <tr>
     <td>Rule 4</td>
     <td>Attendance record must synchronize across interfaces within 5 seconds [REQ_P0003, REQ_F0005, REQ_F0010]</td>
+  </tr>
+  <tr>
+    <td>Rule 5</td>
+    <td>Attendance record display must include percentage, total attended/missed count, and last attendance date. [REQ_F1201]</td>
   </tr>
   <tr>
     <td><b>Author</b></td>
