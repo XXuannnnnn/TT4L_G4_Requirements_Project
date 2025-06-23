@@ -658,14 +658,10 @@ The functional requirement(s) for F003 Change Language Preferences:
 | **Requirement ID** | REQ_F0301 |
 |---------------------|-----------|
 | **Version** | 1.0 |
-| **Description** | The system shall support a multilingual interface for all student and parent facing pages and messages. |
+| **Description** | The system shall support a multilingual interface for all student and parent-facing pages and messages. Students and parents shall be able to select and save their preferred interface language via their user profile settings. 
+Supported languages include English, Bahasa Malaysia, Mandarin (Simplified), and Tamil.
+ |
 | **Author** | Hesham |
-
-| **Requirement ID** | REQ_F0302 |
-|---------------------|-----------|
-| **Version** | 1.0 |
-| **Description** | The system shall allow students and parents to select and save their preferred interface language via their user profile settings. |
-| **Author** | Nickleirsch |
 
 Table 3.1.3 illustrates the use case for the changing language preference functionality (UC003), detailing the process as defined by Requirement REQ_F0301 and REQ_F0302, followed by an activity diagram which represents the process flow.
 
