@@ -4275,6 +4275,7 @@ A communication protocol used in COMSYS for real-time features like live chat an
 | UC021 | Reference to “F00X: Configure Parent Access” is invalid (placeholder not replaced) | Inspector | Replace with correct label “F030: Configure Parent Access” | VS-02 | 2 |
 | UC023 | Text refers to incorrect table caption “3.1.22” instead of “3.1.23" | Inspector | Update text to reflect correct table number (3.1.23) | VS-02 | 2 |
 | REQ_F0902 | REQ_F0902 does not specify if users can cancel/edit scheduled notifications before sending | Inspector | Add an alternate flow in UC009 to allow editing or cancelling scheduled notifications | VS-02 | 2 |
+| UC004 & UC034 | Notes sections are missing entirely in some use cases | Inspector | Reinstate “Notes” row even if N/A | VS-02 | 1 |
 
 --
 
@@ -4339,6 +4340,7 @@ A communication protocol used in COMSYS for real-time features like live chat an
 | CF-15 | Use case references placeholder “F00X” instead of resolved use case ID “F030” | Placeholder label not updated creates traceability errors and complicates downstream implementation mapping | QA team, Technical Writers | VS-02 |
 | CF-16 | Text mislabelled Table 3.1.23 as 3.1.22 | Incorrect table references lead to navigation ambiguity for reviewers and breaks internal document cross-referencing | QA, Editors | VS-02 |
 | CF-17 | No mention of cancel/edit options for scheduled notifications | Missing alternate flow for scheduled notification management may lead to confusion or inability to modify queued messages | Lecturers, Admin | VS-02 |
+| CF-18 | Some use cases (e.g., UC004, UC034) are missing the “Notes” row entirely. This breaks consistency in formatting and may confuse reviewers into thinking documentation is incomplete. Even if no notes are applicable, the row should be present and state "N/A". | Missing “Notes” rows make the use case templates appear incomplete, reducing consistency and professionalism across the document. A consistent format improves review clarity and sets expectations for all use cases. | Documentation Team, QA Reviewers | VS-02 |
 
 --
 
@@ -4363,6 +4365,7 @@ A communication protocol used in COMSYS for real-time features like live chat an
 | CF-15 | Update “F00X: Configure Parent Access” to “F030: Configure Parent Access” in UC021 | Y | Reference is now accurate and traceable | Ensures referential integrity in documentation |
 | CF-16 | Corrected text from “Table 3.1.22” to “Table 3.1.23” | Y | Numbering aligns with actual section reference | Fixes cross-reference clarity in SRS document |
 | CF-17 | Introduced an alternate flow titled "Cancel or Modify Scheduled Notification" in UC009. Include access, selection, update/cancel options, and confirmation. | Y | Scheduled notifications can now be modified or cancelled | Ensures clarity |
+| CF-18 | Reinstated the “Notes” row in UC004 and UC034 with the value “N/A” where applicable. | Y | All use cases now include a Notes section for format consistency. | Ensures uniform structure and prevents reader confusion. |
 
 --
 
@@ -4391,6 +4394,7 @@ A communication protocol used in COMSYS for real-time features like live chat an
 | CH-19 | UC021 | Fixed broken reference “F00X” to “F030” in View Child’s Info use case | Teoh Xuan Xuan | 22-06-2025 | VS-02 |
 | CH-20 | UC023 | Corrected table number reference to 3.1.23 | Tey Jun Cheng | 22-06-2025 | VS-02 |
 | CH-21 | REQ_F0902 | Added alternate flow to UC009 for cancelling or modifying scheduled notifications. Clarified REQ_F0902. | Yang Jia En | 22-06-2025 | VS-02 |
+| CH-22 | UC004, UC034 | Reinstated missing “Notes” rows in UC004 and UC034 with “N/A” values to preserve formatting consistency across use cases. | Tey Jun Cheng | 22-06-2025 | VS-02 |
 
 --
 
