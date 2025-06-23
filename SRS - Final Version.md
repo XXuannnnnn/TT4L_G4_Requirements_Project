@@ -1120,8 +1120,9 @@ The functional requirement(s) for F007 View Tooltip:
 | **Requirement ID** | REQ_F0701 |
 |--------------------|-----------|
 | **Version** | 1.0 |
-| **Description** | The system shall provide contextual tooltips for students and parents for interface elements on hover |
+| **Description** | The system shall provide contextual tooltips for students and parents when hovering over major interface elements, including:<br><br>• Notification icons<br>• Dashboard widgets<br>• Session timeout settings<br>• Enrolment buttons<br>• Billing sections<br><br>Each tooltip shall contain a short explanation of the element’s function (e.g., “Set your session timeout duration”, “View your academic performance”).<br>Tooltips shall support all languages defined in REQ_F0301 and display within 1 second of hover. |
 | **Author** | Hesham |
+
 
 Table 3.1.7 illustrates the use case for the view tooltip functionality (UC007), detailing the process as defined by Requirement REQ_F0701, followed by an activity diagram which represents the process flow.
 
@@ -1140,7 +1141,7 @@ Table 3.1.7 illustrates the use case for the view tooltip functionality (UC007),
   </tr>
   <tr>
     <td><b>Purpose</b></td>
-    <td>To provide students and parents with immediate, contextual help through tooltips for interface elements and features</td>
+    <td>To provide students and parents with contextual help for system elements such as dashboard widgets, security settings, and navigation options.</td>
   </tr>
   <tr>
     <td><b>Actor</b></td>
