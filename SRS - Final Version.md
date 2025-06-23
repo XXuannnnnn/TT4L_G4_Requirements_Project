@@ -3,7 +3,7 @@
 ---
 
 ### Section: TT4L  
-### Group: 4
+### Group: 4 
 
 | Name | Student ID |
 | ---- | ----------- |
@@ -71,6 +71,7 @@
   - 3.1.31 F031 Authenticate User
   - 3.1.32 F032 Send SMS Notification
   - 3.1.33 F033 Sync with External Calendar
+  - 3.1.34 F034 Manage Profile
 - 3.2 Performance Requirements
 - 3.3 Usability Requirements
 - 3.4 Interface Requirements
@@ -92,7 +93,7 @@
 - 5.2 Acronyms and Abbreviations
 - 5.3 Glossary
   
-
+---
     
 # 1. Introduction
 
@@ -103,6 +104,18 @@ The purpose of the University Communication and Services Portal, **COMSYS**, is 
 ## 1.2 Scope
 
 **COMSYS** is designed to address the fragmentation of current academic and communication platforms used within the university. The system will consolidate grade management, scheduling, billing, announcements, notifications, parental access, and other academic services into a single, secure, and user-friendly portal. The portal will serve as the primary interface for students, parents, lecturers, and administrators to interact with university information and each other, offering customizable user experiences and integrating with existing university systems (e.g., calendars, SMS gateways, Single Sign-On). COMSYS will facilitate timely and relevant communication, automate routine notifications, and provide secure role-based access to information and services for its diverse set of users.
+
+The COMSYS system aims to fulfil the following goals to support its scope:
+
+| Goal ID | Goal Description |
+|---------|-------------------|
+| G1 | Ensure data privacy, regulatory compliance, and secure handling of all user information |
+| G2 | Facilitate timely, multi-channel communication between students, staff, and parents |
+| G3 | Provide personalized and self-service capabilities to empower users to manage their own data |
+| G4 | Support role-based workflows for different user groups (students, parents, lecturers, admins) to enhance operational efficiency |
+| G5 | Ensure user accessibility and multilingual support across all platforms and devices |
+
+<p align="center"><em>Table 1.2 System Goals</em></p>
 
 ## 1.3 Product Overview
 
@@ -188,8 +201,14 @@ The University Portal System (COMSYS) is subject to the following limitations an
 
 #### Regulatory Requirements and Policies
 
-1. Must comply with GDPR and FERPA data protection regulations, which may restrict access, storage, and sharing of personal and academic data.
-2. Legal and privacy regulations may limit the extent of data visibility and communication features, particularly for parental access to student information.
+1.	Must comply with GDPR and FERPA data protection regulations, including:  
+•	Ensuring all sensitive data is encrypted both in transit (using TLS/SSL protocols) and at rest (using AES-256 encryption).  
+•	Implementing strict role-based access controls (RBAC) to limit access to personal and academic data only to authorized individuals.  
+•	Managing explicit consent through secure digital consent forms, which clearly outline the type of data accessed, purpose of access, duration, and conditions for data revocation.  
+•	Adhering to a defined data retention policy, specifying retention periods for academic records (e.g., active records retained for student enrollment duration plus five years post-graduation) and personal communication logs (e.g., retention period not exceeding two years).  
+•	Regular auditing and logging of access to sensitive data to monitor compliance and quickly detect and respond to unauthorized data access or misuse incidents.
+
+2.	Legal and privacy regulations may limit the extent of data visibility and communication features, particularly for parental access to student information.
 
 #### Technical Limitations
 
@@ -286,6 +305,7 @@ The following table (Table 3.1) contains the list of features to be implemented 
 | F031 | Authenticate User | University Portal |
 | F032 | Send SMS Notification | SMS Gateway |
 | F033 | Sync with External Calendar | Calendar API |
+| F034 | Profile Management | Student |
 
 <p align="center"><em>Table 3.1 COMSYS Features</em></p>
 
@@ -472,6 +492,29 @@ Table 3.1.1 below illustrates the use case for the login functionality (UC001), 
     <td>System prompts user for re-entry</td>
   </tr>
   <tr>
+    <td colspan="2"><b>Alternate Flow – Forgot password</b></td>
+</tr>
+<tr>
+    <td>Step 4.1</td>
+    <td>User clicks “Forgot Password” link</td>
+</tr>
+<tr>
+    <td>Step 4.2</td>
+    <td>System prompts user to enter registered email or phone number</td>
+</tr>
+<tr>
+    <td>Step 4.3</td>
+    <td>System sends recovery link or OTP to the user</td>
+</tr>
+<tr>
+    <td>Step 4.4</td>
+    <td>User sets a new password and confirms</td>
+</tr>
+<tr>
+    <td>Step 4.5</td>
+    <td>System updates credentials and redirects to login screen</td>
+</tr>
+  <tr>
     <td colspan="2"><b>Rules</b></td>
   </tr>
   <tr>
@@ -616,14 +659,10 @@ The functional requirement(s) for F003 Change Language Preferences:
 | **Requirement ID** | REQ_F0301 |
 |---------------------|-----------|
 | **Version** | 1.0 |
-| **Description** | The system shall support a multilingual interface for all student and parent facing pages and messages. |
+| **Description** | The system shall support a multilingual interface for all student and parent-facing pages and messages. Students and parents shall be able to select and save their preferred interface language via their user profile settings. 
+Supported languages include English, Bahasa Malaysia, Mandarin (Simplified), and Tamil.
+ |
 | **Author** | Hesham |
-
-| **Requirement ID** | REQ_F0302 |
-|---------------------|-----------|
-| **Version** | 1.0 |
-| **Description** | The system shall allow students and parents to select and save their preferred interface language via their user profile settings. |
-| **Author** | Nickleirsch |
 
 Table 3.1.3 illustrates the use case for the changing language preference functionality (UC003), detailing the process as defined by Requirement REQ_F0301 and REQ_F0302, followed by an activity diagram which represents the process flow.
 
@@ -1082,8 +1121,9 @@ The functional requirement(s) for F007 View Tooltip:
 | **Requirement ID** | REQ_F0701 |
 |--------------------|-----------|
 | **Version** | 1.0 |
-| **Description** | The system shall provide contextual tooltips for students and parents for interface elements on hover |
+| **Description** | The system shall provide contextual tooltips for students and parents when hovering over major interface elements, including:<br><br>• Notification icons<br>• Dashboard widgets<br>• Session timeout settings<br>• Enrolment buttons<br>• Billing sections<br><br>Each tooltip shall contain a short explanation of the element’s function (e.g., “Set your session timeout duration”, “View your academic performance”).<br>Tooltips shall support all languages defined in REQ_F0301 and display within 1 second of hover. |
 | **Author** | Hesham |
+
 
 Table 3.1.7 illustrates the use case for the view tooltip functionality (UC007), detailing the process as defined by Requirement REQ_F0701, followed by an activity diagram which represents the process flow.
 
@@ -1102,7 +1142,7 @@ Table 3.1.7 illustrates the use case for the view tooltip functionality (UC007),
   </tr>
   <tr>
     <td><b>Purpose</b></td>
-    <td>To provide students and parents with immediate, contextual help through tooltips for interface elements and features</td>
+    <td>To provide students and parents with contextual help for system elements such as dashboard widgets, security settings, and navigation options.</td>
   </tr>
   <tr>
     <td><b>Actor</b></td>
@@ -1177,7 +1217,7 @@ The functional requirement(s) for F008 Access Help Documentation:
 | **Requirement ID** | REQ_F0801 |
 |--------------------|-----------|
 | **Version** | 1.0 |
-| **Description** | The system shall provide help guides accessible via a help section for students and parents, aimed at explaining system functionalities considered complex. |
+| **Description** | The system shall provide help guides accessible via a help section for students and parents, aimed at explaining system functionalities considered complex.<br><br>Complex features include, but are not limited to:<br>• Parental Access Settings<br>• Quiet Hours Configuration<br>• Session Timeout Customization |
 | **Author** | Hesham |
 
 Table 3.1.8 illustrates the use case for the access help documentation functionality (UC008), detailing the process as defined by Requirement REQ_F0801, followed by an activity diagram which represents the process flow.
@@ -1420,6 +1460,37 @@ Table 3.1.9 illustrates the use case for the send notification functionality (UC
     <td>Return to Main Flow step 6</td>
   </tr>
   <tr>
+    <td colspan="2"><b>Alternate Flow – Cancel or Modify Scheduled Notification</b></td>
+</tr>
+<tr>
+    <td>Step 7.1</td>
+    <td>User accesses “Schedule Notifications” page.</td>
+</tr>
+<tr>
+    <td>Step 7.2</td>
+    <td>System displays a list of pending scheduled notifications.</td>
+</tr>
+<tr>
+    <td>Step 7.3</td>
+    <td>User selects a notification and choose to cancel or edit.</td>
+</tr>
+<tr>
+    <td>Step 7.4</td>
+    <td>If edit selected, system allows updating date/time or content.</td>
+</tr>
+<tr>
+    <td>Step 7.5</td>
+    <td>System confirms the changes or cancellation request.</td>
+</tr>
+<tr>
+    <td>Step 7.6</td>
+    <td>System saves changes or removes notification from queue.</td>
+</tr>
+<tr>
+    <td>Step 7.7</td>
+    <td>Return to Main Flow step 8.</td>
+</tr>
+  <tr>
     <td colspan="2"><b>Rules</b></td>
   </tr>
   <tr>
@@ -1433,6 +1504,10 @@ Table 3.1.9 illustrates the use case for the send notification functionality (UC
   <tr>
     <td>Rule 3</td>
     <td>Critical alerts must be delivered within a minute of their creation [REQ_P0004]</td>
+  </tr>
+  <tr>
+    <td>Rule 4</td>
+    <td>Users may cancel or modify scheduled notifications before their scheduled delivery time.</td>
   </tr>
   <tr>
     <td><b>Notes</b></td>
@@ -1709,7 +1784,7 @@ The functional requirement(s) for F012 View Attendance Record:
 | **Requirement ID** | REQ_F1201 |
 |--------------------|-----------|
 | **Version** | 1.0 |
-| **Description** | The student dashboard shall display an overview of the student’s attendance records for each enrolled course. |
+| **Description** | The student dashboard shall display an overview of the student’s attendance records for each enrolled course.<br><br>This includes:<br>• Attendance percentage<br>• Number of classes attended and missed<br>• Last date of attendance<br>• Any late entries or excused absences (if applicable) |
 | **Author** | Hesham |
 
 Table 3.1.12 illustrates the use case for the view attendance record functionality (UC012), detailing the process as defined by Requirement REQ_F1201, followed by an activity diagram which represents the process flow.
@@ -1745,7 +1820,7 @@ Table 3.1.12 illustrates the use case for the view attendance record functionali
   </tr>
   <tr>
     <td><b>Postcondition</b></td>
-    <td>1. Attendance records are displayed<br>2. Any attendance alerts are highlighted as read</td>
+    <td>1. 1.	Attendance records with percentage and breakdown are displayed<br>2. 2.	Any attendance alerts (e.g., below threshold) are highlighted</td>
   </tr>
   <tr>
     <td colspan="2"><b>Main Flow</b></td>
@@ -1760,11 +1835,11 @@ Table 3.1.12 illustrates the use case for the view attendance record functionali
   </tr>
   <tr>
     <td>Step 3</td>
-    <td>System displays attendance overview for all courses</td>
+    <td>System displays attendance overview including percentage, total sessions, attended/missed count</td>
   </tr>
   <tr>
     <td>Step 4</td>
-    <td>Student views detailed attendance information</td>
+    <td>Student views detailed breakdown by course and session status (present, absent, late)</td>
   </tr>
   <tr>
     <td colspan="2"><b>Alternate Flow - Attendance Record Cannot Be Retrieved</b></td>
@@ -1782,7 +1857,7 @@ Table 3.1.12 illustrates the use case for the view attendance record functionali
   </tr>
   <tr>
     <td>Rule 1</td>
-    <td>System must load attendance records within 3 seconds [REQ_P0001]</td>
+    <td>System must load attendance records within 5 seconds [REQ_P0001]</td>
   </tr>
   <tr>
     <td>Rule 2</td>
@@ -1795,6 +1870,10 @@ Table 3.1.12 illustrates the use case for the view attendance record functionali
   <tr>
     <td>Rule 4</td>
     <td>Attendance record must synchronize across interfaces within 5 seconds [REQ_P0003, REQ_F0005, REQ_F0010]</td>
+  </tr>
+  <tr>
+    <td>Rule 5</td>
+    <td>Attendance record display must include percentage, total attended/missed count, and last attendance date. [REQ_F1201]</td>
   </tr>
   <tr>
     <td><b>Author</b></td>
@@ -2493,7 +2572,7 @@ The functional requirement(s) for F020 Set ‘Quiet Hours’:
 | **Requirement ID** | REQ_F2001 |
 |--------------------|-----------|
 | **Version** | 1.0 |
-| **Description** | The system should provide a "quiet hours" feature allowing students to temporarily suspend non-urgent notifications |
+| **Description** | The system shall provide a “quiet hours” feature allowing students to temporarily suppress non-urgent notifications during specified time periods. Critical notifications (e.g., emergency alerts, urgent fee or academic announcements) shall always bypass quiet hours and be delivered immediately. |
 | **Author** | Hesham |
 
 Table 3.1.20 illustrates the use case for the set ‘quiet hours’ functionality (UC020), detailing the process as defined by Requirement REQ_F2001, followed by an activity diagram which represents the process flow.
@@ -2539,7 +2618,7 @@ Table 3.1.20 illustrates the use case for the set ‘quiet hours’ functionalit
   <tr><td>Step 2</td><td>System displays current quiet hours configuration</td></tr>
   <tr><td>Step 3</td><td>User sets quiet hours’ time ranges</td></tr>
   <tr><td>Step 4</td><td>User selects days of week for quiet hours</td></tr>
-  <tr><td>Step 5</td><td>User configures critical notification exceptions</td></tr>
+  <tr><td>Step 5</td><td>User configures critical notification exceptions (e.g, emergency alerts)</td></tr>
   <tr><td>Step 6</td><td>User confirms changes</td></tr>
   <tr><td>Step 7</td><td>System saves new quiet hours configuration</td></tr>
 
@@ -2548,6 +2627,7 @@ Table 3.1.20 illustrates the use case for the set ‘quiet hours’ functionalit
   </tr>
   <tr><td>Rule 1</td><td>System must support filtering and muting by category [REQ_F1901]</td></tr>
   <tr><td>Rule 2</td><td>System will store and apply notification preferences ensuring it persists across sessions [REQ_F1903]</td></tr>
+  <tr><td>Rule 3</td><td>3.	Critical notifications must bypass quiet hours and be delivered immediately</td></tr>
 
   <tr><td><b>Author</b></td><td>Hesham</td></tr>
 </table>
@@ -3210,7 +3290,7 @@ The functional requirement(s) for F030 Configure Parent Access:
 | **Requirement ID** | REQ_F3001 |
 |--------------------|-----------|
 | **Version** | 1.0 |
-| **Description** | Parental access and notifications shall comply with university privacy policies and require explicit student consent. |
+| **Description** | The system shall ensure parental access and notifications comply with university privacy policies and require explicit student consent. Consent must be obtained through secure digital methods such as verified email confirmation, OTP, or digital signature. |
 | **Author** | Danesh Veran |
 
 Table 3.1.30 illustrates the use case for the configure parent access functionality (UC030), detailing the process as defined by Requirement REQ_F3001 followed by an activity diagram which represents the process flow.
@@ -3238,7 +3318,7 @@ Table 3.1.30 illustrates the use case for the configure parent access functional
 2. The system shall provide a dedicated portal for parents to access their child’s grades, attendance, and financial information, subject to consent [REQ_F3001, REQ_F2101].
 </td></tr>
 
-<tr><td><b>Notes</b></td><td>The student’s consent must be a physical letter that is sent in by the student personally.</td></tr>
+<tr><td><b>Notes</b></td><td>Student consent shall be obtained through a secure, verifiable digital process. Physical letters are not required or accepted.</td></tr>
 <tr><td><b>Author</b></td><td>Danesh Veran</td></tr>
 </table>
 
@@ -3415,6 +3495,56 @@ Table 3.1.33 illustrates the use case for the sync with external calendar functi
 
 --
 
+### 3.1.34 F034 Manage Profile
+
+The functional requirement(s) for F034 Manage Profile:
+
+| **Requirement ID** | REQ_F3401 |
+|--------------------|-----------|
+| **Version** | 2.0 |
+| **Description** | The system shall allow students to view and update their personal profile information, including full name, phone number, email address, and emergency contact. |
+| **Author** | Tey Jun Cheng |
+
+Table 3.1.34 illustrates the use case for the profile management functionality (UC034), detailing the process as defined by Requirement REQ_F3401, followed by an activity diagram which represents the process flow.
+
+<table border="1" cellspacing="0" cellpadding="5">
+<tr><td><b>Use Case ID</b></td><td>UC034</td></tr>
+<tr><td><b>Version</b></td><td>2.0</td></tr>
+<tr><td><b>Use Case</b></td><td>F034 Manage Profile</td></tr>
+<tr><td><b>Purpose</b></td><td>To allow students to view and update their own profile information.</td></tr>
+<tr><td><b>Actor</b></td><td>Student</td></tr>
+<tr><td><b>Trigger</b></td><td>Student accesses the profile page from the dashboard.</td></tr>
+<tr><td><b>Precondition</b></td><td>Student is logged in.</td></tr>
+<tr><td><b>Postcondition</b></td><td>Student’s updated profile information is saved and visible in their account.</td></tr>
+
+<tr><td colspan="2"><b>Main Flow</b></td></tr>
+<tr><td><b>Step</b></td><td><b>Action</b></td></tr>
+<tr><td>1</td><td>Student navigates to profile settings page.</td></tr>
+<tr><td>2</td><td>Student retrieves and displays current profile data.</td></tr>
+<tr><td>3</td><td>Student edits fields (e.g., phone number).</td></tr>
+<tr><td>4</td><td>System validates inputs.</td></tr>
+<tr><td>5</td><td>System saves updates and displays confirmation message.</td></tr>
+
+<tr><td colspan="2"><b>Rules</b></td></tr>
+<tr><td colspan="2">
+1. Phone number must follow standard format (e.g., +601X-XXXXXXX)<br>
+2. Email address must follow standard format (e.g., xxxx@xxx.xx)<br>
+3. Fields must not be left empty (e.g., name, phone number)
+</td></tr>
+
+<tr><td><b>Notes</b></td><td>N/A</td></tr>
+
+<tr><td><b>Author</b></td><td>Tey Jun Cheng</td></tr>
+</table>
+
+<p align="center"><em>Table 3.1.34: Use Case UC034 Manage Profile</em></p>
+
+![COMSYS System User Activity Diagram](Screenshot/activity_user_profile.png)
+
+<p align="center"><em>Figure 3.1.34: Activity Diagram for Use Case UC034 Manage Profile</em></p>
+
+--
+
 ## 3.2 Performance Requirements
 
 The following are the performance requirements for COMSYS:
@@ -3544,14 +3674,6 @@ The following are the performance requirements for COMSYS:
 ---
 
 | **Requirement ID** | REQ_I0006 |
-|--------------------|-----------|
-| **Version** | 1.0 |
-| **Description** | Academic, financial, and attendance data shall be presented with charts, tables, and summaries for quick understanding. |
-| **Author** | Nickleirsch |
-
----
-
-| **Requirement ID** | REQ_I0007 |
 |--------------------|-----------|
 | **Version** | 1.0 |
 | **Description** | The system shall provide a single-window course enrolment process. |
@@ -3780,101 +3902,40 @@ COMSYS operates primarily as an intermediary system, minimizing direct data stor
 
 #### **In-depth Explanation of Class Diagram**
 
----
-
-#### 1. **User (Abstract Class)**  
-*An abstract base class that defines common attributes and methods for all system users. It handles basic user management, session management, and language preferences.*
-
-| Attribute/Method | Data Type | Description |
-|-------------------|-----------|-------------|
-| `userID` | String | Unique identifier for user |
-| `name` | String | User’s full name |
-| `email` | String | User's email address |
-| `phoneNumber` | Int | Contact number |
-| `accountType` | String | Type of user account |
-| `language` | String | Preferred language |
-| `sessionTimeout` | Int | Session timeout in minutes |
-
----
-
-#### 2. **NotificationSettings**  
-*Manages how users receive notifications by controlling quiet hours, delivery channels (SMS, email, portal), and notification categories. It stores user preferences and determines when and how notifications should be delivered.*
-
-| Attribute | Data Type | Description |
-|-----------|-----------|-------------|
-| `quietHoursStart` | Time | Start of quiet period |
-| `quietHoursEnd` | Time | End of quiet period |
-| `quietHoursEnabled` | Boolean | Quiet hours toggle |
-| `categoryToggles` | List<NotificationType> | Enabled notification types |
-| `channelPreferences` | Map<NotificationType, Channel> | Preferred channels per type |
-
----
-
-#### 3. **CommunicationTemplate**  
-*Stores and manages message templates used for different types of communications. It supports multiple channels (SMS, email, portal) and allows for standardized message creation with customizable content.*
-
-| Attribute | Data Type | Description |
-|-----------|-----------|-------------|
-| `templateID` | String | Unique template identifier |
-| `templateName` | String | Name of template |
-| `subject` | String | Email subject line |
-| `content` | String | Template content |
-| `templateType` | String | Type of template |
-
----
-
-#### 4. **Notification (Abstract Class)**  
-*Represents a single notification in the system; an abstract class that is inherited by all notification channel types.*
-
-| Attribute | Data Type | Description |
-|-----------|-----------|-------------|
-| `message` | String | Notification content |
-| `recipient` | String | Recipient identifier |
-| `delivered` | Boolean | Delivery status |
-| `readReceipt` | Boolean | Read status |
-
----
-
-#### 5. **ContactDirectory**  
-*Stores and manages staff contact information and their availability hours.*
-
-| Attribute | Data Type | Description |
-|-----------|-----------|-------------|
-| `entryID` | Int | Unique contact identifier |
-| `staffType` | String | Type of staff member |
-| `availabilityHours` | String | Available hours |
-
----
-
-#### 6. **CalendarAPI**  
-*Handles all calendar-related operations including adding, removing, and retrieving events. It manages schedule synchronization and helps coordinate activities across the system.*
-
-| Method | Description |
-|--------|-------------|
-| `addEvent()` | Adds new calendar event |
-| `deleteEvent()` | Removes calendar event |
-| `getEvents()` | Retrieves calendar events |
-
----
-
-#### 7. **SMSGateway**  
-*Manages SMS message sending and phone number validation. It tracks message delivery status and ensures proper handling of mobile communications.*
-
-| Method | Description |
-|--------|-------------|
-| `sendSMS()` | Sends SMS message |
-| `validateNumber()` | Validates phone number |
-
----
-
-#### 8. **CampusManagementSystem**  
-*Manages student data operations and access control. It handles data updates, retrieval, and validates parent permissions for accessing student information.*
-
-| Method | Description |
-|--------|-------------|
-| `updateStudentData()` | Updates the student’s data |
-| `retrieveStudentData()` | Retrieves the student’s data |
-| `validateParentViewPermission()` | Checks if parent has consent to access student information |
+| **Class** | **Attribute/Method** | **Data Type** | **Description** |
+|-----------|-----------------------|---------------|------------------|
+| **User**<br>*An abstract base class that defines common attributes and methods for all system users. It handles basic user along with session management and language preferences.* | userID | String | Unique identifier for user |
+|  | Name | string | User’s full name |
+|  | email | string | User's email address |
+|  | phoneNumber | int | Contact number |
+|  | accountType | string | Type of user account |
+|  | language | string | Preferred language |
+|  | sessionTimeout | int | Session timeout in minutes |
+| **NotificationSettings**<br>*Manages how users receive notifications by controlling quiet hours, delivery channels (SMS, email, portal), and notification categories. It stores user preferences and determines when and how notifications should be delivered.* | quietHoursStart | time | Start of quiet period |
+|  | quietHoursEnd | time | End of quiet period |
+|  | quietHoursEnabled | boolean | Quiet hours toggle |
+|  | categoryToggles | List<NotificationType> | Enabled notification types |
+|  | channelPreferences | Map<NotificationType, Channel> | Preferred channels per type |
+| **CommunicationTemplate**<br>*Stores and manages message templates used for different types of communications. It supports multiple channels (SMS, email, portal) and allows for standardized message creation with customizable content.* | templateID | string | Unique template identifier |
+|  | templateName | string | Name of template |
+|  | subject | string | Email subject line |
+|  | content | string | Template content |
+|  | templateType | string | Type of template |
+| **Notification**<br>*Represents a single notification in the system; an abstract class that is inherited by all notification channel types.* | message | string | Notification content |
+|  | recipient | string | Recipient identifier |
+|  | delivered | boolean | Delivery status |
+|  | readReceipt | boolean | Read status |
+| **ContactDirectory**<br>*Stores and manages staff contact information and their availability hours.* | entryID | int | Unique contact identifier |
+|  | staffType | string | Type of staff member |
+|  | availabilityHours | string | Available hours |
+| **CalendarAPI**<br>*Handles all calendar-related operations including adding, removing, and retrieving events. It manages schedule synchronization and helps coordinate activities across the system.* | addEvent() | method | Adds new calendar event |
+|  | deleteEvent() | method | Removes calendar event |
+|  | getEvents() | method | Retrieves calendar events |
+| **SMSGateway**<br>*Manages SMS message sending and phone number validation. It tracks message delivery status and ensures proper handling of mobile communications.* | sendSMS() | method | Sends SMS message |
+|  | validateNumber() | method | Validates phone number |
+| **CampusManagementSystem**<br>*Manages student data operations and access control. It handles data updates, retrieval, and validates parent permissions for accessing student information.* | updateStudentData() | method | Updates the student’s data |
+|  | retrieveStudentData() | method | Retrieves the student’s data |
+|  | validateParentViewPermission() | method | Checks if parent has consent to access student information |
 
 --
 
@@ -4025,6 +4086,219 @@ The portal is intended to solve the problem of fragmented academic and administr
 4. All third-party component licenses must be included in the deployment package.
 
 > **Note:** All supporting information provided here is intended for implementation guidance and stakeholder understanding. Sample data formats are illustrative and are not to be considered mandatory requirements unless otherwise specified in Section 3 (Requirements).
+
+### 3.8.1 Validation Session
+
+| **Session ID** | **Date and Time** | **Technique** | **Section Reviewed** | **Participant & Role** | **No. of Defects** |
+|----------------|-------------------|---------------|----------------------|------------------------|--------------------|
+| VS-01 | 21/06/2025; 10am-1pm | Inspection | Sections 3.1, 3.3, 3.4 | Yang Jia En (Inspector), Teoh Xuan Xuan (Inspector), Tey Jun Cheng (Inspector) | 12 |
+| VS-02 | 22/06/2025; 2pm-5pm | Inspection | Sections 3.2, 3.5, 3.7 | Tey Jun Cheng (Inspector), Teoh Xuan Xuan (Inspector), Yang Jia En (Inspector) | 12 |
+
+### 3.8.2 Defect Summary
+
+#### Severity Levels
+
+| **Severity** | **Description** |
+|--------------|------------------|
+| 1 | Minor issue; affects readability or minor clarity problems |
+| 2 | Low impact; vague functionality, incomplete data presentation, or unclear scope for developers/translators |
+| 3 | Medium impact; functional inconsistency or conflicting system logic |
+| 4 | High impact; affects legal clarity, traceability, or RTM integrity |
+| 5 | Critical defect; key functionality gap or breaks digital UX and feasibility |
+
+--
+
+#### A. Content Defect
+
+| **Req ID** | **Validation and Defect Description** | **Detected By** | **Comment/Suggested Fix** | **Session ID** | **Severity (1–5)** |
+|------------|----------------------------------------|------------------|----------------------------|----------------|--------------------|
+| REQ_F0002 | GDPR and FERPA compliance too vague | Inspector | Add specific controls like encryption, access control, data retention, consent logic | VS-01 | 4 |
+| REQ_F0301 | Multilingual support doesn’t specify which languages | Inspector | Explicitly list supported languages (e.g., EN, BM, Mandarin, Tamil) | VS-01 | 3 |
+| REQ_F0701 | Tooltip requirement doesn’t specify which elements or what they should display | Inspector | Add examples of elements (e.g., dashboard, timeout) and sample content | VS-01 | 3 |
+| REQ_F1201 | Attendance “overview” is underspecified | Inspector | Include fields like percentage, missed/attended counts, last attendance date | VS-01 | 3 |
+| - | Requirements are not linked to any defined system goals | Inspector | Add “System Goals” with IDs (G1–G5) under Section 1.2 and revise RTM accordingly | VS-01 | 4 |
+| - | Missing requirement and use case for profile editing (e.g., phone, avatar) | Inspector | Add a new requirement REQ_F3401 and UC034 to support profile management | VS-01 | 5 |
+| Section 2.2.1 | Grammar mistake: “lecturers are expected to be undergo training” | Inspector | Correct to “lecturers are expected to undergo training” | VS-01 | 2 |
+| REQ_P0003, REQ_P0005 | “Real-time” is defined as 5s in Section 1.4 but used inconsistently (2min in P0005) | Inspector | Standardize all performance-related timing to a unified threshold or redefine terms | VS-01 | 4 |
+| REQ_F2001 | Quiet Hours feature lacks exception handling for critical notifications (e.g., urgent alerts) | Inspector | Specify that critical alerts override quiet hours and are always delivered immediately | VS-01 | 4 |
+| REQ_F3001 | Requiring students to mail physical letters for parental consent is impractical in a digital system | Inspector | Replace with secure digital consent method: digital signature, OTP, or verified email | VS-01 | 5 |
+| REQ_I0004 / REQ_I0006 | Duplicate functional requirements with identical description and different IDs detected | Inspector | Consolidate into one unique ID and remove redundancy | VS-02 | 4 |
+| REQ_F0801 | Requirement refers to “complex features” without defining which features are considered complex | Inspector | List specific complex features in REQ_F0801 and UC008 Rules section | VS-02 | 3 |
+| UC001 | Login use case lacks flow for password recovery/account reset | Inspector | Add alternate flow: “Forgot Password” handling | VS-02 | 3 |
+| UC004, UC008, UC011, UC015, UC016, UC017, UC018 | Inconsistent naming of “Alternative Flow” vs. “Alternate Flow” on Pg 23–24, 28, etc. | Inspector | Standardize to a single term across all use cases | VS-02 | 1 |
+| UC021 | Reference to “F00X: Configure Parent Access” is invalid (placeholder not replaced) | Inspector | Replace with correct label “F030: Configure Parent Access” | VS-02 | 2 |
+| UC023 | Text refers to incorrect table caption “3.1.22” instead of “3.1.23" | Inspector | Update text to reflect correct table number (3.1.23) | VS-02 | 2 |
+| REQ_F0902 | REQ_F0902 does not specify if users can cancel/edit scheduled notifications before sending | Inspector | Add an alternate flow in UC009 to allow editing or cancelling scheduled notifications | VS-02 | 2 |
+| UC004 & UC034 | Notes sections are missing entirely in some use cases | Inspector | Reinstate “Notes” row even if N/A | VS-02 | 1 |
+
+--
+
+#### B. Documentation Defect
+
+| **Page No.** | **Validation and Defect Description** | **Detected By** | **Comment/Suggested Fix** | **Session ID** | **Severity (1–5)** |
+|--------------|----------------------------------------|------------------|---------------------------|----------------|--------------------|
+| Pg 25–30 | Tooltip description lacks examples and use context | Inspector | Add concrete UI element references (e.g., settings, billing) | VS-01 | 2 |
+| Pg 22 | Language selection requirement doesn’t list supported languages | Inspector | List supported languages inline with REQ_F0301 | VS-01 | 2 |
+| Section 1 | Missing list of clearly defined system goals (Goal ID: G1–G5) | Inspector | Add “System Goals” section and use Goal IDs in RTM | VS-01 | 3 |
+| - | Feature missing from functional requirements list and use case index | Inspector | Add F034 and UC034 with activity diagram and alternate flows | VS-01 | 4 |
+| Pg 17 | Typographical error in user expectations paragraph | Inspector | Remove “be” from phrase “expected to be undergo training” | VS-01 | 2 |
+| Pg 7 | Definition defines “real-time” as 5 seconds but used inconsistently in later requirements | Inspector | Add consistent glossary definition and revise all related REQs | VS-01 | 3 |
+| Pg 31 | No documentation of exception behavior for critical messages during quiet hours | Inspector | Add a rule or note in UC020 to clarify override conditions | VS-01 | 3 |
+| Pg 36 | Glossary defines consent revocation as physical-only with no mention of digital flow | Inspector | Revise glossary and REQ_F3001 to include secure digital revocation options | VS-01 | 3 |
+| Pg 90 | REQ_I0004 and REQ_I0006 are identical in wording, causing redundancy | Inspector | Remove one instance or reword if truly distinct | VS-02 | 4 |
+| Pg 32 | “Complex features” term in REQ_F0801 is undefined | Inspector | Add glossary term and explicitly list complex features in requirement | VS-02 | 3 |
+| Pg 18 | No alternate flow for password recovery is documented in UC001 | Inspector | Add alternate flow for “Forgot Password” scenario | VS-02 | 3 |
+| Pg 23–24, 28, 39, 47, 49, 51–53 | Mixed use of "Alternative Flow" and "Alternate Flow" | Inspector | Unify terminology: Use either “Alternate Flow” or “Alternative Flow” consistently | VS-02 | 1 |
+| Pg 59 | Incorrect cross-reference to “F00X” instead of actual use case “F030” | Inspector | Correct to “F030” for accurate mapping | VS-02 | 2 |
+| Pg 64 | Text incorrectly references Table 3.1.23 as 3.1.22 | Inspector | Update to correct number in caption and cross-references | VS-02 | 2 |
+
+--
+
+#### C. Agreement Defect
+
+| **Req ID** | **Validation Description/Stakeholder Concern Mismatch** | **Detected By** | **Session ID** | **Severity (1–5)** |
+|------------|----------------------------------------------------------|------------------|----------------|--------------------|
+| REQ_F0701 | Tooltip support is required by UC005, but REQ_F0701 doesn’t clarify which tooltips will be used | Inspector | VS-01 | 3 |
+| - | Stakeholders cannot trace goals to requirements or use cases | Inspector | VS-01 | 3 |
+| - | Students are unable to edit basic personal details despite viewing them in billing | Inspector | VS-01 | 4 |
+| REQ_P0005 | Misaligned stakeholder expectations: "real-time" varies by requirement (5s vs 2min) | Inspector | VS-01 | 4 |
+| REQ_F2001 | Stakeholders expect critical alerts (e.g., emergencies, system downtime) to bypass quiet hours | Inspector | VS-01 | 4 |
+| REQ_F3001 | Parents and students expect digital systems to allow secure consent handling and revocation | Inspector | VS-01 | 4 |
+| REQ_I0004/I0006 | Stakeholders may assume two separate behaviors when it’s actually a duplicate requirement | Inspector | VS-02 | 4 |
+| REQ_F0801 | Stakeholders unsure which features need to be supported by help documentation | Inspector | VS-02 | 3 |
+| UC001 | Stakeholders expect a basic system to support password reset functionality | Inspector | VS-02 | 3 |
+| UC004, UC008, UC011, UC015, UC016, UC017, UC018 | Terminology inconsistency may confuse readers and reviewers of use cases | Inspector | VS-02 | 1 |
+| UC021 | Incorrect use case reference may confuse reviewers or downstream developers | Inspector | VS-02 | 2 |
+| UC023 | Table references mismatch may cause reviewer confusion in documentation | Inspector | VS-02 | 2 |
+
+--
+
+### 3.8.3 Conflict Analysis
+
+| Conflict ID | Conflict Description | Conflict Analysis | Stakeholders Involved | Session ID |
+|-------------|-----------------------|--------------------|------------------------|-------------|
+| CF-01 | Compliance measures for GDPR and FERPA are too vague. | No specific encryption, data retention, access control, or consent mechanisms are described, creating risk for regulatory failure and ambiguity during implementation. | Legal Team, Development Team | VS-01 |
+| CF-02 | Multilingual interface support (REQ_F0301) is too generic. | The SRS doesn’t list supported languages, leading to ambiguity in UI design, translation scope, and testing. | International Students, UX Designers | VS-01 |
+| CF-03 | Tooltip functionality (REQ_F0701) is vague. | It doesn’t specify which elements have tooltips or their content. This affects UI clarity and requirement traceability, especially as Use Case UC005 references tooltips. | Documentation Team, QA, UI/UX Team | VS-01 |
+| CF-04 | REQ_F1201 (Attendance Record) lacks detail. | Missing fields like attendance %, late entries, and absent counts make implementation incomplete and confusing for users. | Students, Admins | VS-01 |
+| CF-05 | No explicit list of system goals in the SRS. | Goal IDs are referenced in the RTM, but without definitions, traceability is broken and validation logic fails. | QA Team, Project Lead | VS-01 |
+| CF-06 | No feature allowing students to edit their own profile details. | Basic profile management (phone, avatar) is missing, which is a basic user expectation. | Students, Developers | VS-01 |
+| CF-07 | Typographical error in stakeholder description. | Affects document professionalism and clarity. | Documentation Team | VS-01 |
+| CF-08 | Conflicting definition of "real-time". | Defined as 5 seconds in glossary but used inconsistently (e.g., 2 minutes in REQ_P0005), causing confusion and validation issues. | QA Team, Performance Engineer | VS-01 |
+| CF-09 | Quiet Hours feature doesn’t clarify handling of urgent notifications. | Ambiguity on whether critical alerts can bypass quiet hours creates inconsistent system behavior. | Users, QA Team, Developers | VS-01 |
+| CF-10 | Requiring physical letters for parental access revocation is unrealistic. | Incompatible with digital workflows; no secure digital fallback is provided. | Students, Parents, QA Team | VS-01 |
+| CF-11 | Requirement REQ_I0004 and REQ_I0006 describe the exact same functionality using different IDs | Duplicate requirement IDs may create confusion in development, testing, and maintenance processes. May also cause redundancy in traceability matrices and validation reports. | QA Team, Developers | VS-02 |
+| CF-12 | “Complex features” is vague; may lead to incomplete or inconsistent documentation coverage | Without defining which features are considered complex, help documentation may not address user needs completely. Leads to inconsistent support coverage across modules. | Developers, QA, Helpdesk | VS-02 |
+| CF-13 | Login use case lacks handling of forgotten passwords, a standard user expectation | Absence of password recovery flow can affect usability, user experience, and system adoption. May cause user frustration and increase helpdesk tickets. | QA Team, Developers, End Users | VS-02 |
+| CF-14 | Use cases inconsistently use “Alternative Flow” vs “Alternate Flow” | The inconsistency reduces document professionalism, may cause confusion during reviews, and affects standardization | QA, Documentation Team | VS-02 |
+| CF-15 | Use case references placeholder “F00X” instead of resolved use case ID “F030” | Placeholder label not updated creates traceability errors and complicates downstream implementation mapping | QA team, Technical Writers | VS-02 |
+| CF-16 | Text mislabelled Table 3.1.23 as 3.1.22 | Incorrect table references lead to navigation ambiguity for reviewers and breaks internal document cross-referencing | QA, Editors | VS-02 |
+| CF-17 | No mention of cancel/edit options for scheduled notifications | Missing alternate flow for scheduled notification management may lead to confusion or inability to modify queued messages | Lecturers, Admin | VS-02 |
+| CF-18 | Some use cases (e.g., UC004, UC034) are missing the “Notes” row entirely. This breaks consistency in formatting and may confuse reviewers into thinking documentation is incomplete. Even if no notes are applicable, the row should be present and state "N/A". | Missing “Notes” rows make the use case templates appear incomplete, reducing consistency and professionalism across the document. A consistent format improves review clarity and sets expectations for all use cases. | Documentation Team, QA Reviewers | VS-02 |
+
+--
+
+### 3.8.4 Conflict Resolution
+
+| Conflict ID | Conflict Resolution Strategy | Resolved (Y/N) | Outcome | Justification |
+|-------------|-------------------------------|----------------|---------|----------------|
+| CF-01 | Expanded REQ_F0002 to include encryption standards (TLS, AES), role-based access control, data retention rules, and digital consent requirements. | Y | GDPR and FERPA compliance is now concrete and testable. | Ensures legal and technical clarity for secure system behavior. |
+| CF-02 | REQ_F0301 was updated to list supported languages (e.g., English, BM, Mandarin, Tamil); added as validation criteria. | Y | Language support is now explicit for implementation and translation. | Clarifies design expectations and scope for multilingual support. |
+| CF-03 | Expanded REQ_F0701 to list tooltip-covered elements (dashboard, billing, timeout, etc.) and sample content; updated UC007 and UC005 references. | Y | Tooltip functionality is now fully defined and traceable. | Supports clear help features and ensures consistent UI design. |
+| CF-04 | Updated REQ_F1201 and UC012 to include fields like attendance %, absences, late entries, and last attendance date. | Y | Attendance view now provides detailed, useful insights for students. | Ensures complete data display and matches user expectations. |
+| CF-05 | Added a new table System Goals under Section 1.2 listing G1–G5 and linked them to RTM and functional requirements. | Y | Traceability structure is now complete and valid. | Supports full goal-to-requirement traceability flow. |
+| CF-06 | Added REQ_F3401 and UC034 to support profile editing and validation; included activity diagram and alt flows. | Y | Profile editing is now defined and traceable. | Closes major usability and expectation gap. |
+| CF-07 | Corrected grammatical structure in stakeholder training paragraph. | Y | Sentence is now grammatically correct. | Improves document readability and polish. |
+| CF-08 | Standardized “real-time” as 5 seconds across all related REQs. REQ_P0005 reworded to say “timely” if needed. | Y | Glossary and requirements now aligned. | Prevents performance ambiguity and test confusion. |
+| CF-09 | Updated REQ_F2001 and UC020 to explicitly state that critical notifications (e.g., emergency alerts) override quiet hours. | Y | Quiet Hours feature now supports exceptions properly. | Ensures reliable delivery of urgent communications. |
+| CF-10 | Updated REQ_F3001 and glossary to include secure digital consent process (OTP, email token, or digital signature confirmation). | Y | System now supports modern, verifiable consent flows. | Aligns with expectations for digital systems. |
+| CF-11 | Retain REQ_I0004 as the primary ID, delete REQ_I0006, and update all references accordingly | Y | Duplicates removed, ID reference integrity restored | Avoids traceability error and stakeholder confusion |
+| CF-12 | Expanded REQ_F0801 and UC008 Rule 3 with a list of complex features; added glossary term for clarity | Y | All stakeholders aligned on features requiring detailed guides | Ensures help documentation covers all critical areas |
+| CF-13 | Added alternate flow under UC001 to describe password recovery (Forgot Password) functionality | Y | Password reset scenario is now captured in the login process | Aligns with usability expectations and completeness |
+| CF-14 | Replaced all instances of “Alternative Flow” with “Alternate Flow” for consistency | Y | Unified terminology across use cases | Increases clarity and editorial consistency |
+| CF-15 | Update “F00X: Configure Parent Access” to “F030: Configure Parent Access” in UC021 | Y | Reference is now accurate and traceable | Ensures referential integrity in documentation |
+| CF-16 | Corrected text from “Table 3.1.22” to “Table 3.1.23” | Y | Numbering aligns with actual section reference | Fixes cross-reference clarity in SRS document |
+| CF-17 | Introduced an alternate flow titled "Cancel or Modify Scheduled Notification" in UC009. Include access, selection, update/cancel options, and confirmation. | Y | Scheduled notifications can now be modified or cancelled | Ensures clarity |
+| CF-18 | Reinstated the “Notes” row in UC004 and UC034 with the value “N/A” where applicable. | Y | All use cases now include a Notes section for format consistency. | Ensures uniform structure and prevents reader confusion. |
+
+--
+
+### 3.8.5 Change Log
+
+| **Change ID** | **Req ID**                   | **Summary of Change**                                                                                     | **Proposed By**     | **Date**       | **Session ID** |
+|---------------|------------------------------|-----------------------------------------------------------------------------------------------------------|---------------------|----------------|----------------|
+| CH-01         | —                            | Created initial `project-part-2` branch and set up file structure for Software Requirements Engineering Part 2. | Yang Jia En         | 2025-06-17     | —              |
+| CH-02         | —                            | Added diagram screenshot to previous SRS file.                                                            | Teoh Xuan Xuan      | 2025-06-18     | —              |
+| CH-03         | —                            | Created the markdown format for SRS.                                                                      | Teoh Xuan Xuan      | 2025-06-19     | —              |
+| CH-04         | —                            | Created the validation and defect report.                                                                 | Yang Jia En         | 2025-06-20     | VS-01          |
+| CH-05         | REQ_F0002                    | Expanded GDPR and FERPA compliance requirements with explicit encryption, access control, and retention details. | Yang Jia En         | 2025-06-21     | VS-01          |
+| CH-06         | REQ_F0301, REQ_F0302         | Merged duplicate multilingual requirements into a single statement.                                       | Tey Jun Cheng       | 2025-06-21              | VS-01              |
+| CH-07         | REQ_F0701                    | Expanded tooltip requirement to specify which interface elements display tooltips and their expected content. | Teoh Xuan Xuan      | 2025-06-21              | VS-01              |
+| CH-08         | REQ_F1201, UC012             | Expanded attendance requirement and use case to include percentage, total sessions, missed days, and late entries. | Yang Jia En         | 2025-06-22              | VS-01              |
+| CH-09         | —                            | Added “System Goals” under Section 1.2 defining G1–G5 for use in traceability matrix and requirement links. | Tey Jun Cheng       | 2025-06-22              | —              |
+| CH-10         | REQ_F3401, UC034             | Added new requirement and use case for Profile Management allowing students to edit phone, avatar, and contact info. | Teoh Xuan Xuan      | 2025-06-22              | VS-01              |
+| CH-11         | Section 2.2.1                | Fixed grammar in stakeholder description (“lecturers are expected to undergo training”).                  | Yang Jia En         | 2025-06-22              | —              |
+| CH-12         | REQ_P0003, REQ_P0005         | Standardized “real-time” threshold and revised conflicting performance wording.                           | Tey Jun Cheng       | 2025-06-22              | VS-02              |
+| CH-13         | REQ_F2001, UC020             | Added exception logic to Quiet Hours feature to allow override by critical notifications.                 | Yang Jia En         | 2025-06-22              | VS-01              |
+| CH-14         | REQ_F3001, Glossary          | Replaced physical consent requirement with secure digital consent methods (e.g., OTP, verified email link). | Teoh Xuan Xuan      | 2025-06-22              | VS-01              |
+| CH-15 | REQ_I0004 / REQ_I0006 | Removed duplicate requirement (REQ_I0006); retained REQ_I0004 only | Teoh Xuan Xuan | 22-06-2025 | VS-02 |
+| CH-16 | REQ_F0801, UC008 | Listed complex features (quiet time, timeout, etc.); updated rule; added glossary definition for "complex feature" | Tey Jun Cheng | 22-06-2025 | VS-02 |
+| CH-17 | UC001 | Added alternate flow for password recovery ("Forgot Password") | Yang Jia En | 22-06-2025 | VS-02 |
+| CH-18 | UC004, UC008, UC011, UC015, UC016, UC017, UC018 | Replaced “Alternative Flow” with “Alternate Flow” on 8 pages | Yang Jia En | 22-06-2025 | VS-02 |
+| CH-19 | UC021 | Fixed broken reference “F00X” to “F030” in View Child’s Info use case | Teoh Xuan Xuan | 22-06-2025 | VS-02 |
+| CH-20 | UC023 | Corrected table number reference to 3.1.23 | Tey Jun Cheng | 22-06-2025 | VS-02 |
+| CH-21 | REQ_F0902 | Added alternate flow to UC009 for cancelling or modifying scheduled notifications. Clarified REQ_F0902. | Yang Jia En | 22-06-2025 | VS-02 |
+| CH-22 | UC004, UC034 | Reinstated missing “Notes” rows in UC004 and UC034 with “N/A” values to preserve formatting consistency across use cases. | Tey Jun Cheng | 22-06-2025 | VS-02 |
+
+--
+
+### 3.8.6 Requirements Traceability Matrix
+
+#### Traceability Score Description
+
+| **Traceability Score** | **Description** |
+|------------------------|------------------|
+| 1 | Linked to only 1 artifact (e.g., just a goal, or just a use case) |
+| 2 | Linked to 2 artifacts (e.g., goal + feature) |
+| 3 | Linked to 3 artifacts, but links may be basic or unverified |
+| 4 | Linked to 3 artifacts with high confidence, correctness, and completeness (e.g., validated relationships, clear traceability) |
+
+--
+
+| Req ID     | Requirement Description                                              | Linked Goal(s) | Feature(s) | Use Case(s)  | Traceability Score (1–4) |
+|------------|-----------------------------------------------------------------------|----------------|------------|--------------|--------------------------|
+| REQ_F0002  | The system shall comply with GDPR and FERPA with specific controls   | G1             | F0002      | UC0002       | 4                        |
+| REQ_F1201  | Attendance record view with % and session breakdown                  | G4             | F1201      | UC012        | 4                        |
+| REQ_F0301  | Multilingual interface and user language selection                   | G5             | F0301      | UC003        | 4                        |
+| REQ_F0701  | Contextual tooltips for key UI elements                              | G5             | F0701      | UC005, UC007 | 4                        |
+| REQ_F3401  | Allow students to update personal profile info                       | G3             | F034       | UC034        | 4                        |
+| REQ_P0005  | The system shall sync data in a “timely” manner (standardized term)  | G4             | P005       | UC005, UC012 | 4                        |
+| REQ_F2001  | The system shall allow quiet hours but always deliver critical notifications | G2        | F020       | UC020        | 4                        |
+| REQ_F3001  | The system shall handle parental consent using secure digital methods | G1           | F030       | UC030        | 4                        |
+| REQ_F0801 | The system shall provide help documentation for complex features such as GPA, timeout, and parental settings | G5 | F008 | UC008 | 4 | Complex features explicitly listed; linked to help access flow and glossary |
+| UC001 | Login use case now includes alternate flow for password reset | G1 | F001 | UC001 | 4 | Flow supports both login and account recovery scenarios |
+
+--
+
+### 3.8.7 Role in Requirements Validation, Negotiation & Management
+
+| Role   | Name          | Primary Responsibility           | No. of Session Participated |
+|--------|---------------|-----------------------------------|-----------------------------|
+| Student | Yang Jia En   | Inspector | 2                           |
+| Student | Tey Jun Cheng | Inspector | 2                           |
+| Student | Teoh Xuan Xuan | Inspector | 2                           |
+
+--
+
+### 3.8.8 Version Control & Configuration Summary
+
+| Activity                  | Yang Jia En | Tey Jun Cheng | Teoh Xuan Xuan |
+|---------------------------|-------------|---------------|----------------|
+| Commits Made              | 5           | 3             | 5             |
+| Pull Requests Merged      | 3           | 1             | 1              |
+| Change Log Entries Made   | 2           | 1             | 2              |
+
+--
 
 # 4. Verification
 
@@ -4228,219 +4502,14 @@ The period of inactivity after which a user is automatically logged out to maint
 15. **WebSocket:**  
 A communication protocol used in COMSYS for real-time features like live chat and instant notifications, enabling bidirectional, low-latency data exchange.
 
----
----
+16. **Complex Feature:**  
+A system function that involves multi-step configuration, affects user access or personalization, or includes conditional system behavior. Examples include session timeout settings, consent flows, and parental access management.
 
-## 3.8 Supporting Information
+17. **Digital Consent:**  
+A secure, verifiable method of obtaining a user’s authorization through electronic means. In the context of this system, digital consent includes:  
+- One-Time Password (OTP): A unique, time-sensitive code sent via SMS or email to confirm identity.  
+- Verified Email Token: A confirmation link sent to a registered email address which, when clicked, completes the consent process.  
+- Digital Signature: An electronic signature applied by the consenting party using secure, authenticated methods.  
 
-### 3.8.1 Validation Session
-
-| **Session ID** | **Date and Time** | **Technique** | **Section Reviewed** | **Participant & Role** | **No. of Defects** |
-|----------------|-------------------|---------------|----------------------|------------------------|--------------------|
-| VS-01 | 21/06/2025; 10am-1pm | Inspection | Sections 3.1, 3.3, 3.4 | Yang Jia En (Inspector), Teoh Xuan Xuan (Inspector), Tey Jun Cheng (Inspector) | 12 |
-| VS-02 | 22/06/2025; 2pm-5pm | Inspection | Sections 3.2, 3.5, 3.7 | Tey Jun Cheng (Inspector), Teoh Xuan Xuan (Inspector), Yang Jia En (Inspector, Organizer) | 12 |
-
-### 3.8.2 Defect Summary
-
-#### Severity Levels
-
-| **Severity** | **Description** |
-|--------------|------------------|
-| 1 | Minor issue; affects readability or minor clarity problems |
-| 2 | Low impact; vague functionality, incomplete data presentation, or unclear scope for developers/translators |
-| 3 | Medium impact; functional inconsistency or conflicting system logic |
-| 4 | High impact; affects legal clarity, traceability, or RTM integrity |
-| 5 | Critical defect; key functionality gap or breaks digital UX and feasibility |
-
---
-
-#### A. Content Defect
-
-| **Req ID** | **Validation and Defect Description** | **Detected By** | **Comment/Suggested Fix** | **Session ID** | **Severity (1–5)** |
-|------------|----------------------------------------|------------------|----------------------------|----------------|--------------------|
-| REQ_F0002 | GDPR and FERPA compliance too vague | Inspector | Add specific controls like encryption, access control, data retention, consent logic | VS-01 | 4 |
-| REQ_F0301 | Multilingual support doesn’t specify which languages | Inspector | Explicitly list supported languages (e.g., EN, BM, Mandarin, Tamil) | VS-01 | 3 |
-| REQ_F0701 | Tooltip requirement doesn’t specify which elements or what they should display | Inspector | Add examples of elements (e.g., dashboard, timeout) and sample content | VS-01 | 3 |
-| REQ_F1201 | Attendance “overview” is underspecified | Inspector | Include fields like percentage, missed/attended counts, last attendance date | VS-01 | 3 |
-| - | Requirements are not linked to any defined system goals | Inspector | Add “System Goals” with IDs (G1–G5) under Section 1.2 and revise RTM accordingly | VS-01 | 4 |
-| - | Missing requirement and use case for profile editing (e.g., phone, avatar) | Inspector | Add a new requirement REQ_F3401 and UC034 to support profile management | VS-01 | 5 |
-| Section 2.2.1 | Grammar mistake: “lecturers are expected to be undergo training” | Inspector | Correct to “lecturers are expected to undergo training” | VS-01 | 2 |
-| REQ_P0003, REQ_P0005 | “Real-time” is defined as 5s in Section 1.4 but used inconsistently (2min in P0005) | Inspector | Standardize all performance-related timing to a unified threshold or redefine terms | VS-01 | 4 |
-| REQ_F2001 | Quiet Hours feature lacks exception handling for critical notifications (e.g., urgent alerts) | Inspector | Specify that critical alerts override quiet hours and are always delivered immediately | VS-01 | 4 |
-| REQ_F3001 | Requiring students to mail physical letters for parental consent is impractical in a digital system | Inspector | Replace with secure digital consent method: digital signature, OTP, or verified email | VS-01 | 5 |
-| REQ_I0004 / REQ_I0006 | Duplicate functional requirements with identical description and different IDs detected | Inspector | Consolidate into one unique ID and remove redundancy | VS-02 | 4 |
-| REQ_F0801 | Requirement refers to “complex features” without defining which features are considered complex | Inspector | List specific complex features in REQ_F0801 and UC008 Rules section | VS-02 | 3 |
-| UC001 | Login use case lacks flow for password recovery/account reset | Inspector | Add alternate flow: “Forgot Password” handling | VS-02 | 3 |
-| UC004, UC008, UC011, UC015, UC016, UC017, UC018 | Inconsistent naming of “Alternative Flow” vs. “Alternate Flow” on Pg 23–24, 28, etc. | Inspector | Standardize to a single term across all use cases | VS-02 | 1 |
-| UC021 | Reference to “F00X: Configure Parent Access” is invalid (placeholder not replaced) | Inspector | Replace with correct label “F030: Configure Parent Access” | VS-02 | 2 |
-| UC023 | Text refers to incorrect table caption “3.1.22” instead of “3.1.23" | Inspector | Update text to reflect correct table number (3.1.23) | VS-02 | 2 |
-| REQ_F0902 | REQ_F0902 does not specify if users can cancel/edit scheduled notifications before sending | Inspector | Add an alternate flow in UC009 to allow editing or cancelling scheduled notifications | VS-02 | 2 |
-| UC004 & UC034 | Notes sections are missing entirely in some use cases | Inspector | Reinstate “Notes” row even if N/A | VS-02 | 1 |
-
---
-
-#### B. Documentation Defect
-
-| **Page No.** | **Validation and Defect Description** | **Detected By** | **Comment/Suggested Fix** | **Session ID** | **Severity (1–5)** |
-|--------------|----------------------------------------|------------------|---------------------------|----------------|--------------------|
-| Pg 25–30 | Tooltip description lacks examples and use context | Inspector | Add concrete UI element references (e.g., settings, billing) | VS-01 | 2 |
-| Pg 22 | Language selection requirement doesn’t list supported languages | Inspector | List supported languages inline with REQ_F0301 | VS-01 | 2 |
-| Section 1 | Missing list of clearly defined system goals (Goal ID: G1–G5) | Inspector | Add “System Goals” section and use Goal IDs in RTM | VS-01 | 3 |
-| - | Feature missing from functional requirements list and use case index | Inspector | Add F034 and UC034 with activity diagram and alternate flows | VS-01 | 4 |
-| Pg 17 | Typographical error in user expectations paragraph | Inspector | Remove “be” from phrase “expected to be undergo training” | VS-01 | 2 |
-| Pg 7 | Definition defines “real-time” as 5 seconds but used inconsistently in later requirements | Inspector | Add consistent glossary definition and revise all related REQs | VS-01 | 3 |
-| Pg 31 | No documentation of exception behavior for critical messages during quiet hours | Inspector | Add a rule or note in UC020 to clarify override conditions | VS-01 | 3 |
-| Pg 36 | Glossary defines consent revocation as physical-only with no mention of digital flow | Inspector | Revise glossary and REQ_F3001 to include secure digital revocation options | VS-01 | 3 |
-| Pg 90 | REQ_I0004 and REQ_I0006 are identical in wording, causing redundancy | Inspector | Remove one instance or reword if truly distinct | VS-02 | 4 |
-| Pg 32 | “Complex features” term in REQ_F0801 is undefined | Inspector | Add glossary term and explicitly list complex features in requirement | VS-02 | 3 |
-| Pg 18 | No alternate flow for password recovery is documented in UC001 | Inspector | Add alternate flow for “Forgot Password” scenario | VS-02 | 3 |
-| Pg 23–24, 28, 39, 47, 49, 51–53 | Mixed use of "Alternative Flow" and "Alternate Flow" | Inspector | Unify terminology: Use either “Alternate Flow” or “Alternative Flow” consistently | VS-02 | 1 |
-| Pg 59 | Incorrect cross-reference to “F00X” instead of actual use case “F030” | Inspector | Correct to “F030” for accurate mapping | VS-02 | 2 |
-| Pg 64 | Text incorrectly references Table 3.1.23 as 3.1.22 | Inspector | Update to correct number in caption and cross-references | VS-02 | 2 |
-
---
-
-#### C. Agreement Defect
-
-| **Req ID** | **Validation Description/Stakeholder Concern Mismatch** | **Detected By** | **Session ID** | **Severity (1–5)** |
-|------------|----------------------------------------------------------|------------------|----------------|--------------------|
-| REQ_F0701 | Tooltip support is required by UC005, but REQ_F0701 doesn’t clarify which tooltips will be used | Inspector | VS-01 | 3 |
-| - | Stakeholders cannot trace goals to requirements or use cases | Inspector | VS-01 | 3 |
-| - | Students are unable to edit basic personal details despite viewing them in billing | Inspector | VS-01 | 4 |
-| REQ_P0005 | Misaligned stakeholder expectations: "real-time" varies by requirement (5s vs 2min) | Inspector | VS-01 | 4 |
-| REQ_F2001 | Stakeholders expect critical alerts (e.g., emergencies, system downtime) to bypass quiet hours | Inspector | VS-01 | 4 |
-| REQ_F3001 | Parents and students expect digital systems to allow secure consent handling and revocation | Inspector | VS-01 | 4 |
-| REQ_I0004/I0006 | Stakeholders may assume two separate behaviors when it’s actually a duplicate requirement | Inspector | VS-02 | 4 |
-| REQ_F0801 | Stakeholders unsure which features need to be supported by help documentation | Inspector | VS-02 | 3 |
-| UC001 | Stakeholders expect a basic system to support password reset functionality | Inspector | VS-02 | 3 |
-| UC004, UC008, UC011, UC015, UC016, UC017, UC018 | Terminology inconsistency may confuse readers and reviewers of use cases | Inspector | VS-02 | 1 |
-| UC021 | Incorrect use case reference may confuse reviewers or downstream developers | Inspector | VS-02 | 2 |
-| UC023 | Table references mismatch may cause reviewer confusion in documentation | Inspector | VS-02 | 2 |
-
---
-
-### 3.8.3 Conflict Analysis
-
-| Conflict ID | Conflict Description | Conflict Analysis | Stakeholders Involved | Session ID |
-|-------------|-----------------------|--------------------|------------------------|-------------|
-| CF-01 | Compliance measures for GDPR and FERPA are too vague. | No specific encryption, data retention, access control, or consent mechanisms are described, creating risk for regulatory failure and ambiguity during implementation. | Legal Team, Development Team | VS-01 |
-| CF-02 | Multilingual interface support (REQ_F0301) is too generic. | The SRS doesn’t list supported languages, leading to ambiguity in UI design, translation scope, and testing. | International Students, UX Designers | VS-01 |
-| CF-03 | Tooltip functionality (REQ_F0701) is vague. | It doesn’t specify which elements have tooltips or their content. This affects UI clarity and requirement traceability, especially as Use Case UC005 references tooltips. | Documentation Team, QA, UI/UX Team | VS-01 |
-| CF-04 | REQ_F1201 (Attendance Record) lacks detail. | Missing fields like attendance %, late entries, and absent counts make implementation incomplete and confusing for users. | Students, Admins | VS-01 |
-| CF-05 | No explicit list of system goals in the SRS. | Goal IDs are referenced in the RTM, but without definitions, traceability is broken and validation logic fails. | QA Team, Project Lead | VS-01 |
-| CF-06 | No feature allowing students to edit their own profile details. | Basic profile management (phone, avatar) is missing, which is a basic user expectation. | Students, Developers | VS-01 |
-| CF-07 | Typographical error in stakeholder description. | Affects document professionalism and clarity. | Documentation Team | VS-01 |
-| CF-08 | Conflicting definition of "real-time". | Defined as 5 seconds in glossary but used inconsistently (e.g., 2 minutes in REQ_P0005), causing confusion and validation issues. | QA Team, Performance Engineer | VS-01 |
-| CF-09 | Quiet Hours feature doesn’t clarify handling of urgent notifications. | Ambiguity on whether critical alerts can bypass quiet hours creates inconsistent system behavior. | Users, QA Team, Developers | VS-01 |
-| CF-10 | Requiring physical letters for parental access revocation is unrealistic. | Incompatible with digital workflows; no secure digital fallback is provided. | Students, Parents, QA Team | VS-01 |
-| CF-11 | Requirement REQ_I0004 and REQ_I0006 describe the exact same functionality using different IDs | Duplicate requirement IDs may create confusion in development, testing, and maintenance processes. May also cause redundancy in traceability matrices and validation reports. | QA Team, Developers | VS-02 |
-| CF-12 | “Complex features” is vague; may lead to incomplete or inconsistent documentation coverage | Without defining which features are considered complex, help documentation may not address user needs completely. Leads to inconsistent support coverage across modules. | Developers, QA, Helpdesk | VS-02 |
-| CF-13 | Login use case lacks handling of forgotten passwords, a standard user expectation | Absence of password recovery flow can affect usability, user experience, and system adoption. May cause user frustration and increase helpdesk tickets. | QA Team, Developers, End Users | VS-02 |
-| CF-14 | Use cases inconsistently use “Alternative Flow” vs “Alternate Flow” | The inconsistency reduces document professionalism, may cause confusion during reviews, and affects standardization | QA, Documentation Team | VS-02 |
-| CF-15 | Use case references placeholder “F00X” instead of resolved use case ID “F030” | Placeholder label not updated creates traceability errors and complicates downstream implementation mapping | QA team, Technical Writers | VS-02 |
-| CF-16 | Text mislabelled Table 3.1.23 as 3.1.22 | Incorrect table references lead to navigation ambiguity for reviewers and breaks internal document cross-referencing | QA, Editors | VS-02 |
-| CF-17 | No mention of cancel/edit options for scheduled notifications | Missing alternate flow for scheduled notification management may lead to confusion or inability to modify queued messages | Lecturers, Admin | VS-02 |
-| CF-18 | Some use cases (e.g., UC004, UC034) are missing the “Notes” row entirely. This breaks consistency in formatting and may confuse reviewers into thinking documentation is incomplete. Even if no notes are applicable, the row should be present and state "N/A". | Missing “Notes” rows make the use case templates appear incomplete, reducing consistency and professionalism across the document. A consistent format improves review clarity and sets expectations for all use cases. | Documentation Team, QA Reviewers | VS-02 |
-
---
-
-### 3.8.4 Conflict Resolution
-
-| Conflict ID | Conflict Resolution Strategy | Resolved (Y/N) | Outcome | Justification |
-|-------------|-------------------------------|----------------|---------|----------------|
-| CF-01 | Expanded REQ_F0002 to include encryption standards (TLS, AES), role-based access control, data retention rules, and digital consent requirements. | Y | GDPR and FERPA compliance is now concrete and testable. | Ensures legal and technical clarity for secure system behavior. |
-| CF-02 | REQ_F0301 was updated to list supported languages (e.g., English, BM, Mandarin, Tamil); added as validation criteria. | Y | Language support is now explicit for implementation and translation. | Clarifies design expectations and scope for multilingual support. |
-| CF-03 | Expanded REQ_F0701 to list tooltip-covered elements (dashboard, billing, timeout, etc.) and sample content; updated UC007 and UC005 references. | Y | Tooltip functionality is now fully defined and traceable. | Supports clear help features and ensures consistent UI design. |
-| CF-04 | Updated REQ_F1201 and UC012 to include fields like attendance %, absences, late entries, and last attendance date. | Y | Attendance view now provides detailed, useful insights for students. | Ensures complete data display and matches user expectations. |
-| CF-05 | Added a new table System Goals under Section 1.2 listing G1–G5 and linked them to RTM and functional requirements. | Y | Traceability structure is now complete and valid. | Supports full goal-to-requirement traceability flow. |
-| CF-06 | Added REQ_F3401 and UC034 to support profile editing and validation; included activity diagram and alt flows. | Y | Profile editing is now defined and traceable. | Closes major usability and expectation gap. |
-| CF-07 | Corrected grammatical structure in stakeholder training paragraph. | Y | Sentence is now grammatically correct. | Improves document readability and polish. |
-| CF-08 | Standardized “real-time” as 5 seconds across all related REQs. REQ_P0005 reworded to say “timely” if needed. | Y | Glossary and requirements now aligned. | Prevents performance ambiguity and test confusion. |
-| CF-09 | Updated REQ_F2001 and UC020 to explicitly state that critical notifications (e.g., emergency alerts) override quiet hours. | Y | Quiet Hours feature now supports exceptions properly. | Ensures reliable delivery of urgent communications. |
-| CF-10 | Updated REQ_F3001 and glossary to include secure digital consent process (OTP, email token, or digital signature confirmation). | Y | System now supports modern, verifiable consent flows. | Aligns with expectations for digital systems. |
-| CF-11 | Retain REQ_I0004 as the primary ID, delete REQ_I0006, and update all references accordingly | Y | Duplicates removed, ID reference integrity restored | Avoids traceability error and stakeholder confusion |
-| CF-12 | Expanded REQ_F0801 and UC008 Rule 3 with a list of complex features; added glossary term for clarity | Y | All stakeholders aligned on features requiring detailed guides | Ensures help documentation covers all critical areas |
-| CF-13 | Added alternate flow under UC001 to describe password recovery (Forgot Password) functionality | Y | Password reset scenario is now captured in the login process | Aligns with usability expectations and completeness |
-| CF-14 | Replaced all instances of “Alternative Flow” with “Alternate Flow” for consistency | Y | Unified terminology across use cases | Increases clarity and editorial consistency |
-| CF-15 | Update “F00X: Configure Parent Access” to “F030: Configure Parent Access” in UC021 | Y | Reference is now accurate and traceable | Ensures referential integrity in documentation |
-| CF-16 | Corrected text from “Table 3.1.22” to “Table 3.1.23” | Y | Numbering aligns with actual section reference | Fixes cross-reference clarity in SRS document |
-| CF-17 | Introduced an alternate flow titled "Cancel or Modify Scheduled Notification" in UC009. Include access, selection, update/cancel options, and confirmation. | Y | Scheduled notifications can now be modified or cancelled | Ensures clarity |
-| CF-18 | Reinstated the “Notes” row in UC004 and UC034 with the value “N/A” where applicable. | Y | All use cases now include a Notes section for format consistency. | Ensures uniform structure and prevents reader confusion. |
-
---
-
-### 3.8.5 Change Log
-
-| **Change ID** | **Req ID**                   | **Summary of Change**                                                                                     | **Proposed By**     | **Date**       | **Session ID** |
-|---------------|------------------------------|-----------------------------------------------------------------------------------------------------------|---------------------|----------------|----------------|
-| CH-01         | —                            | Created initial `project-part-2` branch and set up file structure for Software Requirements Engineering Part 2. | Yang Jia En         | 2025-06-17     | —              |
-| CH-02         | —                            | Added diagram screenshot to previous SRS file.                                                            | Teoh Xuan Xuan      | 2025-06-18     | —              |
-| CH-03         | —                            | Created the markdown format for SRS.                                                                      | Teoh Xuan Xuan      | 2025-06-19     | —              |
-| CH-04         | —                            | Created the validation and defect report.                                                                 | Yang Jia En         | 2025-06-20     | VS-01          |
-| CH-05         | REQ_F0002                    | Expanded GDPR and FERPA compliance requirements with explicit encryption, access control, and retention details. | Yang Jia En         | 2025-06-21     | VS-01          |
-| CH-06         | REQ_F0301, REQ_F0302         | Merged duplicate multilingual requirements into a single statement.                                       | Tey Jun Cheng       | 2025-06-21              | VS-01              |
-| CH-07         | REQ_F0701                    | Expanded tooltip requirement to specify which interface elements display tooltips and their expected content. | Teoh Xuan Xuan      | 2025-06-21              | VS-01              |
-| CH-08         | REQ_F1201, UC012             | Expanded attendance requirement and use case to include percentage, total sessions, missed days, and late entries. | Yang Jia En         | 2025-06-22              | VS-01              |
-| CH-09         | —                            | Added “System Goals” under Section 1.2 defining G1–G5 for use in traceability matrix and requirement links. | Tey Jun Cheng       | 2025-06-22              | —              |
-| CH-10         | REQ_F3401, UC034             | Added new requirement and use case for Profile Management allowing students to edit phone, avatar, and contact info. | Teoh Xuan Xuan      | 2025-06-22              | VS-01              |
-| CH-11         | Section 2.2.1                | Fixed grammar in stakeholder description (“lecturers are expected to undergo training”).                  | Yang Jia En         | 2025-06-22              | —              |
-| CH-12         | REQ_P0003, REQ_P0005         | Standardized “real-time” threshold and revised conflicting performance wording.                           | Tey Jun Cheng       | 2025-06-22              | VS-02              |
-| CH-13         | REQ_F2001, UC020             | Added exception logic to Quiet Hours feature to allow override by critical notifications.                 | Yang Jia En         | 2025-06-22              | VS-01              |
-| CH-14         | REQ_F3001, Glossary          | Replaced physical consent requirement with secure digital consent methods (e.g., OTP, verified email link). | Teoh Xuan Xuan      | 2025-06-22              | VS-01              |
-| CH-15 | REQ_I0004 / REQ_I0006 | Removed duplicate requirement (REQ_I0006); retained REQ_I0004 only | Teoh Xuan Xuan | 22-06-2025 | VS-02 |
-| CH-16 | REQ_F0801, UC008 | Listed complex features (quiet time, timeout, etc.); updated rule; added glossary definition for "complex feature" | Tey Jun Cheng | 22-06-2025 | VS-02 |
-| CH-17 | UC001 | Added alternate flow for password recovery ("Forgot Password") | Yang Jia En | 22-06-2025 | VS-02 |
-| CH-18 | UC004, UC008, UC011, UC015, UC016, UC017, UC018 | Replaced “Alternative Flow” with “Alternate Flow” on 8 pages | Yang Jia En | 22-06-2025 | VS-02 |
-| CH-19 | UC021 | Fixed broken reference “F00X” to “F030” in View Child’s Info use case | Teoh Xuan Xuan | 22-06-2025 | VS-02 |
-| CH-20 | UC023 | Corrected table number reference to 3.1.23 | Tey Jun Cheng | 22-06-2025 | VS-02 |
-| CH-21 | REQ_F0902 | Added alternate flow to UC009 for cancelling or modifying scheduled notifications. Clarified REQ_F0902. | Yang Jia En | 22-06-2025 | VS-02 |
-| CH-22 | UC004, UC034 | Reinstated missing “Notes” rows in UC004 and UC034 with “N/A” values to preserve formatting consistency across use cases. | Tey Jun Cheng | 22-06-2025 | VS-02 |
-
---
-
-### 3.8.6 Requirements Traceability Matrix
-
-#### Traceability Score Description
-
-| **Traceability Score** | **Description** |
-|------------------------|------------------|
-| 1 | Linked to only 1 artifact (e.g., just a goal, or just a use case) |
-| 2 | Linked to 2 artifacts (e.g., goal + feature) |
-| 3 | Linked to 3 artifacts, but links may be basic or unverified |
-| 4 | Linked to 3 artifacts with high confidence, correctness, and completeness (e.g., validated relationships, clear traceability) |
-
---
-
-| Req ID     | Requirement Description                                              | Linked Goal(s) | Feature(s) | Use Case(s)  | Traceability Score (1–4) |
-|------------|-----------------------------------------------------------------------|----------------|------------|--------------|--------------------------|
-| REQ_F0002  | The system shall comply with GDPR and FERPA with specific controls   | G1             | F0002      | UC0002       | 4                        |
-| REQ_F1201  | Attendance record view with % and session breakdown                  | G4             | F1201      | UC012        | 4                        |
-| REQ_F0301  | Multilingual interface and user language selection                   | G5             | F0301      | UC003        | 4                        |
-| REQ_F0701  | Contextual tooltips for key UI elements                              | G5             | F0701      | UC005, UC007 | 4                        |
-| REQ_F3401  | Allow students to update personal profile info                       | G3             | F034       | UC034        | 4                        |
-| REQ_P0005  | The system shall sync data in a “timely” manner (standardized term)  | G4             | P005       | UC005, UC012 | 4                        |
-| REQ_F2001  | The system shall allow quiet hours but always deliver critical notifications | G2        | F020       | UC020        | 4                        |
-| REQ_F3001  | The system shall handle parental consent using secure digital methods | G1           | F030       | UC030        | 4                        |
-| REQ_F0801 | The system shall provide help documentation for complex features such as GPA, timeout, and parental settings | G5 | F008 | UC008 | 4 | Complex features explicitly listed; linked to help access flow and glossary |
-| UC001 | Login use case now includes alternate flow for password reset | G1 | F001 | UC001 | 4 | Flow supports both login and account recovery scenarios |
-
---
-
-### 3.8.7 Role in Requirements Validation, Negotiation & Management
-
-| Role   | Name          | Primary Responsibility           | No. of Session Participated |
-|--------|---------------|-----------------------------------|-----------------------------|
-| Student | Yang Jia En   | Inspector, Organizer | 2                           |
-| Student | Tey Jun Cheng | Inspector | 2                           |
-| Student | Teoh Xuan Xuan | Inspector | 2                           |
-
---
-
-### 3.8.8 Version Control & Configuration Summary
-
-| Activity                  | Yang Jia En | Tey Jun Cheng | Teoh Xuan Xuan |
-|---------------------------|-------------|---------------|----------------|
-| Commits Made              | 5           | 3             | 5             |
-| Pull Requests Merged      | 3           | 1             | 1              |
-| Change Log Entries Made   | 2           | 1             | 2              |
+This process replaces traditional physical consent forms and is used to authorize sensitive operations such as parental access configuration.
 
