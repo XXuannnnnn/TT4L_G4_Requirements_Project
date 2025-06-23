@@ -2571,7 +2571,7 @@ The functional requirement(s) for F020 Set ‘Quiet Hours’:
 | **Requirement ID** | REQ_F2001 |
 |--------------------|-----------|
 | **Version** | 1.0 |
-| **Description** | The system should provide a "quiet hours" feature allowing students to temporarily suspend non-urgent notifications |
+| **Description** | The system shall provide a “quiet hours” feature allowing students to temporarily suppress non-urgent notifications during specified time periods. Critical notifications (e.g., emergency alerts, urgent fee or academic announcements) shall always bypass quiet hours and be delivered immediately. |
 | **Author** | Hesham |
 
 Table 3.1.20 illustrates the use case for the set ‘quiet hours’ functionality (UC020), detailing the process as defined by Requirement REQ_F2001, followed by an activity diagram which represents the process flow.
@@ -2617,7 +2617,7 @@ Table 3.1.20 illustrates the use case for the set ‘quiet hours’ functionalit
   <tr><td>Step 2</td><td>System displays current quiet hours configuration</td></tr>
   <tr><td>Step 3</td><td>User sets quiet hours’ time ranges</td></tr>
   <tr><td>Step 4</td><td>User selects days of week for quiet hours</td></tr>
-  <tr><td>Step 5</td><td>User configures critical notification exceptions</td></tr>
+  <tr><td>Step 5</td><td>User configures critical notification exceptions (e.g, emergency alerts)</td></tr>
   <tr><td>Step 6</td><td>User confirms changes</td></tr>
   <tr><td>Step 7</td><td>System saves new quiet hours configuration</td></tr>
 
@@ -2626,6 +2626,7 @@ Table 3.1.20 illustrates the use case for the set ‘quiet hours’ functionalit
   </tr>
   <tr><td>Rule 1</td><td>System must support filtering and muting by category [REQ_F1901]</td></tr>
   <tr><td>Rule 2</td><td>System will store and apply notification preferences ensuring it persists across sessions [REQ_F1903]</td></tr>
+  <tr><td>Rule 3</td><td>3.	Critical notifications must bypass quiet hours and be delivered immediately</td></tr>
 
   <tr><td><b>Author</b></td><td>Hesham</td></tr>
 </table>
