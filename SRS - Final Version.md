@@ -304,7 +304,7 @@ The following table (Table 3.1) contains the list of features to be implemented 
 | F031 | Authenticate User | University Portal |
 | F032 | Send SMS Notification | SMS Gateway |
 | F033 | Sync with External Calendar | Calendar API |
-| F033 | Profile Management | Student |
+| F034 | Profile Management | Student |
 
 <p align="center"><em>Table 3.1 COMSYS Features</em></p>
 
@@ -490,6 +490,29 @@ Table 3.1.1 below illustrates the use case for the login functionality (UC001), 
     <td>Step 3.3</td>
     <td>System prompts user for re-entry</td>
   </tr>
+  <tr>
+    <td colspan="2"><b>Alternate Flow – Forgot password</b></td>
+</tr>
+<tr>
+    <td>Step 4.1</td>
+    <td>User clicks “Forgot Password” link</td>
+</tr>
+<tr>
+    <td>Step 4.2</td>
+    <td>System prompts user to enter registered email or phone number</td>
+</tr>
+<tr>
+    <td>Step 4.3</td>
+    <td>System sends recovery link or OTP to the user</td>
+</tr>
+<tr>
+    <td>Step 4.4</td>
+    <td>User sets a new password and confirms</td>
+</tr>
+<tr>
+    <td>Step 4.5</td>
+    <td>System updates credentials and redirects to login screen</td>
+</tr>
   <tr>
     <td colspan="2"><b>Rules</b></td>
   </tr>
