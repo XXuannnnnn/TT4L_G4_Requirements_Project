@@ -71,6 +71,7 @@
   - 3.1.31 F031 Authenticate User
   - 3.1.32 F032 Send SMS Notification
   - 3.1.33 F033 Sync with External Calendar
+  - 3.1.34 F034 Manage Profile
 - 3.2 Performance Requirements
 - 3.3 Usability Requirements
 - 3.4 Interface Requirements
