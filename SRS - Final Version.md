@@ -92,7 +92,7 @@
 - 5.2 Acronyms and Abbreviations
 - 5.3 Glossary
   
-
+---
     
 # 1. Introduction
 
@@ -103,6 +103,18 @@ The purpose of the University Communication and Services Portal, **COMSYS**, is 
 ## 1.2 Scope
 
 **COMSYS** is designed to address the fragmentation of current academic and communication platforms used within the university. The system will consolidate grade management, scheduling, billing, announcements, notifications, parental access, and other academic services into a single, secure, and user-friendly portal. The portal will serve as the primary interface for students, parents, lecturers, and administrators to interact with university information and each other, offering customizable user experiences and integrating with existing university systems (e.g., calendars, SMS gateways, Single Sign-On). COMSYS will facilitate timely and relevant communication, automate routine notifications, and provide secure role-based access to information and services for its diverse set of users.
+
+The COMSYS system aims to fulfil the following goals to support its scope:
+
+| Goal ID | Goal Description |
+|---------|-------------------|
+| G1 | Ensure data privacy, regulatory compliance, and secure handling of all user information |
+| G2 | Facilitate timely, multi-channel communication between students, staff, and parents |
+| G3 | Provide personalized and self-service capabilities to empower users to manage their own data |
+| G4 | Support role-based workflows for different user groups (students, parents, lecturers, admins) to enhance operational efficiency |
+| G5 | Ensure user accessibility and multilingual support across all platforms and devices |
+
+<p align="center"><em>Table 1.2 System Goals</em></p>
 
 ## 1.3 Product Overview
 
@@ -188,8 +200,14 @@ The University Portal System (COMSYS) is subject to the following limitations an
 
 #### Regulatory Requirements and Policies
 
-1. Must comply with GDPR and FERPA data protection regulations, which may restrict access, storage, and sharing of personal and academic data.
-2. Legal and privacy regulations may limit the extent of data visibility and communication features, particularly for parental access to student information.
+1.	Must comply with GDPR and FERPA data protection regulations, including:  
+•	Ensuring all sensitive data is encrypted both in transit (using TLS/SSL protocols) and at rest (using AES-256 encryption).  
+•	Implementing strict role-based access controls (RBAC) to limit access to personal and academic data only to authorized individuals.  
+•	Managing explicit consent through secure digital consent forms, which clearly outline the type of data accessed, purpose of access, duration, and conditions for data revocation.  
+•	Adhering to a defined data retention policy, specifying retention periods for academic records (e.g., active records retained for student enrollment duration plus five years post-graduation) and personal communication logs (e.g., retention period not exceeding two years).  
+•	Regular auditing and logging of access to sensitive data to monitor compliance and quickly detect and respond to unauthorized data access or misuse incidents.
+
+2.	Legal and privacy regulations may limit the extent of data visibility and communication features, particularly for parental access to student information.
 
 #### Technical Limitations
 
