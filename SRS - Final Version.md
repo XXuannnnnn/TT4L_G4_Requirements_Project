@@ -304,6 +304,7 @@ The following table (Table 3.1) contains the list of features to be implemented 
 | F031 | Authenticate User | University Portal |
 | F032 | Send SMS Notification | SMS Gateway |
 | F033 | Sync with External Calendar | Calendar API |
+| F033 | Profile Management | Student |
 
 <p align="center"><em>Table 3.1 COMSYS Features</em></p>
 
