@@ -3289,7 +3289,7 @@ The functional requirement(s) for F030 Configure Parent Access:
 | **Requirement ID** | REQ_F3001 |
 |--------------------|-----------|
 | **Version** | 1.0 |
-| **Description** | Parental access and notifications shall comply with university privacy policies and require explicit student consent. |
+| **Description** | The system shall ensure parental access and notifications comply with university privacy policies and require explicit student consent. Consent must be obtained through secure digital methods such as verified email confirmation, OTP, or digital signature. |
 | **Author** | Danesh Veran |
 
 Table 3.1.30 illustrates the use case for the configure parent access functionality (UC030), detailing the process as defined by Requirement REQ_F3001 followed by an activity diagram which represents the process flow.
@@ -3317,7 +3317,7 @@ Table 3.1.30 illustrates the use case for the configure parent access functional
 2. The system shall provide a dedicated portal for parents to access their child’s grades, attendance, and financial information, subject to consent [REQ_F3001, REQ_F2101].
 </td></tr>
 
-<tr><td><b>Notes</b></td><td>The student’s consent must be a physical letter that is sent in by the student personally.</td></tr>
+<tr><td><b>Notes</b></td><td>Student consent shall be obtained through a secure, verifiable digital process. Physical letters are not required or accepted.</td></tr>
 <tr><td><b>Author</b></td><td>Danesh Veran</td></tr>
 </table>
 
