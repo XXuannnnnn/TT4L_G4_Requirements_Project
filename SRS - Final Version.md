@@ -1216,7 +1216,7 @@ The functional requirement(s) for F008 Access Help Documentation:
 | **Requirement ID** | REQ_F0801 |
 |--------------------|-----------|
 | **Version** | 1.0 |
-| **Description** | The system shall provide help guides accessible via a help section for students and parents, aimed at explaining system functionalities considered complex. |
+| **Description** | The system shall provide help guides accessible via a help section for students and parents, aimed at explaining system functionalities considered complex.<br><br>Complex features include, but are not limited to:<br>• Parental Access Settings<br>• Quiet Hours Configuration<br>• Session Timeout Customization |
 | **Author** | Hesham |
 
 Table 3.1.8 illustrates the use case for the access help documentation functionality (UC008), detailing the process as defined by Requirement REQ_F0801, followed by an activity diagram which represents the process flow.
