@@ -4500,3 +4500,15 @@ The period of inactivity after which a user is automatically logged out to maint
 
 15. **WebSocket:**  
 A communication protocol used in COMSYS for real-time features like live chat and instant notifications, enabling bidirectional, low-latency data exchange.
+
+16. **Complex Feature:**  
+A system function that involves multi-step configuration, affects user access or personalization, or includes conditional system behavior. Examples include session timeout settings, consent flows, and parental access management.
+
+17. **Digital Consent:**  
+A secure, verifiable method of obtaining a user’s authorization through electronic means. In the context of this system, digital consent includes:  
+- One-Time Password (OTP): A unique, time-sensitive code sent via SMS or email to confirm identity.  
+- Verified Email Token: A confirmation link sent to a registered email address which, when clicked, completes the consent process.  
+- Digital Signature: An electronic signature applied by the consenting party using secure, authenticated methods.  
+
+This process replaces traditional physical consent forms and is used to authorize sensitive operations such as parental access configuration.
+
