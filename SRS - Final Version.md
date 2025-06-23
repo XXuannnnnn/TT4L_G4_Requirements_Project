@@ -3675,14 +3675,6 @@ The following are the performance requirements for COMSYS:
 | **Requirement ID** | REQ_I0006 |
 |--------------------|-----------|
 | **Version** | 1.0 |
-| **Description** | Academic, financial, and attendance data shall be presented with charts, tables, and summaries for quick understanding. |
-| **Author** | Nickleirsch |
-
----
-
-| **Requirement ID** | REQ_I0007 |
-|--------------------|-----------|
-| **Version** | 1.0 |
 | **Description** | The system shall provide a single-window course enrolment process. |
 | **Author** | Nickleirsch |
 
