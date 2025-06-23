@@ -19,3 +19,9 @@
 | CH-15 | REQ_I0004 / REQ_I0006 | Removed duplicate requirement (REQ_I0006); retained REQ_I0004 only | Teoh Xuan Xuan | 22-06-2025 | VS-02 |
 | CH-16 | REQ_F0801, UC008 | Listed complex features (quiet time, timeout, etc.); updated rule; added glossary definition for "complex feature" | Tey Jun Cheng | 22-06-2025 | VS-02 |
 | CH-17 | UC001 | Added alternate flow for password recovery ("Forgot Password") | Yang Jia En | 22-06-2025 | VS-02 |
+| CH-18 | UC004, UC008, UC011, UC015, UC016, UC017, UC018 | Replaced “Alternative Flow” with “Alternate Flow” on 8 pages | Yang Jia En | 22-06-2025 | VS-02 |
+| CH-19 | UC021 | Fixed broken reference “F00X” to “F030” in View Child’s Info use case | Teoh Xuan Xuan | 22-06-2025 | VS-02 |
+| CH-20 | UC023 | Corrected table number reference to 3.1.23 | Tey Jun Cheng | 22-06-2025 | VS-02 |
+| CH-21 | REQ_F0902 | Added alternate flow to UC009 for cancelling or modifying scheduled notifications. Clarified REQ_F0902. | Yang Jia En | 22-06-2025 | VS-02 |
+| CH-22 | UC004, UC034 | Reinstated missing “Notes” rows in UC004 and UC034 with “N/A” values to preserve formatting consistency across use cases. | Tey Jun Cheng | 22-06-2025 | VS-02 |
+
