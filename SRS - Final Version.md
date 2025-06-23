@@ -3901,6 +3901,41 @@ COMSYS operates primarily as an intermediary system, minimizing direct data stor
 
 #### **In-depth Explanation of Class Diagram**
 
+| **Class** | **Attribute/Method** | **Data Type** | **Description** |
+|-----------|-----------------------|---------------|------------------|
+| **User**<br>*An abstract base class that defines common attributes and methods for all system users. It handles basic user along with session management and language preferences.* | userID | String | Unique identifier for user |
+|  | Name | string | User’s full name |
+|  | email | string | User's email address |
+|  | phoneNumber | int | Contact number |
+|  | accountType | string | Type of user account |
+|  | language | string | Preferred language |
+|  | sessionTimeout | int | Session timeout in minutes |
+| **NotificationSettings**<br>*Manages how users receive notifications by controlling quiet hours, delivery channels (SMS, email, portal), and notification categories. It stores user preferences and determines when and how notifications should be delivered.* | quietHoursStart | time | Start of quiet period |
+|  | quietHoursEnd | time | End of quiet period |
+|  | quietHoursEnabled | boolean | Quiet hours toggle |
+|  | categoryToggles | List<NotificationType> | Enabled notification types |
+|  | channelPreferences | Map<NotificationType, Channel> | Preferred channels per type |
+| **CommunicationTemplate**<br>*Stores and manages message templates used for different types of communications. It supports multiple channels (SMS, email, portal) and allows for standardized message creation with customizable content.* | templateID | string | Unique template identifier |
+|  | templateName | string | Name of template |
+|  | subject | string | Email subject line |
+|  | content | string | Template content |
+|  | templateType | string | Type of template |
+| **Notification**<br>*Represents a single notification in the system; an abstract class that is inherited by all notification channel types.* | message | string | Notification content |
+|  | recipient | string | Recipient identifier |
+|  | delivered | boolean | Delivery status |
+|  | readReceipt | boolean | Read status |
+| **ContactDirectory**<br>*Stores and manages staff contact information and their availability hours.* | entryID | int | Unique contact identifier |
+|  | staffType | string | Type of staff member |
+|  | availabilityHours | string | Available hours |
+| **CalendarAPI**<br>*Handles all calendar-related operations including adding, removing, and retrieving events. It manages schedule synchronization and helps coordinate activities across the system.* | addEvent() | method | Adds new calendar event |
+|  | deleteEvent() | method | Removes calendar event |
+|  | getEvents() | method | Retrieves calendar events |
+| **SMSGateway**<br>*Manages SMS message sending and phone number validation. It tracks message delivery status and ensures proper handling of mobile communications.* | sendSMS() | method | Sends SMS message |
+|  | validateNumber() | method | Validates phone number |
+| **CampusManagementSystem**<br>*Manages student data operations and access control. It handles data updates, retrieval, and validates parent permissions for accessing student information.* | updateStudentData() | method | Updates the student’s data |
+|  | retrieveStudentData() | method | Retrieves the student’s data |
+|  | validateParentViewPermission() | method | Checks if parent has consent to access student information |
+
 ---
 
 #### 1. **User (Abstract Class)**  
