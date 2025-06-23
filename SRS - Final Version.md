@@ -3494,6 +3494,56 @@ Table 3.1.33 illustrates the use case for the sync with external calendar functi
 
 --
 
+### 3.1.34 F034 Manage Profile
+
+The functional requirement(s) for F034 Manage Profile:
+
+| **Requirement ID** | REQ_F3401 |
+|--------------------|-----------|
+| **Version** | 2.0 |
+| **Description** | The system shall allow students to view and update their personal profile information, including full name, phone number, email address, and emergency contact. |
+| **Author** | Tey Jun Cheng |
+
+Table 3.1.34 illustrates the use case for the profile management functionality (UC034), detailing the process as defined by Requirement REQ_F3401, followed by an activity diagram which represents the process flow.
+
+<table border="1" cellspacing="0" cellpadding="5">
+<tr><td><b>Use Case ID</b></td><td>UC034</td></tr>
+<tr><td><b>Version</b></td><td>2.0</td></tr>
+<tr><td><b>Use Case</b></td><td>F034 Manage Profile</td></tr>
+<tr><td><b>Purpose</b></td><td>To allow students to view and update their own profile information.</td></tr>
+<tr><td><b>Actor</b></td><td>Student</td></tr>
+<tr><td><b>Trigger</b></td><td>Student accesses the profile page from the dashboard.</td></tr>
+<tr><td><b>Precondition</b></td><td>Student is logged in.</td></tr>
+<tr><td><b>Postcondition</b></td><td>Student’s updated profile information is saved and visible in their account.</td></tr>
+
+<tr><td colspan="2"><b>Main Flow</b></td></tr>
+<tr><td><b>Step</b></td><td><b>Action</b></td></tr>
+<tr><td>1</td><td>Student navigates to profile settings page.</td></tr>
+<tr><td>2</td><td>Student retrieves and displays current profile data.</td></tr>
+<tr><td>3</td><td>Student edits fields (e.g., phone number).</td></tr>
+<tr><td>4</td><td>System validates inputs.</td></tr>
+<tr><td>5</td><td>System saves updates and displays confirmation message.</td></tr>
+
+<tr><td colspan="2"><b>Rules</b></td></tr>
+<tr><td colspan="2">
+1. Phone number must follow standard format (e.g., +601X-XXXXXXX)<br>
+2. Email address must follow standard format (e.g., xxxx@xxx.xx)<br>
+3. Fields must not be left empty (e.g., name, phone number)
+</td></tr>
+
+<tr><td><b>Notes</b></td><td>N/A</td></tr>
+
+<tr><td><b>Author</b></td><td>Tey Jun Cheng</td></tr>
+</table>
+
+<p align="center"><em>Table 3.1.34: Use Case UC034 Manage Profile</em></p>
+
+![COMSYS System User Activity Diagram](Screenshot/activity_user_profile.png)
+
+<p align="center"><em>Figure 3.1.34: Activity Diagram for Use Case UC034 Manage Profile</em></p>
+
+--
+
 ## 3.2 Performance Requirements
 
 The following are the performance requirements for COMSYS:
