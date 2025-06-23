@@ -1459,6 +1459,37 @@ Table 3.1.9 illustrates the use case for the send notification functionality (UC
     <td>Return to Main Flow step 6</td>
   </tr>
   <tr>
+    <td colspan="2"><b>Alternate Flow – Cancel or Modify Scheduled Notification</b></td>
+</tr>
+<tr>
+    <td>Step 7.1</td>
+    <td>User accesses “Schedule Notifications” page.</td>
+</tr>
+<tr>
+    <td>Step 7.2</td>
+    <td>System displays a list of pending scheduled notifications.</td>
+</tr>
+<tr>
+    <td>Step 7.3</td>
+    <td>User selects a notification and choose to cancel or edit.</td>
+</tr>
+<tr>
+    <td>Step 7.4</td>
+    <td>If edit selected, system allows updating date/time or content.</td>
+</tr>
+<tr>
+    <td>Step 7.5</td>
+    <td>System confirms the changes or cancellation request.</td>
+</tr>
+<tr>
+    <td>Step 7.6</td>
+    <td>System saves changes or removes notification from queue.</td>
+</tr>
+<tr>
+    <td>Step 7.7</td>
+    <td>Return to Main Flow step 8.</td>
+</tr>
+  <tr>
     <td colspan="2"><b>Rules</b></td>
   </tr>
   <tr>
@@ -1472,6 +1503,10 @@ Table 3.1.9 illustrates the use case for the send notification functionality (UC
   <tr>
     <td>Rule 3</td>
     <td>Critical alerts must be delivered within a minute of their creation [REQ_P0004]</td>
+  </tr>
+  <tr>
+    <td>Rule 4</td>
+    <td>Users may cancel or modify scheduled notifications before their scheduled delivery time.</td>
   </tr>
   <tr>
     <td><b>Notes</b></td>
